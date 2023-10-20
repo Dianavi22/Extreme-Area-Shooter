@@ -9,7 +9,7 @@ public class Bullet : MonoBehaviour
     private int m_DamageBullet;
     void Start()
     {
-        
+        StartCoroutine(DestroyBullet());
     }
 
     void Update()
@@ -27,5 +27,11 @@ public class Bullet : MonoBehaviour
         {
             Destroy(gameObject);
         }
+    }
+
+    IEnumerator DestroyBullet()
+    {
+        yield return new WaitForSeconds(5f);
+        Destroy(gameObject);
     }
 }
