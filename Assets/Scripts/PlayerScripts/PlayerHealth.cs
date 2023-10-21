@@ -11,6 +11,9 @@ public class PlayerHealth : MonoBehaviour
     public static PlayerHealth instance;
 
     private StandardEnemy standardEnemy;
+    public static PlayerHealth _playerHealth;
+    public bool isAlive = true;
+    public GameManager _gameManager;
 
     private void Awake()
     {
@@ -38,9 +41,17 @@ public class PlayerHealth : MonoBehaviour
         }
     }
 
+  
+
     public void TakeDamage()
     {
         m_currentHealth = m_currentHealth - 5;
         Debug.Log("HP Player : "+ m_currentHealth);
+        if (m_currentHealth <= 0)
+        {
+            isAlive = false;
+        }
     }
+
+    
 }

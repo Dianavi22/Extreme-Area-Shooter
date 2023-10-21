@@ -25,7 +25,7 @@ public class BulletSpawn : MonoBehaviour
     void Update()
     {
         myTime = myTime + Time.deltaTime;
-        if (Input.GetButton("Jump") && myTime > nextFire)
+        if (Input.GetMouseButton(0) && myTime > nextFire)
         {
             nextFire = myTime + fireDelta;
             Shoot();

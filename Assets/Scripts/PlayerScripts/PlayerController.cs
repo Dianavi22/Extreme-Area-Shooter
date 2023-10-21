@@ -5,18 +5,14 @@ using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField]
-    private float _speed;
-
-    [SerializeField]
-    private float _rotationSpeed;
-    [SerializeField]
-    private Rigidbody _rb;
-
+    [SerializeField] private LayerMask groundMask;
+    [SerializeField] private float _speed = 10;
+    [SerializeField]  Vector3 ScreenMouse;
+    [SerializeField]  Vector3 WorldMouse;
+    [SerializeField] Camera MainCamera;
 
     private void Start()
     {
-        
     }
 
     private void Update()
@@ -24,17 +20,19 @@ public class PlayerController : MonoBehaviour
         float horizontalInput = Input.GetAxis("Horizontal");
         float verticalInput = Input.GetAxis("Vertical");
 
-        Vector3 movementDirection = new Vector3(horizontalInput, 0, verticalInput);
-        movementDirection.Normalize();
+        Vector3 movementDirection = new Vector3(horizontalInput, 0, verticalInput).normalized;
 
         transform.Translate(movementDirection * _speed * Time.deltaTime, Space.World);
+        var mousePos = Input.mousePosition;
+        var wantedPos = Camera.main.ScreenToWorldPoint(new Vector3(mousePos.x, mousePos.y, Camera.main.transform.position.y));
 
-        if(movementDirection != Vector3.zero)
-        {
-            Quaternion toRotation = Quaternion.LookRotation(movementDirection, Vector3.up);
-            transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, _rotationSpeed * Time.deltaTime);
-        }
-       
+        transform.LookAt(wantedPos);
 
     }
+
+
+
+   
 }
+
+

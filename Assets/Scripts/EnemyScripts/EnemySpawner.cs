@@ -36,7 +36,9 @@ public class EnemySpawner : MonoBehaviour
 
     public void StandardEnemySpawn()
     {
-        GameObject enemy = Instantiate(m_StandardEnemyPrefab, transform);
-        enemy.transform.position = spawners[Random.Range(0,17)].transform.position;
+        spawners[Random.Range(0, spawners.Count)].SpawnEnemy(m_StandardEnemyPrefab);
+        //SpawnEnemy()
+        //GameObject enemy = Instantiate(m_StandardEnemyPrefab, transform);
+        //enemy.transform.position = spawners[Random.Range(0,spawners.Count)].transform.position;
     }
 }
