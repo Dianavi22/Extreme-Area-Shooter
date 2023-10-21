@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class StandardEnemy : MonoBehaviour
 {
+    
+    [SerializeField]
+    private float m_StandardEnemySpeed = 5f;
+
     [SerializeField]
     private int m_MaxHpEnemy;
 
@@ -13,8 +17,20 @@ public class StandardEnemy : MonoBehaviour
     [SerializeField]
     public int m_damageStandardEnemy = 5;
 
+
+    [SerializeField]
+    private Transform _targetPlayer;
+
+    [SerializeField]
+    private Rigidbody _rb;
+
     //public static StandardEnemy standardEnemy;
-   
+
+    private void Awake()
+    {
+        _rb = GetComponent<Rigidbody>();
+        _targetPlayer = FindObjectOfType<Player>().transform;
+    }
     void Start()
     {
         m_CurrentHpEnemy = m_MaxHpEnemy;
@@ -22,7 +38,8 @@ public class StandardEnemy : MonoBehaviour
 
     void Update()
     {
-        
+        transform.position = Vector3.MoveTowards(this.transform.position, _targetPlayer.position, 3 * Time.deltaTime);
+
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -36,4 +53,6 @@ public class StandardEnemy : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
+   
 }

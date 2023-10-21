@@ -10,6 +10,9 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField]
     private float _rotationSpeed;
+    [SerializeField]
+    private Rigidbody _rb;
+
 
     private void Start()
     {
@@ -31,6 +34,7 @@ public class PlayerController : MonoBehaviour
             Quaternion toRotation = Quaternion.LookRotation(movementDirection, Vector3.up);
             transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, _rotationSpeed * Time.deltaTime);
         }
+       
 
     }
 }
