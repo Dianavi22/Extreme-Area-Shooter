@@ -44,9 +44,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5636854ea2f773445acbf360a45b820f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_bullet: {fileID: 1826235053615279704, guid: d36ab209ea3b62e41a8a06402f12553a, type: 3}
+  m_bulletPrefab: {fileID: 1826235053615279704, guid: d36ab209ea3b62e41a8a06402f12553a, type: 3}
   m_bulletSpawnPoint: {fileID: 1916535221}
   m_bulletSpeed: 10
+  _bulletForce: 20
 --- !u!1 &5753754095892556476
 GameObject:
   m_ObjectHideFlags: 0
@@ -178,8 +179,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 78574123323ad194199358e8ed7a4905, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_moveSpeed: 10
-  rb: {fileID: 5753754095892556473}
+  _speed: 10
   _rotationSpeed: 720
 --- !u!114 &1873544119
 MonoBehaviour:
@@ -202,7 +202,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5753754095892556476}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
   m_Name: 
