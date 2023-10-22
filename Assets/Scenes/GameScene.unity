@@ -1423,7 +1423,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -85.62494, y: -126.481384}
+  m_AnchoredPosition: {x: -85.62494, y: -345}
   m_SizeDelta: {x: 371.2499, y: 252.9628}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1151701160
@@ -1531,9 +1531,41 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 137014826}
     m_Modifications:
+    - target: {fileID: 3233571597134469344, guid: 15104f0eefa7de9418526b2afad865a0, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3233571597134469344, guid: 15104f0eefa7de9418526b2afad865a0, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3233571597134469344, guid: 15104f0eefa7de9418526b2afad865a0, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1843543795}
+    - target: {fileID: 3233571597134469344, guid: 15104f0eefa7de9418526b2afad865a0, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3233571597134469344, guid: 15104f0eefa7de9418526b2afad865a0, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Restart
+      objectReference: {fileID: 0}
+    - target: {fileID: 3233571597134469344, guid: 15104f0eefa7de9418526b2afad865a0, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: GameOver, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 3233571597134469344, guid: 15104f0eefa7de9418526b2afad865a0, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 3233571597134469374, guid: 15104f0eefa7de9418526b2afad865a0, type: 3}
       propertyPath: m_Name
       value: RetryButton
+      objectReference: {fileID: 0}
+    - target: {fileID: 3233571597134469374, guid: 15104f0eefa7de9418526b2afad865a0, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3233571597134469375, guid: 15104f0eefa7de9418526b2afad865a0, type: 3}
       propertyPath: m_Pivot.x
@@ -1605,7 +1637,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3233571597134469375, guid: 15104f0eefa7de9418526b2afad865a0, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 299.2
+      value: 430
       objectReference: {fileID: 0}
     - target: {fileID: 3233571597134469375, guid: 15104f0eefa7de9418526b2afad865a0, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -1626,7 +1658,10 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3233571597134469374, guid: 15104f0eefa7de9418526b2afad865a0, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1843543795}
   m_SourcePrefab: {fileID: 100100000, guid: 15104f0eefa7de9418526b2afad865a0, type: 3}
 --- !u!224 &1178340625 stripped
 RectTransform:
@@ -2452,7 +2487,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_StandardEnemyPrefab: {fileID: 1518876156329345965, guid: 75f194a8733292b4093fed3dc3dbec5a, type: 3}
   m_Width: 0
-  m_Rate: 0.76
+  m_Rate: 2.05
   spawners:
   - {fileID: 124822506}
   - {fileID: 2096291053}
@@ -2693,6 +2728,23 @@ Rigidbody:
   m_Interpolate: 1
   m_Constraints: 126
   m_CollisionDetection: 0
+--- !u!1 &1843543791 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3233571597134469374, guid: 15104f0eefa7de9418526b2afad865a0, type: 3}
+  m_PrefabInstance: {fileID: 1178340624}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1843543795
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1843543791}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bdb0dfa3c339bf0428488ea8fe3bdc85, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1848959745
 GameObject:
   m_ObjectHideFlags: 0
@@ -3449,7 +3501,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3233571597134469375, guid: 15104f0eefa7de9418526b2afad865a0, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 185
+      value: 315.8
       objectReference: {fileID: 0}
     - target: {fileID: 3233571597134469375, guid: 15104f0eefa7de9418526b2afad865a0, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
