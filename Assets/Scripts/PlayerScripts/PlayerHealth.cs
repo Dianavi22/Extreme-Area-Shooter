@@ -42,7 +42,6 @@ public class PlayerHealth : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.collider.CompareTag("Enemy")) {
-            Debug.Log("AIL !");
             TakeDamage(); 
         }
     }
@@ -62,7 +61,6 @@ public class PlayerHealth : MonoBehaviour
     public void TakeExplode()
     {
         m_currentHealth = m_currentHealth - 20;
-        Debug.Log("HP Player : " + m_currentHealth);
         if (m_currentHealth <= 0)
         {
             isAlive = false;

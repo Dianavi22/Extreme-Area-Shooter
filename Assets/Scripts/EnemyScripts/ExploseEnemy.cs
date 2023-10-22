@@ -30,12 +30,14 @@ public class ExploseEnemy : MonoBehaviour
 
     public float explosionRadius = 4f;
 
+    private GameManager _gameManager;
 
     private void Awake()
     {
         _rb = GetComponent<Rigidbody>();
         _targetPlayer = FindObjectOfType<Player>().transform;
         _damage = FindObjectOfType<Player>().GetComponent<PlayerHealth>();
+        _gameManager = FindObjectOfType<GameManager>().GetComponent<GameManager>();
     }
     // Start is called before the first frame update
     void Start()
@@ -57,16 +59,20 @@ public class ExploseEnemy : MonoBehaviour
 
     void ExplodeEnemy()
     {
+        print("explosé");
+
         Collider[] colliders = Physics.OverlapSphere(transform.position, explosionRadius);
         foreach (Collider collider in colliders)
         {
             if (collider.tag == "Enemy")
             {
+                print("Enemy");
+
+                _gameManager.playerScore = _gameManager.playerScore + 100;
                 Destroy(gameObject);
                 if(collider.gameObject.tag == "Enemy")
                 {
                     Destroy(collider.gameObject);
-
                 }
                 // _damage.TakeDamage();
             }
