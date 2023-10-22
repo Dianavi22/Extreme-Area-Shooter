@@ -160,7 +160,7 @@ GameObject:
   - component: {fileID: 1459947038528138345}
   - component: {fileID: 161107783912710578}
   m_Layer: 0
-  m_Name: StandardEnemy
+  m_Name: LittleStandardEnemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -292,7 +292,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 902522025bb886249bfe1dc03b80e1aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_StandardEnemySpeed: 5
+  m_StandardEnemySpeed: 2
   m_MaxHpEnemy: 5
   m_CurrentHpEnemy: 5
   m_damageStandardEnemy: 0
@@ -361,7 +361,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: d244249a5e0abe94f9318ac37ba44216, type: 2}
+  - {fileID: 2100000, guid: 79335ee338209514abb32c09822028f9, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -468,7 +468,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: d244249a5e0abe94f9318ac37ba44216, type: 2}
+  - {fileID: 2100000, guid: 79335ee338209514abb32c09822028f9, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -575,7 +575,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: d244249a5e0abe94f9318ac37ba44216, type: 2}
+  - {fileID: 2100000, guid: 79335ee338209514abb32c09822028f9, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -788,7 +788,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: d244249a5e0abe94f9318ac37ba44216, type: 2}
+  - {fileID: 2100000, guid: 79335ee338209514abb32c09822028f9, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

@@ -14,8 +14,7 @@ public class BigEnemy : MonoBehaviour
     [SerializeField]
     private int m_CurrentHpEnemy;
 
-    [SerializeField]
-    public int m_damageStandardEnemy = 5;
+    
 
 
     [SerializeField]
@@ -34,9 +33,7 @@ public class BigEnemy : MonoBehaviour
 
     private GameManager _gameManager;
 
-    [SerializeField] private GameObject _standardEnemy;
-
-    [SerializeField] private List<StandardEnemy> standardEnemies;
+    [SerializeField] private GameObject _littleStandardEnemy;
     private void Awake()
     {
         _rb = GetComponent<Rigidbody>();
@@ -52,10 +49,7 @@ public class BigEnemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position = Vector3.MoveTowards(this.transform.position, _targetPlayer.position, _bigEnemySpeed * Time.deltaTime);
-        _enemyDir = Vector3.MoveTowards(this.transform.position, _targetPlayer.position, _bigEnemySpeed * Time.deltaTime);
-
-        gameObject.transform.LookAt(_targetPlayer);
+      
 
         
     }
@@ -63,9 +57,9 @@ public class BigEnemy : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+            _damage.TakeDamage();
             Destroy(gameObject);
         }
-
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -73,10 +67,8 @@ public class BigEnemy : MonoBehaviour
         if (collision.collider.CompareTag("Bullet"))
         {
             EnemySpawn();
-            _bigEnemySpeed = 0;
-            Invoke("DestroyBigEnemy", 0.3f);
+            DestroyBigEnemy();
         }
-
     }
 
     private void DestroyBigEnemy()
@@ -88,7 +80,8 @@ public class BigEnemy : MonoBehaviour
     {
         for (int i = 0; i < spawners.Count; i++)
         {
-            Instantiate(_standardEnemy, spawners[i].transform);
+            Instantiate(_littleStandardEnemy, spawners[i].transform);
+            
         }
     }
 }

@@ -201,6 +201,7 @@ GameObject:
   - component: {fileID: 1518876156329345960}
   - component: {fileID: 1518876156329345961}
   - component: {fileID: 1518876156329345966}
+  - component: {fileID: 773944425667637340}
   m_Layer: 0
   m_Name: BigEnemy
   m_TagString: Enemy
@@ -278,6 +279,21 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &773944425667637340
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1518876156329345965}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e6357f096b72776408afa73e0059bac7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _targetPlayer: {fileID: 0}
+  _rb: {fileID: 0}
+  _damage: {fileID: 0}
 --- !u!1 &1797510104423139562
 GameObject:
   m_ObjectHideFlags: 0
@@ -1033,17 +1049,15 @@ MonoBehaviour:
   m_ExploseEnemySpeed: 5
   m_MaxHpEnemy: 0
   m_CurrentHpEnemy: 0
-  m_damageStandardEnemy: 5
   _targetPlayer: {fileID: 0}
-  _rb: {fileID: 0}
+  _rb: {fileID: 6691612949787919797}
   _damage: {fileID: 0}
   spawners:
   - {fileID: 5453940021197931382}
   - {fileID: 1005913029263695488}
   - {fileID: 6415027105839626447}
   - {fileID: 4324479251971341545}
-  _standardEnemy: {fileID: 1518876156329345965, guid: dc433f6440727e143886618b47ca95b8, type: 3}
-  standardEnemies: []
+  _littleStandardEnemy: {fileID: 1518876156329345965, guid: 80fb28a3ebef12341a90472613985f15, type: 3}
 --- !u!65 &3202035576396199962
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1087,8 +1101,8 @@ Rigidbody:
     m_Bits: 0
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
-  m_UseGravity: 1
-  m_IsKinematic: 0
+  m_UseGravity: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 84
   m_CollisionDetection: 0

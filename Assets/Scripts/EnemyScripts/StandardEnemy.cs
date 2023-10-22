@@ -6,7 +6,7 @@ public class StandardEnemy : MonoBehaviour
 {
     
     [SerializeField]
-    private float m_StandardEnemySpeed = 5f;
+    private float m_StandardEnemySpeed;
 
     [SerializeField]
     private int m_MaxHpEnemy;
