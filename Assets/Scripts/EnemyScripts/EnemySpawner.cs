@@ -6,15 +6,20 @@ public class EnemySpawner : MonoBehaviour
 {
     [SerializeField]
     private GameObject m_StandardEnemyPrefab;
+
+    [SerializeField]
+    private GameObject m_ExploseEnemyPrefab;
     private float _lastSpawn;
+    private float _lastSpawnExploseEnemy;
 
     [SerializeField]
     private float m_Width;
 
     [SerializeField]
     private float m_Rate;
-    
-    
+
+    [SerializeField]
+    private float m_RateExploseEnemy;
 
     [SerializeField]
     List<Spawner> spawners = new List<Spawner>();
@@ -22,6 +27,7 @@ public class EnemySpawner : MonoBehaviour
     void Start()
     {
         _lastSpawn = Time.time;
+        _lastSpawnExploseEnemy = Time.time;
 
     }
 
@@ -32,13 +38,22 @@ public class EnemySpawner : MonoBehaviour
             _lastSpawn = Time.time;
             StandardEnemySpawn();
         }
+
+        if ((Time.time - _lastSpawnExploseEnemy) >= (1f / m_RateExploseEnemy))
+        {
+            _lastSpawnExploseEnemy = Time.time;
+            ExploseEnemySpawn();
+        }
     }
 
     public void StandardEnemySpawn()
     {
         spawners[Random.Range(0, spawners.Count)].SpawnEnemy(m_StandardEnemyPrefab);
-        //SpawnEnemy()
-        //GameObject enemy = Instantiate(m_StandardEnemyPrefab, transform);
-        //enemy.transform.position = spawners[Random.Range(0,spawners.Count)].transform.position;
+      
+    }
+    public void ExploseEnemySpawn()
+    {
+        spawners[Random.Range(0, spawners.Count)].SpawnEnemy(m_ExploseEnemyPrefab);
+      
     }
 }

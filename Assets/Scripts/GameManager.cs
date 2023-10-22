@@ -18,6 +18,8 @@ public class GameManager : MonoBehaviour
     {
       //  _playerHealth = GetComponent<PlayerHealth>();
         _playerController = _player.GetComponent<PlayerController>();
+        _playerHealth = _player.GetComponent<PlayerHealth>();
+        
     }
     void Start()
     {

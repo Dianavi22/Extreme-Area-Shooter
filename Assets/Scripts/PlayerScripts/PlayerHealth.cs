@@ -15,6 +15,9 @@ public class PlayerHealth : MonoBehaviour
     public bool isAlive = true;
     public GameManager _gameManager;
 
+    [SerializeField]
+    private CameraController _cameraController;
+    
     private void Awake()
     {
         if(instance != null)
@@ -22,10 +25,13 @@ public class PlayerHealth : MonoBehaviour
             return;
         }
         instance = this;
+        //  _gameManager = FindObjectOfType<GameManager>().GetComponent<GameManager>();
+        _cameraController.GetComponent<CameraController>();
     }
     void Start()
     {
         m_currentHealth = m_maxHealth;
+
     }
 
     void Update()
@@ -45,13 +51,23 @@ public class PlayerHealth : MonoBehaviour
 
     public void TakeDamage()
     {
+        _cameraController.shakeshake = true;
         m_currentHealth = m_currentHealth - 5;
-        Debug.Log("HP Player : "+ m_currentHealth);
         if (m_currentHealth <= 0)
         {
             isAlive = false;
         }
     }
 
-    
+    public void TakeExplode()
+    {
+        m_currentHealth = m_currentHealth - 20;
+        Debug.Log("HP Player : " + m_currentHealth);
+        if (m_currentHealth <= 0)
+        {
+            isAlive = false;
+        }
+    }
+
+
 }
