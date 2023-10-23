@@ -39,14 +39,12 @@ public class ExploseEnemy : MonoBehaviour
         _damage = FindObjectOfType<Player>().GetComponent<PlayerHealth>();
         _gameManager = FindObjectOfType<GameManager>().GetComponent<GameManager>();
     }
-    // Start is called before the first frame update
     void Start()
     {
         m_CurrentHpEnemy = m_MaxHpEnemy;
 
     }
 
-    // Update is called once per frame
     void Update()
     {
 
@@ -59,15 +57,12 @@ public class ExploseEnemy : MonoBehaviour
 
     void ExplodeEnemy()
     {
-        print("explosé");
 
         Collider[] colliders = Physics.OverlapSphere(transform.position, explosionRadius);
         foreach (Collider collider in colliders)
         {
             if (collider.tag == "Enemy")
             {
-                print("Enemy");
-
                 _gameManager.playerScore = _gameManager.playerScore + 100;
                 Destroy(gameObject);
                 if(collider.gameObject.tag == "Enemy")
@@ -88,22 +83,17 @@ public class ExploseEnemy : MonoBehaviour
         {
             if (collider.tag == "Enemy" || collider.tag == "Player")
             {
-               
                     Destroy(gameObject);
                 if (collider.tag == "Enemy")
                 {
                     Destroy(collider.gameObject);
-
                 }
                 else
                 {
                     _damage.TakeExplode();
-
                 }
 
             }
-
-           
         }
     }
 
@@ -121,6 +111,7 @@ public class ExploseEnemy : MonoBehaviour
     {
         if (collision.collider.CompareTag("Bullet"))
         {
+            _gameManager.playerLevelUpgrade = _gameManager.playerLevelUpgrade+5;
             ExplodeEnemy();
             Destroy(gameObject);
         }

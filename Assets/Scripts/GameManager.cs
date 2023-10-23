@@ -16,16 +16,33 @@ public class GameManager : MonoBehaviour
     private PlayerController _playerController;
     public int playerScore;
     [SerializeField] TMP_Text _playerScoreUI;
+
+    [SerializeField] private GameObject _canon2;
+    [SerializeField] private GameObject _canon3;
+    [SerializeField] private GameObject _canon4;
+    [SerializeField] private GameObject _canon5;
+    [SerializeField] private GameObject _canon6;
+
+    [SerializeField] BulletSpawn _bulletSpawn;
+
+    public int playerLevelUpgrade;
     private void Awake()
     {
       //  _playerHealth = GetComponent<PlayerHealth>();
         _playerController = _player.GetComponent<PlayerController>();
         _playerHealth = _player.GetComponent<PlayerHealth>();
+
+        
         
     }
     void Start()
     {
-        
+        _canon2.SetActive(false); 
+        _canon3.SetActive(false);
+        _canon4.SetActive(false);
+        _canon5.SetActive(false);
+        _canon6.SetActive(false);
+
     }
 
     void Update()
@@ -35,6 +52,40 @@ public class GameManager : MonoBehaviour
             GameOver();
         }
         _playerScoreUI.text = playerScore.ToString();
+
+        if(playerLevelUpgrade >= 30)
+        {
+            _canon2.SetActive(true);
+            _canon3.SetActive(true);
+        }
+        else
+        {
+            _canon2.SetActive(false);
+            _canon3.SetActive(false);
+        }
+
+        if (playerLevelUpgrade >= 60)
+        {
+            _canon4.SetActive(true);
+        }
+        else
+        {
+            _canon4.SetActive(false);
+        }
+        //if (playerLevelUpgrade >= 90)
+        //{
+        //    _canon5.SetActive(true);
+        //    _canon6.SetActive(true);
+        //}
+        //else
+        //{
+        //    _canon5.SetActive(false);
+        //    _canon6.SetActive(false);
+        //}
+
+
+        if (playerLevelUpgrade < 0) { playerLevelUpgrade = 0; }
+        if(playerLevelUpgrade > 110) { playerLevelUpgrade = 110; }
 
     }
 

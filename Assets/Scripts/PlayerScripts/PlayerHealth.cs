@@ -56,6 +56,7 @@ public class PlayerHealth : MonoBehaviour
         {
             isAlive = false;
         }
+        _gameManager.playerLevelUpgrade = _gameManager.playerLevelUpgrade - 50;
     }
 
     public void TakeExplode()
@@ -65,6 +66,8 @@ public class PlayerHealth : MonoBehaviour
         {
             isAlive = false;
         }
+        _gameManager.playerLevelUpgrade = _gameManager.playerLevelUpgrade - 50;
+
     }
 
 

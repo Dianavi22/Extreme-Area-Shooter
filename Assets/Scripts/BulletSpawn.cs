@@ -19,9 +19,19 @@ public class BulletSpawn : MonoBehaviour
     private float nextFire = 0.001f;
     [SerializeField]
     private float myTime = 0.0F;
-    [SerializeField]
-    public float fireDelta = 0f;  
+    
+    public float fireDelta;
 
+    public static BulletSpawn bulletSpawn;
+
+    [SerializeField] GameManager gameManager; 
+
+    private void Start()
+    {
+        fireDelta = 0.3f;
+        gameManager = FindObjectOfType<GameManager>().GetComponent<GameManager>();
+        
+    }
     void Update()
     {
         myTime = myTime + Time.deltaTime;
@@ -31,6 +41,16 @@ public class BulletSpawn : MonoBehaviour
             Shoot();
             nextFire = nextFire - myTime;
             myTime = 0.0F;
+        }
+
+        if(gameManager.playerLevelUpgrade >= 110)
+        {
+            fireDelta = 0.1f;
+        }
+        else
+        {
+            fireDelta = 0.3f;
+
         }
     }
 

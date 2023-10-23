@@ -66,6 +66,8 @@ public class BigEnemy : MonoBehaviour
     {
         if (collision.collider.CompareTag("Bullet"))
         {
+            _gameManager.playerLevelUpgrade = _gameManager.playerLevelUpgrade + 3;
+
             EnemySpawn();
             DestroyBigEnemy();
         }
