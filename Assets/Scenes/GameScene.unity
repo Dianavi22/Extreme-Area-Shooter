@@ -324,7 +324,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -1657,7 +1657,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -2200,7 +2200,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -2356,7 +2356,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -3384,6 +3384,26 @@ PrefabInstance:
       propertyPath: _cameraController
       value: 
       objectReference: {fileID: 963194231}
+    - target: {fileID: 1186256631530844750, guid: 549d85752e48acb45abb2f350ee2c5a2, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1218786753317851828, guid: 549d85752e48acb45abb2f350ee2c5a2, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2366734355817763272, guid: 549d85752e48acb45abb2f350ee2c5a2, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3037827334759071127, guid: 549d85752e48acb45abb2f350ee2c5a2, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4505193454534527244, guid: 549d85752e48acb45abb2f350ee2c5a2, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5753754095892556472, guid: 549d85752e48acb45abb2f350ee2c5a2, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -3424,9 +3444,57 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5753754095892556473, guid: 549d85752e48acb45abb2f350ee2c5a2, type: 3}
+      propertyPath: m_Drag
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5753754095892556473, guid: 549d85752e48acb45abb2f350ee2c5a2, type: 3}
+      propertyPath: m_Mass
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5753754095892556473, guid: 549d85752e48acb45abb2f350ee2c5a2, type: 3}
+      propertyPath: m_UseGravity
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5753754095892556473, guid: 549d85752e48acb45abb2f350ee2c5a2, type: 3}
+      propertyPath: m_Interpolate
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5753754095892556473, guid: 549d85752e48acb45abb2f350ee2c5a2, type: 3}
+      propertyPath: m_IsKinematic
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5753754095892556473, guid: 549d85752e48acb45abb2f350ee2c5a2, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5753754095892556476, guid: 549d85752e48acb45abb2f350ee2c5a2, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 5753754095892556477, guid: 549d85752e48acb45abb2f350ee2c5a2, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5753754096842773843, guid: 549d85752e48acb45abb2f350ee2c5a2, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8096564289920400780, guid: 549d85752e48acb45abb2f350ee2c5a2, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8397793103538805970, guid: 549d85752e48acb45abb2f350ee2c5a2, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8865704011005949918, guid: 549d85752e48acb45abb2f350ee2c5a2, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8907258656844796584, guid: 549d85752e48acb45abb2f350ee2c5a2, type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

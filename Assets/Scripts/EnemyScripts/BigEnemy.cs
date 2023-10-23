@@ -4,64 +4,39 @@ using UnityEngine;
 
 public class BigEnemy : MonoBehaviour
 {
+    [Header("HP")]
+    [SerializeField] private int m_MaxHpBigEnemy = 5;
+    [SerializeField] private int m_CurrentHpBigEnemy;
 
-    [SerializeField]
-    private float m_ExploseEnemySpeed = 5f;
-
-    [SerializeField]
-    private int m_MaxHpBigEnemy = 5;
-
-    [SerializeField]
-    private int m_CurrentHpBigEnemy;
-
-    [SerializeField]
-    private Transform _targetPlayer;
-
-    [SerializeField]
-    private Rigidbody _rb;
-
+    [Header("DamageByBigEnemy")]
     public PlayerHealth _damage;
-
-    private Vector3 _enemyDir;
-
-    private float _bigEnemySpeed = 2;
-
-    [SerializeField]  private List<Spawner> spawners = new List<Spawner>();
-
-    private GameManager _gameManager;
-
+    [SerializeField] private List<Spawner> spawners = new List<Spawner>();
     [SerializeField] private GameObject _littleStandardEnemy;
-
     [SerializeField] private Bullet _bullet;
+
+    [Header("Imports")]
+    private GameManager _gameManager;
+    [SerializeField] private Timer _timer;
     private void Awake()
     {
-        _rb = GetComponent<Rigidbody>();
-        _targetPlayer = FindObjectOfType<Player>().transform;
         _damage = FindObjectOfType<Player>().GetComponent<PlayerHealth>();
         _gameManager = FindObjectOfType<GameManager>().GetComponent<GameManager>();
-
-
+        _timer = FindObjectOfType<Timer>().GetComponent<Timer>();
     }
     void Start()
     {
-
         m_CurrentHpBigEnemy = m_MaxHpBigEnemy;
     }
 
-    // Update is called once per frame
     void Update()
     {
-      
 
-        
+
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
-        {
-            _damage.TakeDamage();
-            Destroy(gameObject);
-        }
+       
+        
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -72,6 +47,11 @@ public class BigEnemy : MonoBehaviour
 
             TakeDamageBigEnemy();
         }
+        if (collision.collider.CompareTag("Player"))
+        {
+            _damage.TakeDamage();
+            Destroy(gameObject);
+        }
     }
 
     private void TakeDamageBigEnemy()
@@ -81,7 +61,6 @@ public class BigEnemy : MonoBehaviour
         {
             _gameManager.playerLevelUpgrade = _gameManager.playerLevelUpgrade + 3;
             EnemySpawn();
-
             DestroyBigEnemy();
         }
     }
@@ -96,7 +75,6 @@ public class BigEnemy : MonoBehaviour
         for (int i = 0; i < spawners.Count; i++)
         {
             Instantiate(_littleStandardEnemy, spawners[i].transform);
-            
         }
     }
 }

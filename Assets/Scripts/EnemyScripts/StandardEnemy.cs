@@ -4,34 +4,23 @@ using UnityEngine;
 
 public class StandardEnemy : MonoBehaviour
 {
-    
-    [SerializeField]
-    private float m_StandardEnemySpeed;
+    [Header("Movement")]
+    [SerializeField] private Transform _targetPlayer;
+    [SerializeField] private Rigidbody _rb;
+    [SerializeField] private float m_StandardEnemySpeed;
+    private Vector3 _enemyDir;
 
-    [SerializeField]
-    private int m_MaxHpEnemy;
+    [Header("HP")]
+    [SerializeField] private int m_MaxHpEnemy;
+    [SerializeField] private int m_CurrentHpEnemy;
 
-    [SerializeField]
-    private int m_CurrentHpEnemy;
-
-    [SerializeField]
-    public int m_damageStandardEnemy = 3;
-
-
-    [SerializeField]
-    private Transform _targetPlayer;
-
-    [SerializeField]
-    private Rigidbody _rb;
-
+    [Header("Damage")]
+    [SerializeField] public int m_damageStandardEnemy = 3;
     public PlayerHealth _damage;
 
-    private Vector3 _enemyDir;
-    //public static StandardEnemy standardEnemy;
+    [Header("Import")]
     private GameManager _gameManager;
-
-
-    [SerializeField] Timer _timer;
+    private Timer _timer;
 
     private void Awake()
     {
@@ -56,7 +45,7 @@ public class StandardEnemy : MonoBehaviour
         //Rotation
         //Quaternion toRotation = Quaternion.LookRotation(_enemyDir, Vector3.up);
         //transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, 500 * Time.deltaTime);
-        if(_timer.seconds > 10)
+        if(_timer.seconds > 20)
         {
             m_StandardEnemySpeed = 6;
         }

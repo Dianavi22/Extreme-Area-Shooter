@@ -6,18 +6,18 @@ public class BigEnemyMovement : MonoBehaviour
 {
 
 
-    [SerializeField]
-    private Transform _targetPlayer;
-
-    [SerializeField]
-    private Rigidbody _rb;
+    [SerializeField] private Transform _targetPlayer;
+    [SerializeField] private Rigidbody _rb;
     private Vector3 _enemyDir;
-
-    public PlayerHealth _damage;
-
     private float _bigEnemySpeed = 2;
 
+    [SerializeField] private Timer _timer;
 
+    private void Awake()
+    {
+        _timer = FindObjectOfType<Timer>().GetComponent<Timer>();
+
+    }
     void Start()
     {
         _rb = GetComponent<Rigidbody>();
@@ -29,5 +29,10 @@ public class BigEnemyMovement : MonoBehaviour
         transform.position = Vector3.MoveTowards(this.transform.position, _targetPlayer.position, _bigEnemySpeed * Time.deltaTime);
         _enemyDir = Vector3.MoveTowards(this.transform.position, _targetPlayer.position, _bigEnemySpeed * Time.deltaTime);
         gameObject.transform.LookAt(_targetPlayer);
+
+        if (_timer.seconds > 20)
+        {
+            _bigEnemySpeed = 4;
+        }
     }
 }

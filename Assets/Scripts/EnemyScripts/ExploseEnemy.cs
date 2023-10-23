@@ -4,34 +4,23 @@ using UnityEngine;
 
 public class ExploseEnemy : MonoBehaviour
 {
-
-    [SerializeField]
-    private float m_ExploseEnemySpeed = 5f;
-
-    [SerializeField]
-    private int m_MaxHpEnemy;
-
-    [SerializeField]
-    private int m_CurrentHpEnemy;
-
-    [SerializeField]
-    public int m_damageStandardEnemy = 5;
-
-
-    [SerializeField]
-    private Transform _targetPlayer;
-
-    [SerializeField]
-    private Rigidbody _rb;
-
-    public PlayerHealth _damage;
-
+    [Header("Movement")]
+    [SerializeField]  private float m_ExploseEnemySpeed = 5f;
+    [SerializeField] private Transform _targetPlayer;
+    [SerializeField] private Rigidbody _rb;
     private Vector3 _enemyDir;
 
+    [Header("HP")]
+    [SerializeField] private int m_MaxHpEnemy;
+    [SerializeField] private int m_CurrentHpEnemy;
+
+    [SerializeField] public int m_damageStandardEnemy = 5;
+
+    [Header("DamagePlayer")]
+    public PlayerHealth _damage;
     public float explosionRadius = 4f;
 
     private GameManager _gameManager;
-
     private Timer _timer;
 
     private void Awake()
@@ -46,7 +35,6 @@ public class ExploseEnemy : MonoBehaviour
     void Start()
     {
         m_CurrentHpEnemy = m_MaxHpEnemy;
-
     }
 
     void Update()
@@ -57,10 +45,11 @@ public class ExploseEnemy : MonoBehaviour
 
         gameObject.transform.LookAt(_targetPlayer);
 
-        if(_timer.seconds > 10)
+        if(_timer.seconds > 20)
         {
             m_ExploseEnemySpeed = 12;
         }
+      
     }
 
     void ExplodeEnemy()
@@ -77,10 +66,7 @@ public class ExploseEnemy : MonoBehaviour
                 {
                     Destroy(collider.gameObject);
                 }
-                // _damage.TakeDamage();
             }
-
-           
         }
     }
 
@@ -100,7 +86,6 @@ public class ExploseEnemy : MonoBehaviour
                 {
                     _damage.TakeExplode();
                 }
-
             }
         }
     }
@@ -112,7 +97,6 @@ public class ExploseEnemy : MonoBehaviour
             ExplodePlayer();
             Destroy(gameObject);
         }
-
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -123,7 +107,6 @@ public class ExploseEnemy : MonoBehaviour
             ExplodeEnemy();
             Destroy(gameObject);
         }
-        
     }
 
     private void OnDrawGizmosSelected()
