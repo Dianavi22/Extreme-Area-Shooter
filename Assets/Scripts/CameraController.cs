@@ -27,12 +27,16 @@ public class CameraController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position = Vector3.Lerp(transform.position, m_Target.position + m_Offset, m_Speed * Time.deltaTime);
-        if (shakeshake)
-        {
-            shakeshake = false;
-            StartCoroutine(Shaking());
+        try{
+            transform.position = Vector3.Lerp(transform.position, m_Target.position + m_Offset, m_Speed * Time.deltaTime);
+            if (shakeshake)
+            {
+                shakeshake = false;
+                StartCoroutine(Shaking());
+            }
         }
+        catch { return; }
+      
     }
 
     IEnumerator Shaking()

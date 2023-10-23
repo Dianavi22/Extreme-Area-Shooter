@@ -57,11 +57,5 @@ public class Wall : MonoBehaviour
 
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if(other.gameObject.tag == "Player")
-        {
-            print("ENTER");
-        }
-    }
+  
 }
