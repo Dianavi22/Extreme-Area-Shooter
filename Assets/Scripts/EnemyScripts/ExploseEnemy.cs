@@ -92,11 +92,7 @@ public class ExploseEnemy : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
-        {
-            ExplodePlayer();
-            Destroy(gameObject);
-        }
+      
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -105,6 +101,11 @@ public class ExploseEnemy : MonoBehaviour
         {
             _gameManager.playerLevelUpgrade = _gameManager.playerLevelUpgrade+5;
             ExplodeEnemy();
+            Destroy(gameObject);
+        }
+        if (collision.collider.CompareTag("Player"))
+        {
+            ExplodePlayer();
             Destroy(gameObject);
         }
     }

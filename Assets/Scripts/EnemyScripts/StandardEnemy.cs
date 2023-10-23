@@ -53,12 +53,7 @@ public class StandardEnemy : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
-        {
-
-            Destroy(gameObject);
-            _damage.TakeDamage();
-        }
+       
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -72,6 +67,7 @@ public class StandardEnemy : MonoBehaviour
         if (collision.collider.CompareTag("Player"))
         {
             Destroy(gameObject);
+            _damage.TakeDamage();
         }
     }
 
