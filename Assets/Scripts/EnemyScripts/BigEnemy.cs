@@ -9,13 +9,10 @@ public class BigEnemy : MonoBehaviour
     private float m_ExploseEnemySpeed = 5f;
 
     [SerializeField]
-    private int m_MaxHpEnemy;
+    private int m_MaxHpBigEnemy = 5;
 
     [SerializeField]
-    private int m_CurrentHpEnemy;
-
-    
-
+    private int m_CurrentHpBigEnemy;
 
     [SerializeField]
     private Transform _targetPlayer;
@@ -34,16 +31,21 @@ public class BigEnemy : MonoBehaviour
     private GameManager _gameManager;
 
     [SerializeField] private GameObject _littleStandardEnemy;
+
+    [SerializeField] private Bullet _bullet;
     private void Awake()
     {
         _rb = GetComponent<Rigidbody>();
         _targetPlayer = FindObjectOfType<Player>().transform;
         _damage = FindObjectOfType<Player>().GetComponent<PlayerHealth>();
         _gameManager = FindObjectOfType<GameManager>().GetComponent<GameManager>();
+
+
     }
     void Start()
     {
-        
+
+        m_CurrentHpBigEnemy = m_MaxHpBigEnemy;
     }
 
     // Update is called once per frame
@@ -66,9 +68,20 @@ public class BigEnemy : MonoBehaviour
     {
         if (collision.collider.CompareTag("Bullet"))
         {
-            _gameManager.playerLevelUpgrade = _gameManager.playerLevelUpgrade + 3;
+            _bullet = collision.collider.GetComponent<Bullet>();
 
+            TakeDamageBigEnemy();
+        }
+    }
+
+    private void TakeDamageBigEnemy()
+    {
+        m_CurrentHpBigEnemy = m_CurrentHpBigEnemy - _bullet.m_DamageBullet;
+        if(m_CurrentHpBigEnemy <= 0)
+        {
+            _gameManager.playerLevelUpgrade = _gameManager.playerLevelUpgrade + 3;
             EnemySpawn();
+
             DestroyBigEnemy();
         }
     }

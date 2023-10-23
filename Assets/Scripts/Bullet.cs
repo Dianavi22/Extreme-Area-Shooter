@@ -7,7 +7,7 @@ public class Bullet : MonoBehaviour
     private Collider playercollision;
     private Collider bulletcollision;
     [SerializeField]
-    private int m_DamageBullet;
+    public int m_DamageBullet = 1;
     void Start()
     {
         playercollision = FindObjectOfType<Player>().GetComponent<Collider>();

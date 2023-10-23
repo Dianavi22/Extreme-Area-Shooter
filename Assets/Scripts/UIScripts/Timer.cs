@@ -13,17 +13,17 @@ public class Timer : MonoBehaviour
     public TMP_Text scoreText;
 
     private PlayerHealth _playerHealth;
-    public static Timer instance;
+    public static Timer timer;
 
     private void Awake()
     {
-        if (instance != null)
+        if (timer != null)
         {
             Debug.LogWarning("Il y a plus d'une instance de GameManager dans la scène");
             return;
         }
 
-        instance = this;
+        timer = this;
         _playerHealth = FindObjectOfType<Player>().GetComponent<PlayerHealth>();
 
     }

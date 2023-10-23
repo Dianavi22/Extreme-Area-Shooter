@@ -64,7 +64,7 @@ public class GameManager : MonoBehaviour
             _canon3.SetActive(false);
         }
 
-        if (playerLevelUpgrade >= 60)
+        if (playerLevelUpgrade >= 90)
         {
             _canon4.SetActive(true);
         }

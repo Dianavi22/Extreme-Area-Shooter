@@ -15,7 +15,7 @@ public class StandardEnemy : MonoBehaviour
     private int m_CurrentHpEnemy;
 
     [SerializeField]
-    public int m_damageStandardEnemy = 5;
+    public int m_damageStandardEnemy = 3;
 
 
     [SerializeField]
@@ -31,13 +31,15 @@ public class StandardEnemy : MonoBehaviour
     private GameManager _gameManager;
 
 
+    [SerializeField] Timer _timer;
+
     private void Awake()
     {
         _rb = GetComponent<Rigidbody>();
         _targetPlayer = FindObjectOfType<Player>().transform;
         _damage = FindObjectOfType<Player>().GetComponent<PlayerHealth>();
         _gameManager = FindObjectOfType<GameManager>().GetComponent<GameManager>();
-
+        _timer = FindObjectOfType<Timer>().GetComponent<Timer>();
     }
     void Start()
     {
@@ -47,14 +49,17 @@ public class StandardEnemy : MonoBehaviour
     void Update()
     {
         //Direction
-        transform.position = Vector3.MoveTowards(this.transform.position, _targetPlayer.position, 3 * Time.deltaTime);
-         _enemyDir = Vector3.MoveTowards(this.transform.position, _targetPlayer.position, 3 * Time.deltaTime);
+        transform.position = Vector3.MoveTowards(this.transform.position, _targetPlayer.position, m_StandardEnemySpeed * Time.deltaTime);
+         _enemyDir = Vector3.MoveTowards(this.transform.position, _targetPlayer.position, m_StandardEnemySpeed * Time.deltaTime);
 
         gameObject.transform.LookAt(_targetPlayer);
         //Rotation
         //Quaternion toRotation = Quaternion.LookRotation(_enemyDir, Vector3.up);
         //transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, 500 * Time.deltaTime);
-        
+        if(_timer.seconds > 10)
+        {
+            m_StandardEnemySpeed = 6;
+        }
     }
 
     private void OnTriggerEnter(Collider other)

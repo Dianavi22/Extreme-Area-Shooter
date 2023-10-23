@@ -32,12 +32,16 @@ public class ExploseEnemy : MonoBehaviour
 
     private GameManager _gameManager;
 
+    private Timer _timer;
+
     private void Awake()
     {
         _rb = GetComponent<Rigidbody>();
         _targetPlayer = FindObjectOfType<Player>().transform;
         _damage = FindObjectOfType<Player>().GetComponent<PlayerHealth>();
         _gameManager = FindObjectOfType<GameManager>().GetComponent<GameManager>();
+        _timer = FindObjectOfType<Timer>().GetComponent<Timer>();
+
     }
     void Start()
     {
@@ -48,11 +52,15 @@ public class ExploseEnemy : MonoBehaviour
     void Update()
     {
 
-        transform.position = Vector3.MoveTowards(this.transform.position, _targetPlayer.position, 5 * Time.deltaTime);
-        _enemyDir = Vector3.MoveTowards(this.transform.position, _targetPlayer.position, 5 * Time.deltaTime);
+        transform.position = Vector3.MoveTowards(this.transform.position, _targetPlayer.position, m_ExploseEnemySpeed * Time.deltaTime);
+        _enemyDir = Vector3.MoveTowards(this.transform.position, _targetPlayer.position, m_ExploseEnemySpeed * Time.deltaTime);
 
         gameObject.transform.LookAt(_targetPlayer);
 
+        if(_timer.seconds > 10)
+        {
+            m_ExploseEnemySpeed = 12;
+        }
     }
 
     void ExplodeEnemy()
