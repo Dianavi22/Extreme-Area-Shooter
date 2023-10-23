@@ -18,17 +18,24 @@ public class EnemySpawner : MonoBehaviour
     private float m_Width;
 
     [SerializeField]
-    private float m_Rate;
+    private float m_Rate = 1.5f;
 
     [SerializeField]
-    private float m_RateExploseEnemy;
+    private float m_RateExploseEnemy = 0.5f;
 
     [SerializeField]
-    private float m_RateBigEnemy;
+    private float m_RateBigEnemy = 0.3f;
 
     [SerializeField]
     List<Spawner> spawners = new List<Spawner>();
 
+    private Timer _timer;
+
+    private void Awake()
+    {
+        _timer = FindObjectOfType<Timer>().GetComponent<Timer>();
+
+    }
     void Start()
     {
         _lastSpawn = Time.time;
@@ -39,6 +46,12 @@ public class EnemySpawner : MonoBehaviour
 
     void Update()
     {
+        if(_timer.seconds >= 40)
+        {
+            m_Rate = 2f;
+            m_RateExploseEnemy = 1f;
+            m_RateBigEnemy = 0.6f;
+        }
         if ((Time.time - _lastSpawn) >= (1f / m_Rate))
         {
             _lastSpawn = Time.time;

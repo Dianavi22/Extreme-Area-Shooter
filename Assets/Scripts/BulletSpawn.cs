@@ -45,7 +45,7 @@ public class BulletSpawn : MonoBehaviour
 
         if(gameManager.playerLevelUpgrade >= 110)
         {
-            fireDelta = 0.1f;
+            fireDelta = 0.19f;
         }
         else
         {
