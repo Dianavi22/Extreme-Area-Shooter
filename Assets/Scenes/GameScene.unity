@@ -7172,13 +7172,13 @@ MonoBehaviour:
   hb2_life: {fileID: 229933059}
   hb3_life: {fileID: 1992382696}
   hb4_life: {fileID: 912520890}
-  lifeBar: 100
   hA1: 35
   hA2: 15
   hA3: 35
   hA4: 15
-  damage: 5
+  damage: 3
   heal: 5
+  connard: 0
 --- !u!1001 &2037488446
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -18,7 +18,10 @@ public class PlayerHealth : MonoBehaviour
 
     [SerializeField]
     private CameraController _cameraController;
-    
+
+    private bool _isInvincible = false;
+
+
     private void Awake()
     {
         if(instance != null)
@@ -51,28 +54,56 @@ public class PlayerHealth : MonoBehaviour
 
     public void TakeDamage()
     {
-        _cameraController.shakeshake = true;
-        m_currentHealth = m_currentHealth - 5;
-        if (m_currentHealth <= 0)
+
+        if (!_isInvincible)
         {
-            isAlive = false;
+            print("TAKE DAMAGE");
+
+            _cameraController.shakeshake = true;
+            healthBar.damage = 5;
+            healthBar.TakeDamageUI();
+            print("m_currentHealth : " + m_currentHealth);
+            m_currentHealth = m_currentHealth - 5;
+            if (m_currentHealth <= 0)
+            {
+                isAlive = false;
+            }
+           
+            _gameManager.playerLevelUpgrade = _gameManager.playerLevelUpgrade - 50;
+            _isInvincible = true;
+            StartCoroutine(Invincibility());
+
         }
-        healthBar.damage = 5;
-        healthBar.TakeDamageUI();
-        _gameManager.playerLevelUpgrade = _gameManager.playerLevelUpgrade - 50;
+
     }
 
     public void TakeExplode()
     {
-        _cameraController.shakeshake = true;
-        m_currentHealth = m_currentHealth - 20;
-        if (m_currentHealth <= 0)
+
+        if (!_isInvincible)
         {
-            isAlive = false;
+            print("TAKE EXPLODE");
+
+            _cameraController.shakeshake = true;
+            print("m_currentHealth : " + m_currentHealth);
+            healthBar.damage = 15;
+            healthBar.TakeDamageUI();
+            m_currentHealth = m_currentHealth - 15;
+            if (m_currentHealth <= 0)
+            {
+                isAlive = false;
+            }
+           
+            _gameManager.playerLevelUpgrade = _gameManager.playerLevelUpgrade - 50;
+            _isInvincible = true;
+            StartCoroutine(Invincibility());
         }
-        healthBar.damage = 20;
-        healthBar.TakeDamageUI();
-        _gameManager.playerLevelUpgrade = _gameManager.playerLevelUpgrade - 50;
+    }
+
+    public IEnumerator Invincibility()
+    {
+        yield return new WaitForSeconds(1.5f);
+        _isInvincible = false;
 
     }
 

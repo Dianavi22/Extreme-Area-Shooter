@@ -25,12 +25,16 @@ public class HealthBar : MonoBehaviour
     [SerializeField] float hA3 = 35;
     [SerializeField] float hA4 = 15;
 
-     public float damage;
-     public float heal;
+
+
+    public float damage;
+    public float heal;
+
+    public bool connard = false;
     // Start is called before the first frame update
     void Start()
     {
-        
+       // playerHealth.m_currentHealth = 100;
     }
 
     // Update is called once per frame
@@ -40,11 +44,32 @@ public class HealthBar : MonoBehaviour
         {
 
             TakeDamageUI();
+            if (connard)
+            {
+                print("TakeDamage x2");
+
+                TakeDamageUI();
+                connard = false;
+            }
         }
         if (Input.GetKeyDown(KeyCode.H))
         {
-
             TakeHealUI();
+        }
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+
+            damage = 3;
+        }
+        if (Input.GetKeyDown(KeyCode.O))
+        {
+
+            damage = 13;
+        }
+
+        if (!playerHealth.isAlive)
+        {
+            hb4_life.SetActive(false);
         }
 
     }
@@ -71,14 +96,18 @@ public class HealthBar : MonoBehaviour
         NotUnder0();
         if (hA1 >= 0 && playerHealth.m_currentHealth >= 65)
         {
+            print("hA1 case 1 : " + hA1);
+
             hA1 -= damage;
             NotUnder0();
             UpdateHB();
             SetActivSlider();
             print("lifeBar case 1 : " + playerHealth.m_currentHealth);
         }
-        else if(hA2 >= 0 && playerHealth.m_currentHealth < 65 && playerHealth.m_currentHealth >= 50)
+        else if (hA2 >= 0 && playerHealth.m_currentHealth < 65 && playerHealth.m_currentHealth >= 50)
         {
+            print("hA2 case 2 : " + hA2);
+
             hA2 -= damage;
             NotUnder0();
             UpdateHB2();
@@ -87,20 +116,26 @@ public class HealthBar : MonoBehaviour
         }
         else if (hA3 >= 0 && playerHealth.m_currentHealth < 50 && playerHealth.m_currentHealth >= 15)
         {
+            print("hA3 case 3 : " + hA3);
+
             hA3 -= damage;
             NotUnder0();
             UpdateHB3();
             SetActivSlider();
             print("lifeBar case 3 : " + playerHealth.m_currentHealth);
         }
-        else 
+        else
         {
+            print("hA1 case 4 : " + hA4);
+
             hA4 -= damage;
             NotUnder0();
             UpdateHB4();
             SetActivSlider();
             print("lifeBar case 4 : " + playerHealth.m_currentHealth);
         }
+        //playerHealth.m_currentHealth -= damage;
+
     }
 
     public void TakeHealUI()
@@ -133,7 +168,7 @@ public class HealthBar : MonoBehaviour
         }
         else
         {
-            hA4+= heal;
+            hA4 += heal;
             UpdateHB4();
             SetActivSlider();
             print("lifeBar case 4 : " + playerHealth.m_currentHealth);
@@ -142,28 +177,68 @@ public class HealthBar : MonoBehaviour
 
     public void NotUnder0()
     {
-        if (hA4 < 0) {  hA4 = 0; }
-        if (hA3 <= 0) { hA3 = 0; }
-        if (hA2 <= 0) { hA2 = 0;}
-        if (hA1 <= 0) { hA1 = 0;}
+        if (hA4 < 0)
+        {
+            float _damage = damage - hA4 * (-1);
+            print("Damage dif : " + _damage + " / hA4 " + hA4 + "  damage : " + damage);
+            damage = _damage;
 
-        if (hA4 > 15) {  hA4 = 15; }
+            hA4 = 0;
+            connard = true;
+
+        }
+        if (hA3 < 0)
+        {
+            float _damage = damage - hA3 * (-1);
+            print("Damage dif : " + _damage + " / hA3 " + hA3 + "  damage : " + damage);
+
+            damage = _damage;
+
+            hA3 = 0;
+            connard = true;
+
+        }
+        if (hA2 < 0)
+        {
+            float _damage = damage - hA2 * (-1);
+            print("Damage dif : " + _damage + " / hA2 " + hA2 + "  damage : " + damage);
+
+            damage = _damage;
+
+            hA2 = 0;
+            connard = true;
+
+        }
+        if (hA1 < 0)
+        {
+            float _damage = damage - hA1 * (-1);
+            print("Damage dif : " + _damage  + " / damage : " + damage + " hA1 : " + hA1);
+
+            damage = _damage;
+
+            hA1 = 0;
+            connard = true;
+        }
+
+        if (hA4 > 15) { hA4 = 15; }
         if (hA3 > 35) { hA3 = 35; }
         if (hA2 > 15) { hA2 = 15; }
-        if (hA1 > 35) { hA1 = 35;}
+        if (hA1 > 35) { hA1 = 35; }
 
+
+        return;
     }
 
     public void SetActivSlider()
     {
-        if(hA1 > 0) { hb1_life.SetActive(true); }
-        else {hb1_life.SetActive(false);}
+        if (hA1 > 0) { hb1_life.SetActive(true); }
+        else { hb1_life.SetActive(false); }
 
         if (hA2 > 0) { hb2_life.SetActive(true); }
-        else {hb2_life.SetActive(false);}
+        else { hb2_life.SetActive(false); }
 
         if (hA3 > 0) { hb3_life.SetActive(true); }
-        else {hb3_life.SetActive(false);}
+        else { hb3_life.SetActive(false); }
 
         if (hA4 > 0) { hb4_life.SetActive(true); }
         else { hb4_life.SetActive(false); }
