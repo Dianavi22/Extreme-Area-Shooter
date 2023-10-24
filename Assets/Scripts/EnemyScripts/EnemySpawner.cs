@@ -46,7 +46,7 @@ public class EnemySpawner : MonoBehaviour
 
     void Update()
     {
-        if(_timer.seconds >= 40)
+        if (_timer.seconds >= 40)
         {
             m_Rate = 2f;
             m_RateExploseEnemy = 1f;

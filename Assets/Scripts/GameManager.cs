@@ -7,6 +7,7 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
     public static GameManager gameManager;
+    [SerializeField] private UIIncons _uiIcons;
     [SerializeField]
     private GameObject _gameOverUI;
     [SerializeField]
@@ -57,20 +58,35 @@ public class GameManager : MonoBehaviour
         {
             _canon2.SetActive(true);
             _canon3.SetActive(true);
+            _uiIcons._isLightOnIcon2 = true;
         }
         else
         {
             _canon2.SetActive(false);
             _canon3.SetActive(false);
+            _uiIcons._isLightOnIcon2 = false;
+
         }
 
         if (playerLevelUpgrade >= 90)
         {
             _canon4.SetActive(true);
+            _uiIcons._isLightOnIcon3 = true;
+
         }
         else
         {
             _canon4.SetActive(false);
+            _uiIcons._isLightOnIcon3 = false;
+
+        }
+        if (playerLevelUpgrade >= 110)
+        {
+            _uiIcons._isLightOnIcon4 = true;
+        }
+        else
+        {
+            _uiIcons._isLightOnIcon4 = false;
         }
         //if (playerLevelUpgrade >= 90)
         //{

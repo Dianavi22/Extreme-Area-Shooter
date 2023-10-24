@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class PlayerHealth : MonoBehaviour
 {
+    [SerializeField] HealthBar healthBar;
+
     [SerializeField]
-    private int m_maxHealth;
-    [SerializeField]
-    private int m_currentHealth;
+    private float m_maxHealth;
+    public float m_currentHealth;
     public static PlayerHealth instance;
 
     private StandardEnemy standardEnemy;
@@ -56,16 +57,21 @@ public class PlayerHealth : MonoBehaviour
         {
             isAlive = false;
         }
+        healthBar.damage = 5;
+        healthBar.TakeDamageUI();
         _gameManager.playerLevelUpgrade = _gameManager.playerLevelUpgrade - 50;
     }
 
     public void TakeExplode()
     {
+        _cameraController.shakeshake = true;
         m_currentHealth = m_currentHealth - 20;
         if (m_currentHealth <= 0)
         {
             isAlive = false;
         }
+        healthBar.damage = 20;
+        healthBar.TakeDamageUI();
         _gameManager.playerLevelUpgrade = _gameManager.playerLevelUpgrade - 50;
 
     }
