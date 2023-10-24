@@ -44,3 +44,9 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Wall
+    uniqueID: 2306234107
+    locked: 0
+  - name: ButtonNoHover
+    uniqueID: 3786826515
+    locked: 0

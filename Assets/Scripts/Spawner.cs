@@ -8,9 +8,17 @@ public class Spawner : MonoBehaviour
 
     public void SpawnEnemy(GameObject objectToSpawn)
     {
+        if(objectToSpawn == null)
+        {
+            return;
+        }
+        else
+        {
+            Instantiate(objectToSpawn, transform);
+        }
 
-        Instantiate(objectToSpawn, transform);
     }
 
-  
 }
+
+  

@@ -57,12 +57,10 @@ public class PlayerHealth : MonoBehaviour
 
         if (!_isInvincible)
         {
-            print("TAKE DAMAGE");
 
             _cameraController.shakeshake = true;
             healthBar.damage = 5;
             healthBar.TakeDamageUI();
-            print("m_currentHealth : " + m_currentHealth);
             m_currentHealth = m_currentHealth - 5;
             if (m_currentHealth <= 0)
             {
@@ -82,10 +80,8 @@ public class PlayerHealth : MonoBehaviour
 
         if (!_isInvincible)
         {
-            print("TAKE EXPLODE");
 
             _cameraController.shakeshake = true;
-            print("m_currentHealth : " + m_currentHealth);
             healthBar.damage = 15;
             healthBar.TakeDamageUI();
             m_currentHealth = m_currentHealth - 15;

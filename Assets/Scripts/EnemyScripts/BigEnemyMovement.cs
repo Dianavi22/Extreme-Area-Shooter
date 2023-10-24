@@ -26,6 +26,9 @@ public class BigEnemyMovement : MonoBehaviour
 
     void Update()
     {
+        try
+        {
+
         transform.position = Vector3.MoveTowards(this.transform.position, _targetPlayer.position, _bigEnemySpeed * Time.deltaTime);
         _enemyDir = Vector3.MoveTowards(this.transform.position, _targetPlayer.position, _bigEnemySpeed * Time.deltaTime);
         gameObject.transform.LookAt(_targetPlayer);
@@ -34,5 +37,11 @@ public class BigEnemyMovement : MonoBehaviour
         {
             _bigEnemySpeed = 4;
         }
+        }
+        catch
+        {
+            return;
+        }
     }
 }
+

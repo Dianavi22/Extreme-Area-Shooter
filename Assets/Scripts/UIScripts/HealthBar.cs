@@ -25,12 +25,18 @@ public class HealthBar : MonoBehaviour
     [SerializeField] float hA3 = 35;
     [SerializeField] float hA4 = 15;
 
-
-
     public float damage;
-    public float heal;
+    private float heal;
 
-    public bool connard = false;
+    private bool _isReTakeDamage = false;
+
+    private void Awake()
+    {
+         hb1_life.SetActive(true);
+        hb2_life.SetActive(true);
+        hb3_life.SetActive(true);
+        hb4_life.SetActive(true);
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -44,12 +50,11 @@ public class HealthBar : MonoBehaviour
         {
 
             TakeDamageUI();
-            if (connard)
+            if (_isReTakeDamage)
             {
-                print("TakeDamage x2");
 
                 TakeDamageUI();
-                connard = false;
+                _isReTakeDamage = false;
             }
         }
         if (Input.GetKeyDown(KeyCode.H))
@@ -96,43 +101,35 @@ public class HealthBar : MonoBehaviour
         NotUnder0();
         if (hA1 >= 0 && playerHealth.m_currentHealth >= 65)
         {
-            print("hA1 case 1 : " + hA1);
 
             hA1 -= damage;
             NotUnder0();
             UpdateHB();
             SetActivSlider();
-            print("lifeBar case 1 : " + playerHealth.m_currentHealth);
         }
         else if (hA2 >= 0 && playerHealth.m_currentHealth < 65 && playerHealth.m_currentHealth >= 50)
         {
-            print("hA2 case 2 : " + hA2);
 
             hA2 -= damage;
             NotUnder0();
             UpdateHB2();
             SetActivSlider();
-            print("lifeBar case 2 : " + playerHealth.m_currentHealth);
         }
         else if (hA3 >= 0 && playerHealth.m_currentHealth < 50 && playerHealth.m_currentHealth >= 15)
         {
-            print("hA3 case 3 : " + hA3);
 
             hA3 -= damage;
             NotUnder0();
             UpdateHB3();
             SetActivSlider();
-            print("lifeBar case 3 : " + playerHealth.m_currentHealth);
         }
         else
         {
-            print("hA1 case 4 : " + hA4);
 
             hA4 -= damage;
             NotUnder0();
             UpdateHB4();
             SetActivSlider();
-            print("lifeBar case 4 : " + playerHealth.m_currentHealth);
         }
         //playerHealth.m_currentHealth -= damage;
 
@@ -141,14 +138,12 @@ public class HealthBar : MonoBehaviour
     public void TakeHealUI()
     {
         NotUnder0();
-        print("lifeBar : " + playerHealth.m_currentHealth);
         if (hA1 >= 0 && playerHealth.m_currentHealth > 65)
         {
             hA1 += heal;
             NotUnder0();
             UpdateHB();
             SetActivSlider();
-            print("lifeBar case 1 : " + playerHealth.m_currentHealth);
         }
         else if (hA2 >= 0 && playerHealth.m_currentHealth <= 65 && playerHealth.m_currentHealth > 50)
         {
@@ -156,7 +151,6 @@ public class HealthBar : MonoBehaviour
             NotUnder0();
             UpdateHB2();
             SetActivSlider();
-            print("lifeBar case 2 : " + playerHealth.m_currentHealth);
         }
         else if (hA3 >= 0 && playerHealth.m_currentHealth <= 50 && playerHealth.m_currentHealth > 15)
         {
@@ -164,14 +158,12 @@ public class HealthBar : MonoBehaviour
             NotUnder0();
             UpdateHB3();
             SetActivSlider();
-            print("lifeBar case 3 : " + playerHealth.m_currentHealth);
         }
         else
         {
             hA4 += heal;
             UpdateHB4();
             SetActivSlider();
-            print("lifeBar case 4 : " + playerHealth.m_currentHealth);
         }
     }
 
@@ -180,44 +172,40 @@ public class HealthBar : MonoBehaviour
         if (hA4 < 0)
         {
             float _damage = damage - hA4 * (-1);
-            print("Damage dif : " + _damage + " / hA4 " + hA4 + "  damage : " + damage);
             damage = _damage;
 
             hA4 = 0;
-            connard = true;
+            _isReTakeDamage = true;
 
         }
         if (hA3 < 0)
         {
             float _damage = damage - hA3 * (-1);
-            print("Damage dif : " + _damage + " / hA3 " + hA3 + "  damage : " + damage);
 
             damage = _damage;
 
             hA3 = 0;
-            connard = true;
+            _isReTakeDamage = true;
 
         }
         if (hA2 < 0)
         {
             float _damage = damage - hA2 * (-1);
-            print("Damage dif : " + _damage + " / hA2 " + hA2 + "  damage : " + damage);
 
             damage = _damage;
 
             hA2 = 0;
-            connard = true;
+            _isReTakeDamage = true;
 
         }
         if (hA1 < 0)
         {
             float _damage = damage - hA1 * (-1);
-            print("Damage dif : " + _damage  + " / damage : " + damage + " hA1 : " + hA1);
 
             damage = _damage;
 
             hA1 = 0;
-            connard = true;
+            _isReTakeDamage = true;
         }
 
         if (hA4 > 15) { hA4 = 15; }
