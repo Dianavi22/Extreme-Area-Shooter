@@ -28,17 +28,6 @@ public class BigEnemy : MonoBehaviour
         m_CurrentHpBigEnemy = m_MaxHpBigEnemy;
     }
 
-    void Update()
-    {
-
-
-    }
-    private void OnTriggerEnter(Collider other)
-    {
-       
-        
-    }
-
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.collider.CompareTag("Bullet"))

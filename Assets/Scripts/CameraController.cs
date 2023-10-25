@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering.PostProcessing;
 
 public class CameraController : MonoBehaviour
 {
@@ -18,10 +19,12 @@ public class CameraController : MonoBehaviour
     public static CameraController _cameraController;
     public bool shakeshake = false;
 
+    [SerializeField] PostProcessVolume m_Volume;
+
+
     // Start is called before the first frame update
     void Start()
     {
-        
     }
 
     // Update is called once per frame

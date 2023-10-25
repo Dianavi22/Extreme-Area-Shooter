@@ -46,7 +46,7 @@ public class PlayerHealth : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.collider.CompareTag("Enemy")) {
-            TakeDamage(); 
+           // TakeDamage(); 
         }
     }
 

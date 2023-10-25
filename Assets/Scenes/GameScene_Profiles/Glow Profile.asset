@@ -61,3 +61,116 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   settings:
   - {fileID: -1298214546506507252}
+  - {fileID: 3548763235494480483}
+  - {fileID: 2897004218363338361}
+  - {fileID: 8820756440223164061}
+--- !u!114 &2897004218363338361
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2032b7e741473a24e96ec123ef90ec41, type: 3}
+  m_Name: ScreenFading
+  m_EditorClassIdentifier: 
+  active: 1
+  enabled:
+    overrideState: 1
+    value: 1
+  blend:
+    overrideState: 1
+    value: 0
+  texture:
+    overrideState: 1
+    value: {fileID: 2800000, guid: f88677df267a41d6be1e7a6133e7d227, type: 3}
+    defaultState: 1
+  screenColor:
+    overrideState: 1
+    value: {r: 0, g: 0, b: 0, a: 1}
+  distort:
+    overrideState: 1
+    value: 0
+  fade:
+    overrideState: 1
+    value: 1
+--- !u!114 &3548763235494480483
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e802dc208a7e0f4c991034eca730738, type: 3}
+  m_Name: VideoGlitch
+  m_EditorClassIdentifier: 
+  active: 1
+  enabled:
+    overrideState: 1
+    value: 0
+  m_GlitchInterval:
+    overrideState: 1
+    value: 0.5
+  m_DispProbability:
+    overrideState: 1
+    value: 0
+  m_DispIntensity:
+    overrideState: 1
+    value: 0.51
+  m_ColorProbability:
+    overrideState: 1
+    value: 0.45
+  m_ColorIntensity:
+    overrideState: 1
+    value: 0.1
+  m_DispStripSize:
+    overrideState: 1
+    value: 0.59
+--- !u!114 &8820756440223164061
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 40b924e2dad56384a8df2a1e111bb675, type: 3}
+  m_Name: Vignette
+  m_EditorClassIdentifier: 
+  active: 0
+  enabled:
+    overrideState: 1
+    value: 1
+  mode:
+    overrideState: 1
+    value: 0
+  color:
+    overrideState: 1
+    value: {r: 1, g: 0, b: 0, a: 1}
+  center:
+    overrideState: 1
+    value: {x: 0.5, y: 0.5}
+  intensity:
+    overrideState: 1
+    value: 0.548
+  smoothness:
+    overrideState: 1
+    value: 0.628
+  roundness:
+    overrideState: 1
+    value: 1
+  rounded:
+    overrideState: 1
+    value: 0
+  mask:
+    overrideState: 0
+    value: {fileID: 0}
+    defaultState: 1
+  opacity:
+    overrideState: 0
+    value: 1

@@ -26,6 +26,8 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] BulletSpawn _bulletSpawn;
 
+    [SerializeField] GameObject _enemySpawner;
+
     public int playerLevelUpgrade;
     private void Awake()
     {
@@ -108,6 +110,7 @@ public class GameManager : MonoBehaviour
     private void GameOver()
     {
         _playerController.gameObject.SetActive(false);
+        _enemySpawner.SetActive(false);
         _gameOverUI.SetActive(true);
     }
 }

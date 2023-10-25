@@ -37,13 +37,10 @@ public class HealthBar : MonoBehaviour
         hb3_life.SetActive(true);
         hb4_life.SetActive(true);
     }
-    // Start is called before the first frame update
     void Start()
     {
-       // playerHealth.m_currentHealth = 100;
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.J))
@@ -63,7 +60,6 @@ public class HealthBar : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.P))
         {
-
             damage = 3;
         }
         if (Input.GetKeyDown(KeyCode.O))
@@ -79,29 +75,16 @@ public class HealthBar : MonoBehaviour
 
     }
 
-    public void UpdateHB()
-    {
-        hb1.value = hA1 / 35;
-    }
-    public void UpdateHB2()
-    {
-        hb2.value = hA2 / 15;
-    }
-    public void UpdateHB3()
-    {
-        hb3.value = hA3 / 35;
-    }
-    public void UpdateHB4()
-    {
-        hb4.value = hA4 / 15;
-    }
+    public void UpdateHB() { hb1.value = hA1 / 35; }
+    public void UpdateHB2() { hb2.value = hA2 / 15; }
+    public void UpdateHB3() { hb3.value = hA3 / 35; }
+    public void UpdateHB4() { hb4.value = hA4 / 15; }
 
     public void TakeDamageUI()
     {
         NotUnder0();
         if (hA1 >= 0 && playerHealth.m_currentHealth >= 65)
         {
-
             hA1 -= damage;
             NotUnder0();
             UpdateHB();
@@ -109,7 +92,6 @@ public class HealthBar : MonoBehaviour
         }
         else if (hA2 >= 0 && playerHealth.m_currentHealth < 65 && playerHealth.m_currentHealth >= 50)
         {
-
             hA2 -= damage;
             NotUnder0();
             UpdateHB2();
@@ -117,7 +99,6 @@ public class HealthBar : MonoBehaviour
         }
         else if (hA3 >= 0 && playerHealth.m_currentHealth < 50 && playerHealth.m_currentHealth >= 15)
         {
-
             hA3 -= damage;
             NotUnder0();
             UpdateHB3();
@@ -125,13 +106,11 @@ public class HealthBar : MonoBehaviour
         }
         else
         {
-
             hA4 -= damage;
             NotUnder0();
             UpdateHB4();
             SetActivSlider();
         }
-        //playerHealth.m_currentHealth -= damage;
 
     }
 
@@ -169,50 +148,39 @@ public class HealthBar : MonoBehaviour
 
     public void NotUnder0()
     {
-        if (hA4 < 0)
+        if (hA1 < 0)
         {
-            float _damage = damage - hA4 * (-1);
+            float _damage = damage - hA1 * (-1);
             damage = _damage;
-
-            hA4 = 0;
+            hA1 = 0;
             _isReTakeDamage = true;
-
-        }
-        if (hA3 < 0)
-        {
-            float _damage = damage - hA3 * (-1);
-
-            damage = _damage;
-
-            hA3 = 0;
-            _isReTakeDamage = true;
-
         }
         if (hA2 < 0)
         {
             float _damage = damage - hA2 * (-1);
-
             damage = _damage;
-
             hA2 = 0;
             _isReTakeDamage = true;
-
         }
-        if (hA1 < 0)
+        if (hA3 < 0)
         {
-            float _damage = damage - hA1 * (-1);
-
+            float _damage = damage - hA3 * (-1);
             damage = _damage;
-
-            hA1 = 0;
+            hA3 = 0;
             _isReTakeDamage = true;
         }
-
-        if (hA4 > 15) { hA4 = 15; }
-        if (hA3 > 35) { hA3 = 35; }
-        if (hA2 > 15) { hA2 = 15; }
+        if (hA4 < 0)
+        {
+            float _damage = damage - hA4 * (-1);
+            damage = _damage;
+            hA4 = 0;
+            _isReTakeDamage = true;
+        }
+       
         if (hA1 > 35) { hA1 = 35; }
-
+        if (hA2 > 15) { hA2 = 15; }
+        if (hA3 > 35) { hA3 = 35; }
+        if (hA4 > 15) { hA4 = 15; }
 
         return;
     }
