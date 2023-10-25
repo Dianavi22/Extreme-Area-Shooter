@@ -293,7 +293,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _targetPlayer: {fileID: 0}
   _rb: {fileID: 0}
-  _damage: {fileID: 0}
+  _timer: {fileID: 0}
 --- !u!1 &1797510104423139562
 GameObject:
   m_ObjectHideFlags: 0
@@ -440,7 +440,7 @@ CapsuleCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Radius: 0.49999994
   m_Height: 1.9999998
@@ -592,7 +592,7 @@ CapsuleCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Radius: 0.49999994
   m_Height: 1.9999998
@@ -699,7 +699,7 @@ CapsuleCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Radius: 0.49999994
   m_Height: 1.9999998
@@ -852,7 +852,7 @@ SphereCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Radius: 0.49999994
   m_Center: {x: 0, y: 0, z: 0}
@@ -957,7 +957,7 @@ CapsuleCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Radius: 0.49999994
   m_Height: 1.9999998
@@ -1046,11 +1046,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0d4c2dcf2582ca47b7a9d46f766d511, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_ExploseEnemySpeed: 5
-  m_MaxHpEnemy: 0
-  m_CurrentHpEnemy: 0
-  _targetPlayer: {fileID: 0}
-  _rb: {fileID: 6691612949787919797}
+  m_MaxHpBigEnemy: 5
+  m_CurrentHpBigEnemy: 0
   _damage: {fileID: 0}
   spawners:
   - {fileID: 5453940021197931382}
@@ -1058,6 +1055,8 @@ MonoBehaviour:
   - {fileID: 6415027105839626447}
   - {fileID: 4324479251971341545}
   _littleStandardEnemy: {fileID: 1518876156329345965, guid: 80fb28a3ebef12341a90472613985f15, type: 3}
+  _bullet: {fileID: 0}
+  _timer: {fileID: 0}
 --- !u!65 &3202035576396199962
 BoxCollider:
   m_ObjectHideFlags: 0

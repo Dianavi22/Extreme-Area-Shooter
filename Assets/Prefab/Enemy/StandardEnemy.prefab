@@ -292,12 +292,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 902522025bb886249bfe1dc03b80e1aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _targetPlayer: {fileID: 0}
+  _rb: {fileID: 0}
   m_StandardEnemySpeed: 5
   m_MaxHpEnemy: 5
   m_CurrentHpEnemy: 5
   m_damageStandardEnemy: 0
-  _targetPlayer: {fileID: 0}
-  _rb: {fileID: 0}
   _damage: {fileID: 0}
 --- !u!1 &3280132074275018292
 GameObject:
@@ -400,7 +400,7 @@ CapsuleCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Radius: 0.49999994
   m_Height: 1.9999998
@@ -507,7 +507,7 @@ CapsuleCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Radius: 0.49999994
   m_Height: 1.9999998
@@ -614,7 +614,7 @@ CapsuleCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Radius: 0.49999994
   m_Height: 1.9999998
@@ -722,7 +722,7 @@ SphereCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Radius: 0.49999994
   m_Center: {x: 0, y: 0, z: 0}
@@ -827,7 +827,7 @@ CapsuleCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Radius: 0.49999994
   m_Height: 1.9999998

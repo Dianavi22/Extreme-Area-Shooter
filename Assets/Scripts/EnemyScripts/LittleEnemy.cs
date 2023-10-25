@@ -2,12 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class StandardEnemy : MonoBehaviour
+public class LittleEnemy : MonoBehaviour
 {
     [Header("Movement")]
     [SerializeField] private Transform _targetPlayer;
     [SerializeField] private Rigidbody _rb;
-    [SerializeField] private float m_StandardEnemySpeed;
+    [SerializeField] private float m_LittleEnemySpeed;
     private Vector3 _enemyDir;
 
     [Header("HP")]
@@ -15,7 +15,7 @@ public class StandardEnemy : MonoBehaviour
     [SerializeField] private int m_CurrentHpEnemy;
 
     [Header("Damage")]
-    [SerializeField] public int m_damageStandardEnemy = 3;
+    [SerializeField] public int m_damageLittleEnemy = 1;
     public PlayerHealth _damage;
 
     [Header("Import")]
@@ -38,8 +38,8 @@ public class StandardEnemy : MonoBehaviour
     void Update()
     {
         //Direction
-        transform.position = Vector3.MoveTowards(this.transform.position, _targetPlayer.position, m_StandardEnemySpeed * Time.deltaTime);
-         _enemyDir = Vector3.MoveTowards(this.transform.position, _targetPlayer.position, m_StandardEnemySpeed * Time.deltaTime);
+        transform.position = Vector3.MoveTowards(this.transform.position, _targetPlayer.position, m_LittleEnemySpeed * Time.deltaTime);
+         _enemyDir = Vector3.MoveTowards(this.transform.position, _targetPlayer.position, m_LittleEnemySpeed * Time.deltaTime);
 
         gameObject.transform.LookAt(_targetPlayer);
         //Rotation
@@ -47,7 +47,7 @@ public class StandardEnemy : MonoBehaviour
         //transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, 500 * Time.deltaTime);
         if(_timer.seconds > 40)
         {
-            m_StandardEnemySpeed = 6;
+            m_LittleEnemySpeed = 6;
         }
     }
 
@@ -60,12 +60,10 @@ public class StandardEnemy : MonoBehaviour
     {
         if (collision.collider.CompareTag("Bullet"))
         {
-            Destroy(gameObject);
-            Destroy(collision.gameObject);
-            _gameManager.standardEnemyKilled++;
-            print("standard enemy ++");
-            _gameManager.playerLevelUpgrade++;
-            _gameManager.playerScore = _gameManager.playerScore + 100;
+                _gameManager.littleEnemyKilled++;
+                _gameManager.playerLevelUpgrade++;
+                _gameManager.playerScore = _gameManager.playerScore + 50;
+                Destroy(gameObject);
         }
         if (collision.collider.CompareTag("Player"))
         {

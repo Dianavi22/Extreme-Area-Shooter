@@ -99,6 +99,7 @@ public class ExploseEnemy : MonoBehaviour
     {
         if (collision.collider.CompareTag("Bullet"))
         {
+            _gameManager.speedEnemyKilled++;
             _gameManager.playerLevelUpgrade = _gameManager.playerLevelUpgrade+5;
             ExplodeEnemy();
             Destroy(gameObject);

@@ -48,6 +48,7 @@ public class BigEnemy : MonoBehaviour
         m_CurrentHpBigEnemy = m_CurrentHpBigEnemy - _bullet.m_DamageBullet;
         if(m_CurrentHpBigEnemy <= 0)
         {
+            _gameManager.bigEnemyKilled++;
             _gameManager.playerLevelUpgrade = _gameManager.playerLevelUpgrade + 3;
             EnemySpawn();
             DestroyBigEnemy();

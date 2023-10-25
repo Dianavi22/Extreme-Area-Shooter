@@ -28,6 +28,13 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] GameObject _enemySpawner;
 
+    public int standardEnemyKilled;
+    public int speedEnemyKilled;
+    public int bigEnemyKilled;
+    public int littleEnemyKilled;
+
+
+
     public int playerLevelUpgrade;
     private void Awake()
     {

@@ -159,6 +159,7 @@ GameObject:
   - component: {fileID: 8468589210681099918}
   - component: {fileID: 1459947038528138345}
   - component: {fileID: 161107783912710578}
+  - component: {fileID: 4120395996653363812}
   m_Layer: 0
   m_Name: LittleStandardEnemy
   m_TagString: Enemy
@@ -287,17 +288,36 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1518876156329345965}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 902522025bb886249bfe1dc03b80e1aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _targetPlayer: {fileID: 0}
+  _rb: {fileID: 0}
   m_StandardEnemySpeed: 2
   m_MaxHpEnemy: 5
   m_CurrentHpEnemy: 5
   m_damageStandardEnemy: 0
+  _damage: {fileID: 0}
+--- !u!114 &4120395996653363812
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1518876156329345965}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef5bf02178c18dd448ca0fd60bcf683a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   _targetPlayer: {fileID: 0}
   _rb: {fileID: 0}
+  m_LittleEnemySpeed: 2
+  m_MaxHpEnemy: 0
+  m_CurrentHpEnemy: 0
+  m_damageLittleEnemy: 1
   _damage: {fileID: 0}
 --- !u!1 &3280132074275018292
 GameObject:
@@ -400,7 +420,7 @@ CapsuleCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Radius: 0.49999994
   m_Height: 1.9999998
@@ -507,7 +527,7 @@ CapsuleCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Radius: 0.49999994
   m_Height: 1.9999998
@@ -614,7 +634,7 @@ CapsuleCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Radius: 0.49999994
   m_Height: 1.9999998
@@ -722,7 +742,7 @@ SphereCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Radius: 0.49999994
   m_Center: {x: 0, y: 0, z: 0}
@@ -827,7 +847,7 @@ CapsuleCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Radius: 0.49999994
   m_Height: 1.9999998
