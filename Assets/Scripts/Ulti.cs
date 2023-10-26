@@ -42,4 +42,9 @@ public class Ulti : MonoBehaviour
     {
         slider.value = _gameManager.ultCharge / _gameManager.maxUltCharge;
     }
+
+    public void UltiPower()
+    {
+
+    }
 }

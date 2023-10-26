@@ -823,7 +823,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &137014826
 RectTransform:
   m_ObjectHideFlags: 0
@@ -9988,6 +9988,7 @@ MonoBehaviour:
   - {fileID: 1668869076}
   - {fileID: 302333503}
   - {fileID: 608071585}
+  _isBigEnemyWave: 1
   _eventManager: {fileID: 405237232}
 --- !u!1 &1750372169
 GameObject:
@@ -11145,7 +11146,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _gameManager: {fileID: 405237230}
   slider: {fileID: 1947599465}
-  _sliderBar: {fileID: 1300585598}
   _sliderEmptyMaterial: {fileID: 2100000, guid: 4dd09568e7897b948b65cf97fad804a3, type: 2}
   _currentSliderMaterial: {fileID: 1300585600}
   _sliderCompleteMaterial: {fileID: 2100000, guid: 7cba7eb8a732ae44ca125e1be0723ce2, type: 2}

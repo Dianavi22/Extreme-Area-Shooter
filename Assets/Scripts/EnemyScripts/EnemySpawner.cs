@@ -4,18 +4,14 @@ using UnityEngine;
 
 public class EnemySpawner : MonoBehaviour
 {
-    [SerializeField]
-    private GameObject m_StandardEnemyPrefab;
-    [SerializeField]
-    private GameObject m_BigEnemyPrefab;
-    [SerializeField]
-    private GameObject m_ExploseEnemyPrefab;
+    [SerializeField] private GameObject m_StandardEnemyPrefab;
+    [SerializeField] private GameObject m_BigEnemyPrefab;
+    [SerializeField] private GameObject m_ExploseEnemyPrefab;
     private float _lastSpawn;
     private float _lastSpawnExploseEnemy;
     private float _lastSpawnBigEnemy;
 
-    [SerializeField]
-    private float m_Width;
+    [SerializeField] private float m_Width;
 
     public float m_Rate = 1.5f;
 
@@ -23,8 +19,7 @@ public class EnemySpawner : MonoBehaviour
 
     public float m_RateBigEnemy = 0.3f;
 
-    [SerializeField]
-    List<Spawner> spawners = new List<Spawner>();
+    [SerializeField] List<Spawner> spawners = new List<Spawner>();
 
     private Timer _timer;
 
