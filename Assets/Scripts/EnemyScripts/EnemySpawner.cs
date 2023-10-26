@@ -80,7 +80,7 @@ public class EnemySpawner : MonoBehaviour
             SpawnBigEnemy();
         }
 
-       
+
     }
 
     public void StandardEnemySpawn() { spawners[Random.Range(0, spawners.Count)].SpawnEnemy(m_StandardEnemyPrefab); }

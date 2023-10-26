@@ -35,7 +35,10 @@ public class Bullet : MonoBehaviour
         {
             Destroy(gameObject);
         }
-        
+        if (collision.collider.CompareTag("Enemy"))
+        {
+            Destroy(gameObject);
+        }
     }
 
     IEnumerator DestroyBullet()

@@ -61,9 +61,8 @@ public class StandardEnemy : MonoBehaviour
         if (collision.collider.CompareTag("Bullet"))
         {
             Destroy(gameObject);
-            Destroy(collision.gameObject);
             _gameManager.standardEnemyKilled++;
-            print("standard enemy ++");
+            _gameManager.ultCharge++;
             _gameManager.playerLevelUpgrade++;
             _gameManager.playerScore = _gameManager.playerScore + 100;
         }

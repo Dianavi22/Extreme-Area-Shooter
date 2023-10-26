@@ -6,52 +6,61 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
+
+    [Header("Other scripts")]
+    [SerializeField, HideInInspector] private PlayerHealth _playerHealth;
+    [SerializeField, HideInInspector] private UIIncons _uiIcons;
+    [SerializeField, HideInInspector] private BulletSpawn _bulletSpawn;
+
     public static GameManager gameManager;
-    [SerializeField] private UIIncons _uiIcons;
-    [SerializeField]
-    private GameObject _gameOverUI;
-    [SerializeField]
-    private PlayerHealth _playerHealth;
-    [SerializeField] private GameObject _player;
-
     private PlayerController _playerController;
-    public int playerScore;
+
+    [Header("Scoring")]
     [SerializeField] TMP_Text _playerScoreUI;
+    public int playerScore;
 
-    [SerializeField] private GameObject _canon2;
-    [SerializeField] private GameObject _canon3;
-    [SerializeField] private GameObject _canon4;
-    [SerializeField] private GameObject _canon5;
-    [SerializeField] private GameObject _canon6;
+    [Header("Weapon")]
+    [SerializeField, HideInInspector] private GameObject _canon2;
+    [SerializeField, HideInInspector] private GameObject _canon3;
+    [SerializeField, HideInInspector] private GameObject _canon4;
 
-    [SerializeField] BulletSpawn _bulletSpawn;
-
-    [SerializeField] GameObject _enemySpawner;
-
+    [Header("Kill enemy")]
     public int standardEnemyKilled;
     public int speedEnemyKilled;
     public int bigEnemyKilled;
     public int littleEnemyKilled;
 
+    [Header("Ulti")]
+    [SerializeField] private Ulti _ulit;
+    public float ultCharge = 0;
+    public float maxUltCharge = 180;
+    public float OldUltCharge = 0;
+    public bool isUltCharged = false;
 
+    [Header("GameOver")]
+    [SerializeField] private GameObject _gameOverUI;
+    public bool isGameFinished = false;
 
     public int playerLevelUpgrade;
+    [SerializeField, HideInInspector] private GameObject _player;
+    [SerializeField, HideInInspector] GameObject _enemySpawner;
+
+
     private void Awake()
     {
-      //  _playerHealth = GetComponent<PlayerHealth>();
+        //  _playerHealth = GetComponent<PlayerHealth>();
         _playerController = _player.GetComponent<PlayerController>();
         _playerHealth = _player.GetComponent<PlayerHealth>();
 
-        
-        
+
+
     }
     void Start()
     {
-        _canon2.SetActive(false); 
+        _canon2.SetActive(false);
         _canon3.SetActive(false);
         _canon4.SetActive(false);
-        _canon5.SetActive(false);
-        _canon6.SetActive(false);
+        isUltCharged = false;
 
     }
 
@@ -63,7 +72,7 @@ public class GameManager : MonoBehaviour
         }
         _playerScoreUI.text = playerScore.ToString();
 
-        if(playerLevelUpgrade >= 30)
+        if (playerLevelUpgrade >= 30)
         {
             _canon2.SetActive(true);
             _canon3.SetActive(true);
@@ -110,14 +119,24 @@ public class GameManager : MonoBehaviour
 
 
         if (playerLevelUpgrade < 0) { playerLevelUpgrade = 0; }
-        if(playerLevelUpgrade > 110) { playerLevelUpgrade = 110; }
+        if (playerLevelUpgrade > 110) { playerLevelUpgrade = 110; }
+        
+        if (ultCharge > maxUltCharge) { ultCharge = maxUltCharge; }
 
+        if (ultCharge == maxUltCharge) { isUltCharged = true; }
+        else { isUltCharged = false; }
+        if (ultCharge > OldUltCharge)
+        {
+            _ulit.UpdateUltBar();
+            OldUltCharge = ultCharge;
+        }
     }
 
     private void GameOver()
     {
         _playerController.gameObject.SetActive(false);
         _enemySpawner.SetActive(false);
+        isGameFinished = true;
         _gameOverUI.SetActive(true);
     }
 }

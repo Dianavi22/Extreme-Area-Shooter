@@ -63,7 +63,9 @@ public class LittleEnemy : MonoBehaviour
                 _gameManager.littleEnemyKilled++;
                 _gameManager.playerLevelUpgrade++;
                 _gameManager.playerScore = _gameManager.playerScore + 50;
-                Destroy(gameObject);
+            _gameManager.ultCharge++;
+
+            Destroy(gameObject);
         }
         if (collision.collider.CompareTag("Player"))
         {
