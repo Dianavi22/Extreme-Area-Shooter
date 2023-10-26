@@ -36,6 +36,12 @@ public class BigEnemy : MonoBehaviour
 
             TakeDamageBigEnemy();
         }
+        if (collision.collider.CompareTag("Ulti"))
+        {
+            _gameManager.bigEnemyKilled++;
+            _gameManager.playerLevelUpgrade++;
+            Destroy(gameObject);
+        }
         if (collision.collider.CompareTag("Player"))
         {
             _damage.TakeDamage();

@@ -71,6 +71,13 @@ public class StandardEnemy : MonoBehaviour
             Destroy(gameObject);
             _damage.TakeDamage();
         }
+        if (collision.collider.CompareTag("Ulti"))
+        {
+            Destroy(gameObject);
+            _gameManager.standardEnemyKilled++;
+            _gameManager.playerLevelUpgrade++;
+
+        }
     }
 
    

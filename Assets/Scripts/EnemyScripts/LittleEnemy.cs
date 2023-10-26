@@ -72,6 +72,14 @@ public class LittleEnemy : MonoBehaviour
             Destroy(gameObject);
             _damage.TakeDamage();
         }
+        if (collision.collider.CompareTag("Ulti"))
+        {
+            Destroy(gameObject);
+            _gameManager.littleEnemyKilled++;
+            _gameManager.playerLevelUpgrade++;
+
+
+        }
     }
 
    

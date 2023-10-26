@@ -11,6 +11,7 @@ public class Ulti : MonoBehaviour
     [SerializeField] private Material _sliderEmptyMaterial;
     [SerializeField] private Image _currentSliderMaterial;
     [SerializeField] private Material _sliderCompleteMaterial;
+    [SerializeField] private Scale _scale;
 
     void Start()
     {
@@ -21,7 +22,7 @@ public class Ulti : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.E) && _gameManager.isUltCharged)
         {
-
+            _scale.LaunchUlti();
             _gameManager.ultCharge = 0;
             UpdateUltBar();
             _gameManager.isUltCharged = false;
@@ -43,8 +44,5 @@ public class Ulti : MonoBehaviour
         slider.value = _gameManager.ultCharge / _gameManager.maxUltCharge;
     }
 
-    public void UltiPower()
-    {
-
-    }
+    
 }

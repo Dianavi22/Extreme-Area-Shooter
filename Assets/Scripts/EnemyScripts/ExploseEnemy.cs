@@ -111,6 +111,12 @@ public class ExploseEnemy : MonoBehaviour
             ExplodePlayer();
             Destroy(gameObject);
         }
+        if (collision.collider.CompareTag("Ulti"))
+        {
+            _gameManager.speedEnemyKilled++;
+            _gameManager.speedEnemyKilled++;
+            Destroy(gameObject);
+        }
     }
 
     private void OnDrawGizmosSelected()
