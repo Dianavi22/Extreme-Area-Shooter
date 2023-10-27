@@ -7,20 +7,17 @@ public class Scale : MonoBehaviour
     public static Scale scale;
     private bool _statusLaser = false;
     [SerializeField] GameObject _laserGO;
+   // [SerializeField] GameObject _sphere;
 
     private bool _isCurrentUlti = false;
 
     private void Start()
     {
         _laserGO.SetActive(false);
+        //_sphere.SetActive(false);
     }
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            LaunchUlti();
-        }
-
         if (!_isCurrentUlti)
         {
             StopUlti();
@@ -32,6 +29,8 @@ public class Scale : MonoBehaviour
         _isCurrentUlti = true;
 
         _laserGO.SetActive(true);
+        //_sphere.SetActive(true);
+
         StartCoroutine("LaserStart");
         _statusLaser = true;
         StartCoroutine("CurrentUlti");
@@ -43,6 +42,8 @@ public class Scale : MonoBehaviour
         StartCoroutine("LaserStop");
         _statusLaser = false;
         _laserGO.SetActive(false);
+       // _sphere.SetActive(false);
+
     }
     IEnumerator LaserStart()
     {

@@ -33,7 +33,7 @@ public class GameManager : MonoBehaviour
     [Header("Ulti")]
     [SerializeField] private Ulti _ulit;
     public float ultCharge = 0;
-    public float maxUltCharge = 140;
+    public float maxUltCharge = 3;
     public float OldUltCharge = 0;
     public bool isUltCharged = false;
 

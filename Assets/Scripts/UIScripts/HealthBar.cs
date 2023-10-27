@@ -30,6 +30,7 @@ public class HealthBar : MonoBehaviour
 
     private bool _isReTakeDamage = false;
 
+
     private void Awake()
     {
          hb1_life.SetActive(true);
@@ -43,35 +44,70 @@ public class HealthBar : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.J))
-        {
+        #region InputTest
+        //if (Input.GetKeyDown(KeyCode.J))
+        //{
 
-            TakeDamageUI();
-            if (_isReTakeDamage)
-            {
+        //    TakeDamageUI();
+        //    if (_isReTakeDamage)
+        //    {
 
-                TakeDamageUI();
-                _isReTakeDamage = false;
-            }
-        }
-        if (Input.GetKeyDown(KeyCode.H))
-        {
-            TakeHealUI();
-        }
-        if (Input.GetKeyDown(KeyCode.P))
-        {
-            damage = 3;
-        }
-        if (Input.GetKeyDown(KeyCode.O))
-        {
+        //        TakeDamageUI();
+        //        _isReTakeDamage = false;
+        //    }
+        //}
+        //if (Input.GetKeyDown(KeyCode.H))
+        //{
+        //    TakeHealUI();
+        //}
+        //if (Input.GetKeyDown(KeyCode.P))
+        //{
+        //    damage = 3;
+        //}
+        //if (Input.GetKeyDown(KeyCode.O))
+        //{
 
-            damage = 13;
-        }
+        //    damage = 13;
+        //}
+        #endregion
 
         if (!playerHealth.isAlive)
         {
             hb4_life.SetActive(false);
         }
+
+        //if (hA1 ==0 || hA2 <= 1)
+        //{
+        //    hb1_life.SetActive(false);
+        //}
+        //else
+        //{
+        //    hb1_life.SetActive(true);
+        //}
+        //if (hA3 <= 1 || hA2 == 0)
+        //{
+        //    hb1_life.SetActive(false);
+        //    hb2_life.SetActive(false);
+
+        //}
+        //else
+        //{
+        //    hb1_life.SetActive(true);
+        //    hb2_life.SetActive(true);
+        //}
+        //if (hA4 <= 1 || hA3 == 0)
+        //{
+        //    hb1_life.SetActive(false);
+        //    hb2_life.SetActive(false);
+        //    hb3_life.SetActive(false);
+        //}
+        //else
+        //{
+        //    hb1_life.SetActive(true);
+        //    hb2_life.SetActive(true);
+        //    hb3_life.SetActive(true);
+        //}
+
 
     }
 
@@ -96,6 +132,7 @@ public class HealthBar : MonoBehaviour
             NotUnder0();
             UpdateHB2();
             SetActivSlider();
+            hb1_life.SetActive(false);
         }
         else if (hA3 >= 0 && playerHealth.m_currentHealth < 50 && playerHealth.m_currentHealth >= 15)
         {
@@ -103,6 +140,9 @@ public class HealthBar : MonoBehaviour
             NotUnder0();
             UpdateHB3();
             SetActivSlider();
+            hb1_life.SetActive(false);
+            hb2_life.SetActive(false);
+
         }
         else
         {
@@ -110,6 +150,12 @@ public class HealthBar : MonoBehaviour
             NotUnder0();
             UpdateHB4();
             SetActivSlider();
+            hb1_life.SetActive(false);
+
+            hb2_life.SetActive(false);
+
+            hb3_life.SetActive(false);
+
         }
 
     }
