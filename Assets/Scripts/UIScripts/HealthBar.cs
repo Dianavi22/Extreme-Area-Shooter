@@ -151,9 +151,7 @@ public class HealthBar : MonoBehaviour
             UpdateHB4();
             SetActivSlider();
             hb1_life.SetActive(false);
-
             hb2_life.SetActive(false);
-
             hb3_life.SetActive(false);
 
         }

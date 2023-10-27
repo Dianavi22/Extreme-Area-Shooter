@@ -12,7 +12,7 @@ public class Ulti : MonoBehaviour
     [SerializeField] private Scale _scale;
 
     [Header("Garlic")]
-    private float _radiusGarlic = 0;
+    public float radiusGarlic;
     [SerializeField] GameObject _player;
 
     [Header("UI")]
@@ -21,9 +21,14 @@ public class Ulti : MonoBehaviour
     [SerializeField] private Image _currentSliderMaterial;
     [SerializeField] private Material _sliderCompleteMaterial;
 
+    [SerializeField]
+    Collider[] colliders;
+
     void Start()
     {
         slider.value = 0;
+        radiusGarlic = 0;
+
     }
 
     void Update()
@@ -31,16 +36,12 @@ public class Ulti : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.E) && _gameManager.isUltCharged)
         {
             Garlic();
+
             _scale.LaunchUlti();
             _gameManager.ultCharge = 0;
             UpdateUltBar();
             _gameManager.isUltCharged = false;
             _gameManager.OldUltCharge = 0;
-        }
-
-        if (!_gameManager.isUltCharged)
-        {
-            _radiusGarlic = 0;
         }
 
         if(slider.value == 1)
@@ -52,6 +53,8 @@ public class Ulti : MonoBehaviour
 
         }
 
+
+
     }
 
     public void UpdateUltBar()
@@ -61,17 +64,26 @@ public class Ulti : MonoBehaviour
 
     public void Garlic()
     {
-        _radiusGarlic = 5;
-        Collider[] colliders = Physics.OverlapSphere(_player.transform.position, _radiusGarlic);
+        radiusGarlic = 7;
+        colliders = Physics.OverlapSphere(_player.transform.position, radiusGarlic);
         foreach (Collider collider in colliders)
         {
+            print("ENEMY IN RADIUS");
+
             if (collider.tag == "Enemy")
             {
-              Destroy(collider.gameObject);
-               
+               // print("ENEMY IN RADIUS");
+                Destroy(collider.gameObject);
+
             }
         }
     }
 
-    
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(_player.transform.position, radiusGarlic);
+    }
+
+
 }

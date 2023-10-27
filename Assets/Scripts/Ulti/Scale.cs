@@ -5,6 +5,7 @@ using UnityEngine;
 public class Scale : MonoBehaviour
 {
     public static Scale scale;
+    [SerializeField] Ulti _ulti;
     private bool _statusLaser = false;
     [SerializeField] GameObject _laserGO;
    // [SerializeField] GameObject _sphere;
@@ -84,5 +85,6 @@ public class Scale : MonoBehaviour
     {
         yield return new WaitForSeconds(0.5f);
         _isCurrentUlti = false;
+        _ulti.radiusGarlic = 0;
     }
 }

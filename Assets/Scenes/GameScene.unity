@@ -11212,11 +11212,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _gameManager: {fileID: 405237230}
   _scale: {fileID: 1993834482}
+  radiusGarlic: 0
   _player: {fileID: 1378132734}
   slider: {fileID: 1947599465}
   _sliderEmptyMaterial: {fileID: 2100000, guid: 4dd09568e7897b948b65cf97fad804a3, type: 2}
   _currentSliderMaterial: {fileID: 1300585600}
   _sliderCompleteMaterial: {fileID: 2100000, guid: 7cba7eb8a732ae44ca125e1be0723ce2, type: 2}
+  colliders: []
 --- !u!1 &1992382696
 GameObject:
   m_ObjectHideFlags: 0
@@ -11790,6 +11792,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 7621023337454760502, guid: 549d85752e48acb45abb2f350ee2c5a2, type: 3}
+      propertyPath: _ulti
+      value: 
+      objectReference: {fileID: 1947599466}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
