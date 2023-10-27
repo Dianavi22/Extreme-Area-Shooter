@@ -16,7 +16,18 @@ public class Spawner : MonoBehaviour
         {
             Instantiate(objectToSpawn, transform);
         }
+    }
 
+    public void SpawnItem(GameObject objectToSpawn)
+    {
+        if (objectToSpawn == null)
+        {
+            return;
+        }
+        else
+        {
+            Instantiate(objectToSpawn, transform);
+        }
     }
 
 }

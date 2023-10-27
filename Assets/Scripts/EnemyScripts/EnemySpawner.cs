@@ -43,37 +43,37 @@ public class EnemySpawner : MonoBehaviour
 
     void Update()
     {
-        if (_timer.seconds >= 60 && !_eventManager.isCurrentEvent)
-        {
-            m_Rate = 2f;
-            m_RateExploseEnemy = 1f;
-            m_RateBigEnemy = 0.6f;
-        }
+        //if (_timer.seconds >= 60 && !_eventManager.isCurrentEvent)
+        //{
+        //    m_Rate = 2f;
+        //    m_RateExploseEnemy = 1f;
+        //    m_RateBigEnemy = 0.6f;
+        //}
 
-        if ((Time.time - _lastSpawn) >= (1f / m_Rate))
-        {
-            _lastSpawn = Time.time;
-            StandardEnemySpawn();
-        }
-        StartCoroutine(WaitingEnemyWave());
+        //if ((Time.time - _lastSpawn) >= (1f / m_Rate))
+        //{
+        //    _lastSpawn = Time.time;
+        //    StandardEnemySpawn();
+        //}
+        //StartCoroutine(WaitingEnemyWave());
 
-        if (_isSpeedEnemyWave)
-        {
-            return;
-        }
-        else
-        {
-            SpawnSpeedEnemy();
-        }
+        //if (_isSpeedEnemyWave)
+        //{
+        //    return;
+        //}
+        //else
+        //{
+        //    SpawnSpeedEnemy();
+        //}
 
-        if (_isBigEnemyWave)
-        {
-            return;
-        }
-        else
-        {
-            SpawnBigEnemy();
-        }
+        //if (_isBigEnemyWave)
+        //{
+        //    return;
+        //}
+        //else
+        //{
+        //    SpawnBigEnemy();
+        //}
 
 
     }

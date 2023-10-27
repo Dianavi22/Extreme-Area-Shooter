@@ -4,38 +4,29 @@ using UnityEngine;
 
 public class BulletSpawn : MonoBehaviour
 {
-    [SerializeField]
-    private GameObject m_bulletPrefab;
- 
-    [SerializeField]
-    private Transform m_bulletSpawnPoint;
-
-    [SerializeField]
-    private float m_bulletSpeed;
-
-    [SerializeField]
-    private float _bulletForce = 20f;
-    [SerializeField]
-    private float nextFire = 0.001f;
-    [SerializeField]
-    private float myTime = 0.0F;
+    [SerializeField] private GameObject m_bulletPrefab;
+    [SerializeField] private Transform m_bulletSpawnPoint;
+    [SerializeField] private float m_bulletSpeed;
+    [SerializeField] private float _bulletForce = 20f;
+    [SerializeField] private float nextFire = 0.001f;
+    [SerializeField] private float myTime = 0.0F;
     
     public float fireDelta;
 
     public static BulletSpawn bulletSpawn;
 
     [SerializeField] GameManager gameManager; 
+    [SerializeField] Scale _scale; 
 
     private void Start()
     {
         fireDelta = 0.3f;
         gameManager = FindObjectOfType<GameManager>().GetComponent<GameManager>();
-        
     }
     void Update()
     {
         myTime = myTime + Time.deltaTime;
-        if (Input.GetMouseButton(0) && myTime > nextFire)
+        if (Input.GetMouseButton(0) && myTime > nextFire && !_scale.isCurrentUlti)
         {
             nextFire = myTime + fireDelta;
             Shoot();

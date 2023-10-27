@@ -11,7 +11,7 @@ public class Scale : MonoBehaviour
     [SerializeField] CameraController _camera;
    // [SerializeField] GameObject _sphere;
 
-    private bool _isCurrentUlti = false;
+    public bool isCurrentUlti = false;
 
     private void Start()
     {
@@ -20,7 +20,7 @@ public class Scale : MonoBehaviour
     }
     private void Update()
     {
-        if (!_isCurrentUlti)
+        if (!isCurrentUlti)
         {
             StopUlti();
         }
@@ -28,7 +28,7 @@ public class Scale : MonoBehaviour
 
     public void LaunchUlti()
     {
-        _isCurrentUlti = true;
+        isCurrentUlti = true;
 
         _laserGO.SetActive(true);
         //_sphere.SetActive(true);
@@ -85,8 +85,8 @@ public class Scale : MonoBehaviour
 
     IEnumerator CurrentUlti()
     {
-        yield return new WaitForSeconds(2f);
-        _isCurrentUlti = false;
+        yield return new WaitForSeconds(1.5f);
+        isCurrentUlti = false;
         _ulti.radiusGarlic = 0;
         _camera.shakeshake = false;
     }
