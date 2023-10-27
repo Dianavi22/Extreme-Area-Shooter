@@ -11,6 +11,8 @@ public class MainMenu : MonoBehaviour
     [SerializeField] private Transform _image4;
     public bool isHover;
 
+    public bool isFullScreen;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -18,6 +20,8 @@ public class MainMenu : MonoBehaviour
         Transform _startImage2 = _image2;
         Transform _startImage3 = _image3;
         Transform _startImage4 = _image4;
+        isFullScreen = true;
+        Screen.fullScreen = isFullScreen;
     }
 
     // Update is called once per frame
@@ -26,11 +30,14 @@ public class MainMenu : MonoBehaviour
         if (isHover)
         {
             HoverButton();
+            
         }
         else
         {
          //   _image1 = 
         }
+
+        
     }
 
     public void StartGame()

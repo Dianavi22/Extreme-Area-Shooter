@@ -8,6 +8,7 @@ public class Scale : MonoBehaviour
     [SerializeField] Ulti _ulti;
     private bool _statusLaser = false;
     [SerializeField] GameObject _laserGO;
+    [SerializeField] CameraController _camera;
    // [SerializeField] GameObject _sphere;
 
     private bool _isCurrentUlti = false;
@@ -65,6 +66,7 @@ public class Scale : MonoBehaviour
     {
         while (true)
         {
+            _camera.shakeshake = true;
             transform.localScale += new Vector3(0, 0.3f, 0);
             yield return null;
         }
@@ -83,8 +85,9 @@ public class Scale : MonoBehaviour
 
     IEnumerator CurrentUlti()
     {
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(2f);
         _isCurrentUlti = false;
         _ulti.radiusGarlic = 0;
+        _camera.shakeshake = false;
     }
 }

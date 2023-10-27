@@ -1704,7 +1704,7 @@ MonoBehaviour:
   littleEnemyKilled: 0
   _ulit: {fileID: 1947599466}
   ultCharge: 0
-  maxUltCharge: 3
+  maxUltCharge: 100
   OldUltCharge: 0
   isUltCharged: 0
   _gameOverUI: {fileID: 137014825}
@@ -11796,6 +11796,10 @@ PrefabInstance:
       propertyPath: _ulti
       value: 
       objectReference: {fileID: 1947599466}
+    - target: {fileID: 7621023337454760502, guid: 549d85752e48acb45abb2f350ee2c5a2, type: 3}
+      propertyPath: _camera
+      value: 
+      objectReference: {fileID: 963194231}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
