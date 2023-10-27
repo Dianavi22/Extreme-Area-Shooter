@@ -7,11 +7,12 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField] private LayerMask groundMask;
     [SerializeField] private float _speed;
-    [SerializeField] private float _baseSpeed = 10;
+    public float baseSpeed = 10;
     [SerializeField]  Vector3 ScreenMouse;
     [SerializeField]  Vector3 WorldMouse;
     [SerializeField] Camera MainCamera;
     [SerializeField] Rigidbody _rb;
+    [SerializeField] GameManager _gameManager;
 
     private float dashLenght = .2f, dashCooldown = 0.4f;
     [SerializeField] private float _dashSpeed = 18; 
@@ -22,7 +23,7 @@ public class PlayerController : MonoBehaviour
     private Vector3 movementDirection;
     private void Start()
     {
-        _speed = _baseSpeed;
+        _speed = baseSpeed;
         _rb = GetComponent<Rigidbody>();
     }
 
@@ -53,7 +54,7 @@ public class PlayerController : MonoBehaviour
 
             if(dashCounter <= 0)
             {
-                _speed = _baseSpeed;
+                _speed = baseSpeed;
                 dashCoolCounter = dashCooldown;
             }
         }
@@ -67,9 +68,16 @@ public class PlayerController : MonoBehaviour
     {
         if (collision.collider.CompareTag("Wall"))
         {
-            _speed = _baseSpeed;
+            _speed = baseSpeed;
             _isWalled = true;
         }
+
+        //if (collision.collider.CompareTag("Item"))
+        //{
+        //    print("ITEM");
+        //    _gameManager.TakeItem();
+
+        //}
     }
     private void OnCollisionExit(Collision collision)
     {

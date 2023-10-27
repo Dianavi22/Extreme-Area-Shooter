@@ -6,7 +6,7 @@ public class Item : MonoBehaviour
 {
     private void Start()
     {
-        StartCoroutine(DestroyItem());
+      StartCoroutine(DestroyItem());
     }
     private void OnCollisionEnter(Collision collision)
     {

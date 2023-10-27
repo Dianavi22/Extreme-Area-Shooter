@@ -11,10 +11,13 @@ public class PowerUpSpawner : MonoBehaviour
     public List<Spawner> itemsSpawner;
     public List<GameObject> items;
     public GameObject items1;
+
+    [SerializeField] GameManager _gameManager;
     private void Update()
     {
-        if ((Time.time - _lastSpawnItem) >= (1f / m_ItemRate))
+        if ((Time.time - _lastSpawnItem) >= (1f / m_ItemRate) && !_gameManager.isCurrentItem)
         {
+            print("SPAWN");
             _lastSpawnItem = Time.time;
             ItemSpawn();
         }

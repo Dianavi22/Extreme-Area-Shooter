@@ -45,7 +45,7 @@ public class GameManager : MonoBehaviour
     [SerializeField, HideInInspector] private GameObject _player;
     [SerializeField, HideInInspector] GameObject _enemySpawner;
 
-
+    public bool isCurrentItem;
     private void Awake()
     {
         //  _playerHealth = GetComponent<PlayerHealth>();
@@ -138,5 +138,17 @@ public class GameManager : MonoBehaviour
         _enemySpawner.SetActive(false);
         isGameFinished = true;
         _gameOverUI.SetActive(true);
+    }
+
+    public void TakeItem()
+    {
+        isCurrentItem = true;
+        StartCoroutine(EndCurrentItem());
+    }
+    IEnumerator EndCurrentItem()
+    {
+        yield return new WaitForSeconds(5f);
+        isCurrentItem = false;
+
     }
 }
