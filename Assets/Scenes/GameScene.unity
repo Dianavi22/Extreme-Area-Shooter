@@ -1937,9 +1937,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isRadiusItem: 0
+  isMegaBallsItem: 0
+  isDobleCanonItem: 0
   colliders: []
   _player: {fileID: 1378132743}
   _gameManager: {fileID: 405237230}
+  canonSup1: {fileID: 1148648101}
+  canonSup2: {fileID: 1211032026}
 --- !u!1 &416949718
 GameObject:
   m_ObjectHideFlags: 0
@@ -6530,6 +6534,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1107101100}
   m_CullTransparentMesh: 1
+--- !u!1 &1148648101 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6210004374965153021, guid: 549d85752e48acb45abb2f350ee2c5a2, type: 3}
+  m_PrefabInstance: {fileID: 2037488446}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1151562264
 GameObject:
   m_ObjectHideFlags: 0
@@ -7233,6 +7242,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1744870670}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1211032026 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7655572815071994223, guid: 549d85752e48acb45abb2f350ee2c5a2, type: 3}
+  m_PrefabInstance: {fileID: 2037488446}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1218617067
 GameObject:
   m_ObjectHideFlags: 0
@@ -12565,13 +12579,29 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1993834482}
     - target: {fileID: 1916535222, guid: 549d85752e48acb45abb2f350ee2c5a2, type: 3}
-      propertyPath: m_bulletPrefab
+      propertyPath: megaBalls
       value: 
       objectReference: {fileID: 1826235053615279704, guid: abc1d26e69104a648bd980e06c50da83, type: 3}
+    - target: {fileID: 1916535222, guid: 549d85752e48acb45abb2f350ee2c5a2, type: 3}
+      propertyPath: _itemManager
+      value: 
+      objectReference: {fileID: 405237233}
+    - target: {fileID: 1916535222, guid: 549d85752e48acb45abb2f350ee2c5a2, type: 3}
+      propertyPath: m_bulletPrefab
+      value: 
+      objectReference: {fileID: 1826235053615279704, guid: d36ab209ea3b62e41a8a06402f12553a, type: 3}
     - target: {fileID: 899791939415924668, guid: 549d85752e48acb45abb2f350ee2c5a2, type: 3}
       propertyPath: _scale
       value: 
       objectReference: {fileID: 1993834482}
+    - target: {fileID: 899791939415924668, guid: 549d85752e48acb45abb2f350ee2c5a2, type: 3}
+      propertyPath: megaBalls
+      value: 
+      objectReference: {fileID: 1826235053615279704, guid: abc1d26e69104a648bd980e06c50da83, type: 3}
+    - target: {fileID: 899791939415924668, guid: 549d85752e48acb45abb2f350ee2c5a2, type: 3}
+      propertyPath: _itemManager
+      value: 
+      objectReference: {fileID: 405237233}
     - target: {fileID: 1389547512256307857, guid: 549d85752e48acb45abb2f350ee2c5a2, type: 3}
       propertyPath: m_Enabled
       value: 1
@@ -12580,10 +12610,26 @@ PrefabInstance:
       propertyPath: _scale
       value: 
       objectReference: {fileID: 1993834482}
+    - target: {fileID: 2396504799558030145, guid: 549d85752e48acb45abb2f350ee2c5a2, type: 3}
+      propertyPath: megaBalls
+      value: 
+      objectReference: {fileID: 1826235053615279704, guid: abc1d26e69104a648bd980e06c50da83, type: 3}
+    - target: {fileID: 2396504799558030145, guid: 549d85752e48acb45abb2f350ee2c5a2, type: 3}
+      propertyPath: _itemManager
+      value: 
+      objectReference: {fileID: 405237233}
     - target: {fileID: 2938465775313325596, guid: 549d85752e48acb45abb2f350ee2c5a2, type: 3}
       propertyPath: _scale
       value: 
       objectReference: {fileID: 1993834482}
+    - target: {fileID: 2938465775313325596, guid: 549d85752e48acb45abb2f350ee2c5a2, type: 3}
+      propertyPath: megaBalls
+      value: 
+      objectReference: {fileID: 1826235053615279704, guid: abc1d26e69104a648bd980e06c50da83, type: 3}
+    - target: {fileID: 2938465775313325596, guid: 549d85752e48acb45abb2f350ee2c5a2, type: 3}
+      propertyPath: _itemManager
+      value: 
+      objectReference: {fileID: 405237233}
     - target: {fileID: 4230318934219111306, guid: 549d85752e48acb45abb2f350ee2c5a2, type: 3}
       propertyPath: m_LocalScale.z
       value: 0.51
@@ -12592,6 +12638,14 @@ PrefabInstance:
       propertyPath: _scale
       value: 
       objectReference: {fileID: 1993834482}
+    - target: {fileID: 5098921928879026249, guid: 549d85752e48acb45abb2f350ee2c5a2, type: 3}
+      propertyPath: megaBalls
+      value: 
+      objectReference: {fileID: 1826235053615279704, guid: abc1d26e69104a648bd980e06c50da83, type: 3}
+    - target: {fileID: 5098921928879026249, guid: 549d85752e48acb45abb2f350ee2c5a2, type: 3}
+      propertyPath: _itemManager
+      value: 
+      objectReference: {fileID: 405237233}
     - target: {fileID: 5753754095892556472, guid: 549d85752e48acb45abb2f350ee2c5a2, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -12640,6 +12694,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 7229857308483708782, guid: 549d85752e48acb45abb2f350ee2c5a2, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7621023337454760502, guid: 549d85752e48acb45abb2f350ee2c5a2, type: 3}
       propertyPath: _ulti
       value: 
@@ -12652,6 +12710,14 @@ PrefabInstance:
       propertyPath: _scale
       value: 
       objectReference: {fileID: 1993834482}
+    - target: {fileID: 9086988083736152179, guid: 549d85752e48acb45abb2f350ee2c5a2, type: 3}
+      propertyPath: megaBalls
+      value: 
+      objectReference: {fileID: 1826235053615279704, guid: abc1d26e69104a648bd980e06c50da83, type: 3}
+    - target: {fileID: 9086988083736152179, guid: 549d85752e48acb45abb2f350ee2c5a2, type: 3}
+      propertyPath: _itemManager
+      value: 
+      objectReference: {fileID: 405237233}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

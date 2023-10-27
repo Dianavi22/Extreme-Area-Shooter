@@ -94,7 +94,6 @@ GameObject:
   - component: {fileID: 1675966014695019623}
   - component: {fileID: 7520743393924096003}
   - component: {fileID: 3396598757457340477}
-  - component: {fileID: 9109142145620815218}
   m_Layer: 0
   m_Name: Sphere
   m_TagString: Untagged
@@ -145,7 +144,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 08cf30a5f1f568f4c977fc0320193ea7, type: 2}
+  - {fileID: 2100000, guid: 885fd2e3af55a884bbdafbaa8f42c601, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -167,27 +166,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!135 &9109142145620815218
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1041147714288921028}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1917846539549979149
 GameObject:
   m_ObjectHideFlags: 0
@@ -450,6 +428,7 @@ GameObject:
   - component: {fileID: 2042990974044085286}
   - component: {fileID: 8201881477454425272}
   - component: {fileID: 6654770414518436591}
+  - component: {fileID: 5569364991109100334}
   m_Layer: 0
   m_Name: MoreCanonsItem
   m_TagString: Item
@@ -558,6 +537,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _gameManager: {fileID: 0}
   _radiusItem: {fileID: 0}
+--- !u!114 &5569364991109100334
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4716659067003589500}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f35d7769124378541a5a08c0fcf180d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _item: {fileID: 0}
 --- !u!1 &5908364868601252627
 GameObject:
   m_ObjectHideFlags: 0

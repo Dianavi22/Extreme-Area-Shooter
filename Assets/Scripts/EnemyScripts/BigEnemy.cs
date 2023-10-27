@@ -33,7 +33,7 @@ public class BigEnemy : MonoBehaviour
         if (collision.collider.CompareTag("Bullet"))
         {
             _bullet = collision.collider.GetComponent<Bullet>();
-
+            Destroy(collision.gameObject);
             TakeDamageBigEnemy();
         }
         if (collision.collider.CompareTag("Ulti"))
@@ -75,4 +75,6 @@ public class BigEnemy : MonoBehaviour
             Instantiate(_littleStandardEnemy, spawners[i].transform);
         }
     }
+
+
 }

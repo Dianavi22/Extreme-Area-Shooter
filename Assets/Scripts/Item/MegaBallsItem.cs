@@ -4,15 +4,20 @@ using UnityEngine;
 
 public class MegaBallsItem : MonoBehaviour
 {
-    // Start is called before the first frame update
+    [SerializeField] ItemManager _item;
+
     void Start()
     {
-        
+        _item = FindObjectOfType<GameManager>().GetComponent<ItemManager>();
+
     }
 
-    // Update is called once per frame
-    void Update()
+    private void OnCollisionEnter(Collision collision)
     {
-        
+        if (collision.collider.CompareTag("Player"))
+        {
+            _item.isMegaBallsItem = true;
+        }
+
     }
 }

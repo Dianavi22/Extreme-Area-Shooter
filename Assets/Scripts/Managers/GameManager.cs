@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour
 
     public static GameManager gameManager;
     private PlayerController _playerController;
+    [SerializeField] GameObject _itemSpawners;  
 
     [Header("Scoring")]
     [SerializeField] TMP_Text _playerScoreUI;
@@ -129,6 +130,7 @@ public class GameManager : MonoBehaviour
     {
         _playerController.gameObject.SetActive(false);
         _enemySpawner.SetActive(false);
+        _itemSpawners.SetActive(false);
         isGameFinished = true;
         _gameOverUI.SetActive(true);
     }

@@ -5,10 +5,16 @@ using UnityEngine;
 public class ItemManager : MonoBehaviour
 {
     public bool isRadiusItem;
+    public bool isMegaBallsItem;
+    public bool isDobleCanonItem;
     [SerializeField] Collider[] colliders;
     [SerializeField] Transform _player;
     float radiusGarlic = 4;
     [SerializeField] GameManager _gameManager;
+
+    [SerializeField] GameObject canonSup1;
+    [SerializeField] GameObject canonSup2;
+
 
     private void Update()
     {
@@ -16,6 +22,22 @@ public class ItemManager : MonoBehaviour
         {
             ItemGarlic();
         }
+
+        if (isMegaBallsItem)
+        {
+            StartCoroutine(EndItem());
+        }
+
+        if (isDobleCanonItem)
+        {
+            DoubleCanon();
+        }
+        else
+        {
+            canonSup1.SetActive(false);
+            canonSup2.SetActive(false);
+        }
+        
     }
     public void ItemGarlic()
     {
@@ -30,6 +52,13 @@ public class ItemManager : MonoBehaviour
             }
         }
         StopCoroutine(EndItem());
+    }
+
+    public void DoubleCanon()
+    {
+        canonSup1.SetActive(true);
+        canonSup2.SetActive(true);
+        StartCoroutine(EndItem());
 
     }
 
@@ -37,6 +66,8 @@ public class ItemManager : MonoBehaviour
     {
         yield return new WaitForSeconds(5f);
         isRadiusItem = false;
+        isMegaBallsItem = false;
+        isDobleCanonItem = false;
         _gameManager.isCurrentItem = false;
     }
 }

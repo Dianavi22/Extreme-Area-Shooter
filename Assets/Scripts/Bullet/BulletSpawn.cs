@@ -18,6 +18,11 @@ public class BulletSpawn : MonoBehaviour
     [SerializeField] GameManager gameManager; 
     [SerializeField] Scale _scale; 
 
+    [SerializeField] ItemManager _itemManager;
+
+    [SerializeField] GameObject megaBalls;
+
+
     private void Start()
     {
         fireDelta = 0.3f;
@@ -26,10 +31,17 @@ public class BulletSpawn : MonoBehaviour
     void Update()
     {
         myTime = myTime + Time.deltaTime;
-        if (Input.GetMouseButton(0) && myTime > nextFire && !_scale.isCurrentUlti)
+        if (Input.GetMouseButton(0) && myTime > nextFire && !_scale.isCurrentUlti && !_itemManager.isMegaBallsItem)
         {
             nextFire = myTime + fireDelta;
             Shoot();
+            nextFire = nextFire - myTime;
+            myTime = 0.0F;
+        }
+        else if(Input.GetMouseButton(0) && myTime > nextFire && !_scale.isCurrentUlti && _itemManager.isMegaBallsItem)
+        {
+            nextFire = myTime + fireDelta;
+            SuperShoot();
             nextFire = nextFire - myTime;
             myTime = 0.0F;
         }
@@ -55,6 +67,13 @@ public class BulletSpawn : MonoBehaviour
             GameObject bullet = Instantiate(m_bulletPrefab, m_bulletSpawnPoint.position, m_bulletSpawnPoint.rotation);
             Rigidbody rbBullet = bullet.GetComponent<Rigidbody>();
             rbBullet.AddForce(m_bulletSpawnPoint.forward * _bulletForce, ForceMode.Impulse);
+    }
+
+    private void SuperShoot()
+    {
+        GameObject bullet = Instantiate(megaBalls, m_bulletSpawnPoint.position, m_bulletSpawnPoint.rotation);
+        Rigidbody rbBullet = bullet.GetComponent<Rigidbody>();
+        rbBullet.AddForce(m_bulletSpawnPoint.forward * _bulletForce, ForceMode.Impulse);
     }
 }
 
