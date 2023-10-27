@@ -6,7 +6,7 @@ public class PowerUpSpawner : MonoBehaviour
 {
 
     private float _lastSpawnItem;
-    private float m_ItemRate = 0.050f;
+    private float m_ItemRate = 0.055f;
 
     public List<Spawner> itemsSpawner;
     public List<GameObject> items;

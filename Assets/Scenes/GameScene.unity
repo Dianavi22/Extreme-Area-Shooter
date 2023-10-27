@@ -5107,6 +5107,8 @@ MonoBehaviour:
   - {fileID: 1003738390}
   - {fileID: 726690104}
   items:
+  - {fileID: 4716659067003589500, guid: 29e228d4db905ef47964119ed8ef7fd6, type: 3}
+  - {fileID: 4716659067003589500, guid: cc7afb8fb82dead44bfaf7c9989389d9, type: 3}
   - {fileID: 4716659067003589500, guid: 8b3ccee916367404ea5331522b168daa, type: 3}
   _gameManager: {fileID: 405237230}
 --- !u!1 &963194225
@@ -12562,6 +12564,10 @@ PrefabInstance:
       propertyPath: _scale
       value: 
       objectReference: {fileID: 1993834482}
+    - target: {fileID: 1916535222, guid: 549d85752e48acb45abb2f350ee2c5a2, type: 3}
+      propertyPath: m_bulletPrefab
+      value: 
+      objectReference: {fileID: 1826235053615279704, guid: abc1d26e69104a648bd980e06c50da83, type: 3}
     - target: {fileID: 899791939415924668, guid: 549d85752e48acb45abb2f350ee2c5a2, type: 3}
       propertyPath: _scale
       value: 

@@ -59,6 +59,7 @@ public class PlayerHealth : MonoBehaviour
         {
 
             _cameraController.shakeshake = true;
+            _cameraController.duration = 0.4f;
             healthBar.damage = 5;
             healthBar.TakeDamageUI();
             m_currentHealth = m_currentHealth - 5;

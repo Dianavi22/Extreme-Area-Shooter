@@ -136,7 +136,6 @@ public class GameManager : MonoBehaviour
     public void TakeItem()
     {
         isCurrentItem = true;
-        print("Take pils 2 !");
 
     }
 
