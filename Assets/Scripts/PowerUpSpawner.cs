@@ -6,11 +6,10 @@ public class PowerUpSpawner : MonoBehaviour
 {
 
     private float _lastSpawnItem;
-    private float m_ItemRate = 0.10f;
+    private float m_ItemRate = 0.050f;
 
     public List<Spawner> itemsSpawner;
     public List<GameObject> items;
-    public GameObject items1;
 
     [SerializeField] GameManager _gameManager;
     private void Update()
@@ -22,7 +21,5 @@ public class PowerUpSpawner : MonoBehaviour
             ItemSpawn();
         }
     }
-
     public void ItemSpawn() { itemsSpawner[Random.Range(0, itemsSpawner.Count)].SpawnItem(items[Random.Range(0, items.Count)]);}
-
 }

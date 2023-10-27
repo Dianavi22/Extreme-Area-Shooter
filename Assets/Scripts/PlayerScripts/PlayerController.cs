@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] Camera MainCamera;
     [SerializeField] Rigidbody _rb;
     [SerializeField] GameManager _gameManager;
+    [SerializeField] Item _item;
 
     private float dashLenght = .2f, dashCooldown = 0.4f;
     [SerializeField] private float _dashSpeed = 18; 
@@ -63,6 +64,8 @@ public class PlayerController : MonoBehaviour
             dashCoolCounter -= Time.deltaTime;
         }
 
+
+
     }
     private void OnCollisionEnter(Collision collision)
     {
@@ -72,12 +75,7 @@ public class PlayerController : MonoBehaviour
             _isWalled = true;
         }
 
-        //if (collision.collider.CompareTag("Item"))
-        //{
-        //    print("ITEM");
-        //    _gameManager.TakeItem();
-
-        //}
+       
     }
     private void OnCollisionExit(Collision collision)
     {

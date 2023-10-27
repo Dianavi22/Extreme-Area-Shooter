@@ -72,6 +72,7 @@ public class GameManager : MonoBehaviour
         }
         _playerScoreUI.text = playerScore.ToString();
 
+        #region LevelWeapon
         if (playerLevelUpgrade >= 30)
         {
             _canon2.SetActive(true);
@@ -106,21 +107,10 @@ public class GameManager : MonoBehaviour
         {
             _uiIcons._isLightOnIcon4 = false;
         }
-        //if (playerLevelUpgrade >= 90)
-        //{
-        //    _canon5.SetActive(true);
-        //    _canon6.SetActive(true);
-        //}
-        //else
-        //{
-        //    _canon5.SetActive(false);
-        //    _canon6.SetActive(false);
-        //}
-
-
         if (playerLevelUpgrade < 0) { playerLevelUpgrade = 0; }
         if (playerLevelUpgrade > 110) { playerLevelUpgrade = 110; }
-        
+        #endregion
+        #region Ulti
         if (ultCharge > maxUltCharge) { ultCharge = maxUltCharge; }
 
         if (ultCharge == maxUltCharge) { isUltCharged = true; }
@@ -130,6 +120,9 @@ public class GameManager : MonoBehaviour
             _ulit.UpdateUltBar();
             OldUltCharge = ultCharge;
         }
+        #endregion
+
+
     }
 
     private void GameOver()
@@ -143,12 +136,8 @@ public class GameManager : MonoBehaviour
     public void TakeItem()
     {
         isCurrentItem = true;
-        StartCoroutine(EndCurrentItem());
-    }
-    IEnumerator EndCurrentItem()
-    {
-        yield return new WaitForSeconds(5f);
-        isCurrentItem = false;
+        print("Take pils 2 !");
 
     }
+
 }

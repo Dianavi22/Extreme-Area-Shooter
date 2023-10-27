@@ -4,8 +4,13 @@ using UnityEngine;
 
 public class Item : MonoBehaviour
 {
+    [SerializeField] private GameManager _gameManager;
+    [SerializeField] private RadiusItem _radiusItem;
     private void Start()
     {
+     // FindObjectOfType<GameManager>().GetComponent<ItemManager>().isRadiusItem = true;
+        _gameManager = FindObjectOfType<GameManager>().GetComponent<GameManager>();
+        _radiusItem = GetComponent<RadiusItem>();
       StartCoroutine(DestroyItem());
     }
     private void OnCollisionEnter(Collision collision)
@@ -13,6 +18,8 @@ public class Item : MonoBehaviour
         if (collision.collider.CompareTag("Player"))
         {
             Destroy(gameObject);
+            // _radiusItem.gameObject.SetActive(true);
+            _gameManager.TakeItem();
         }
     }
 
@@ -21,4 +28,6 @@ public class Item : MonoBehaviour
         yield return new WaitForSeconds(5f);
         Destroy(gameObject);
     }
+
+    
 }

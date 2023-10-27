@@ -21,8 +21,7 @@ public class Ulti : MonoBehaviour
     [SerializeField] private Image _currentSliderMaterial;
     [SerializeField] private Material _sliderCompleteMaterial;
 
-    [SerializeField]
-    Collider[] colliders;
+    [SerializeField] Collider[] colliders;
 
     void Start()
     {
@@ -68,8 +67,6 @@ public class Ulti : MonoBehaviour
         colliders = Physics.OverlapSphere(_player.transform.position, radiusGarlic);
         foreach (Collider collider in colliders)
         {
-            print("ENEMY IN RADIUS");
-
             if (collider.tag == "Enemy")
             {
                // print("ENEMY IN RADIUS");
