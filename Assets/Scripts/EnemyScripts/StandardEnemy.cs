@@ -13,6 +13,9 @@ public class StandardEnemy : MonoBehaviour
     [Header("HP")]
     [SerializeField] private int m_MaxHpEnemy;
     [SerializeField] private int m_CurrentHpEnemy;
+    [SerializeField] private ParticleSystem _sparks;
+    [SerializeField] private Collider _collider;
+    [SerializeField] private GameObject _gfx;
 
     [Header("Damage")]
     [SerializeField] public int m_damageStandardEnemy = 3;
@@ -24,11 +27,13 @@ public class StandardEnemy : MonoBehaviour
 
     private void Awake()
     {
+        _collider = GetComponent<Collider>();
         _rb = GetComponent<Rigidbody>();
         _targetPlayer = FindObjectOfType<Player>().transform;
         _damage = FindObjectOfType<Player>().GetComponent<PlayerHealth>();
         _gameManager = FindObjectOfType<GameManager>().GetComponent<GameManager>();
         _timer = FindObjectOfType<Timer>().GetComponent<Timer>();
+        _sparks = GetComponentInChildren<ParticleSystem>();
     }
     void Start()
     {
@@ -60,24 +65,38 @@ public class StandardEnemy : MonoBehaviour
     {
         if (collision.collider.CompareTag("Bullet"))
         {
-            Destroy(gameObject);
-            _gameManager.standardEnemyKilled++;
-            _gameManager.ultCharge++;
-            _gameManager.playerLevelUpgrade++;
-            _gameManager.playerScore = _gameManager.playerScore + 100;
+            _collider.enabled = false;
+            _rb.freezeRotation = true;
+            m_StandardEnemySpeed = 0;
+            _gfx.SetActive(false);
+            _sparks.Play();
+            Invoke("DieEnemy", 0.5f);
+           
         }
         if (collision.collider.CompareTag("Player"))
         {
+            _sparks.Play();
             Destroy(gameObject);
             _damage.TakeDamage();
         }
         if (collision.collider.CompareTag("Ulti"))
         {
-            Destroy(gameObject);
-            _gameManager.standardEnemyKilled++;
-            _gameManager.playerLevelUpgrade++;
-
+            _collider.enabled = false;
+            _rb.freezeRotation = true;
+            m_StandardEnemySpeed = 0;
+            _gfx.SetActive(false);
+            _sparks.Play();
+            Invoke("DieEnemy", 0.5f);
         }
+    }
+
+    private void DieEnemy()
+    {
+        Destroy(gameObject);
+        _gameManager.standardEnemyKilled++;
+        _gameManager.ultCharge++;
+        _gameManager.playerLevelUpgrade++;
+        _gameManager.playerScore = _gameManager.playerScore + 100;
     }
 
    
