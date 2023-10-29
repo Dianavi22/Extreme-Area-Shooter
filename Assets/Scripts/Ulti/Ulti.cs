@@ -23,6 +23,9 @@ public class Ulti : MonoBehaviour
 
     [SerializeField] Collider[] colliders;
 
+    public ParticleSystem flashLaser;
+    public ParticleSystem sparksLaser;
+
     void Start()
     {
         slider.value = 0;
@@ -35,7 +38,8 @@ public class Ulti : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.E) && _gameManager.isUltCharged)
         {
             Garlic();
-
+            flashLaser.Play();
+            sparksLaser.Play();
             _scale.LaunchUlti();
             _gameManager.ultCharge = 0;
             UpdateUltBar();

@@ -16,7 +16,6 @@ public class PowerUpSpawner : MonoBehaviour
     {
         if ((Time.time - _lastSpawnItem) >= (1f / m_ItemRate) && !_gameManager.isCurrentItem)
         {
-            print("SPAWN");
             _lastSpawnItem = Time.time;
             ItemSpawn();
         }

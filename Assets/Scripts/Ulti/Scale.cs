@@ -80,6 +80,8 @@ public class Scale : MonoBehaviour
         //    yield return null;
         //}
         transform.localScale = new Vector3(1,1,1);
+        _ulti.flashLaser.Stop();
+        _ulti.sparksLaser.Stop();
         yield return null;
     }
 

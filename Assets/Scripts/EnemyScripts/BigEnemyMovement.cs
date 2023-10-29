@@ -9,7 +9,7 @@ public class BigEnemyMovement : MonoBehaviour
     [SerializeField] private Transform _targetPlayer;
     [SerializeField] private Rigidbody _rb;
     private Vector3 _enemyDir;
-    private float _bigEnemySpeed = 2;
+    public float _bigEnemySpeed = 2;
 
     [SerializeField] private Timer _timer;
 

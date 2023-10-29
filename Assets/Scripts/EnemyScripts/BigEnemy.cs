@@ -17,11 +17,18 @@ public class BigEnemy : MonoBehaviour
     [Header("Imports")]
     private GameManager _gameManager;
     [SerializeField] private Timer _timer;
+
+    [SerializeField] ParticleSystem _explosionParticules;
+    [SerializeField] ParticleSystem _explosionFlash;
+    [SerializeField] BigEnemyMovement _BigEnemyMove;
+    [SerializeField] float _speedBigEnemy;
+
     private void Awake()
     {
         _damage = FindObjectOfType<Player>().GetComponent<PlayerHealth>();
         _gameManager = FindObjectOfType<GameManager>().GetComponent<GameManager>();
         _timer = FindObjectOfType<Timer>().GetComponent<Timer>();
+        _speedBigEnemy = _BigEnemyMove._bigEnemySpeed;
     }
     void Start()
     {
@@ -58,6 +65,9 @@ public class BigEnemy : MonoBehaviour
 
             _gameManager.bigEnemyKilled++;
             _gameManager.playerLevelUpgrade = _gameManager.playerLevelUpgrade + 3;
+            _speedBigEnemy = 0;
+            _explosionFlash.Play();
+            _explosionParticules.Play();
             EnemySpawn();
             DestroyBigEnemy();
         }

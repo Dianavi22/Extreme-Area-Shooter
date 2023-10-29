@@ -227,6 +227,8 @@ Transform:
   - {fileID: 6865987451592344771}
   - {fileID: 8395787429402606347}
   - {fileID: 1083966133983207170}
+  - {fileID: 2089555574946148464}
+  - {fileID: 2296895613177363460}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &1518876156329345961
@@ -293,6 +295,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _targetPlayer: {fileID: 0}
   _rb: {fileID: 0}
+  _bigEnemySpeed: 2
   _timer: {fileID: 0}
 --- !u!1 &1797510104423139562
 GameObject:
@@ -939,6 +942,10 @@ MonoBehaviour:
   _littleStandardEnemy: {fileID: 1518876156329345965, guid: 80fb28a3ebef12341a90472613985f15, type: 3}
   _bullet: {fileID: 0}
   _timer: {fileID: 0}
+  _explosionParticules: {fileID: 4697288205726181495}
+  _explosionFlash: {fileID: 2181841031119580306}
+  _BigEnemyMove: {fileID: 773944425667637340}
+  _speedBigEnemy: 0
 --- !u!54 &6691612949787919797
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -987,3 +994,137 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 2.1519833
   m_Center: {x: 0.0143145565, y: 0, z: 0.008549073}
+--- !u!1001 &903627942664647707
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1518876156329345960}
+    m_Modifications:
+    - target: {fileID: 1399039174621939743, guid: 3a9141a9ccc581743bcca4ab242bc4b1, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1399039174621939743, guid: 3a9141a9ccc581743bcca4ab242bc4b1, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1399039174621939743, guid: 3a9141a9ccc581743bcca4ab242bc4b1, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1399039174621939743, guid: 3a9141a9ccc581743bcca4ab242bc4b1, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1399039174621939743, guid: 3a9141a9ccc581743bcca4ab242bc4b1, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1399039174621939743, guid: 3a9141a9ccc581743bcca4ab242bc4b1, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1399039174621939743, guid: 3a9141a9ccc581743bcca4ab242bc4b1, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1399039174621939743, guid: 3a9141a9ccc581743bcca4ab242bc4b1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 1399039174621939743, guid: 3a9141a9ccc581743bcca4ab242bc4b1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1399039174621939743, guid: 3a9141a9ccc581743bcca4ab242bc4b1, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4356392346892532603, guid: 3a9141a9ccc581743bcca4ab242bc4b1, type: 3}
+      propertyPath: m_Name
+      value: FlashBigEnemy
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 3a9141a9ccc581743bcca4ab242bc4b1, type: 3}
+--- !u!198 &2181841031119580306 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 1354774282242463881, guid: 3a9141a9ccc581743bcca4ab242bc4b1, type: 3}
+  m_PrefabInstance: {fileID: 903627942664647707}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &2296895613177363460 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1399039174621939743, guid: 3a9141a9ccc581743bcca4ab242bc4b1, type: 3}
+  m_PrefabInstance: {fileID: 903627942664647707}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &3206641420523724513
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1518876156329345960}
+    m_Modifications:
+    - target: {fileID: 3494741464666402449, guid: 08b51db3476b2d74283f11c1ff06a0dc, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3494741464666402449, guid: 08b51db3476b2d74283f11c1ff06a0dc, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3494741464666402449, guid: 08b51db3476b2d74283f11c1ff06a0dc, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3494741464666402449, guid: 08b51db3476b2d74283f11c1ff06a0dc, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3494741464666402449, guid: 08b51db3476b2d74283f11c1ff06a0dc, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3494741464666402449, guid: 08b51db3476b2d74283f11c1ff06a0dc, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3494741464666402449, guid: 08b51db3476b2d74283f11c1ff06a0dc, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3494741464666402449, guid: 08b51db3476b2d74283f11c1ff06a0dc, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: -90
+      objectReference: {fileID: 0}
+    - target: {fileID: 3494741464666402449, guid: 08b51db3476b2d74283f11c1ff06a0dc, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3494741464666402449, guid: 08b51db3476b2d74283f11c1ff06a0dc, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5086413387850869849, guid: 08b51db3476b2d74283f11c1ff06a0dc, type: 3}
+      propertyPath: m_Name
+      value: SparksBigEnemy
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 08b51db3476b2d74283f11c1ff06a0dc, type: 3}
+--- !u!4 &2089555574946148464 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3494741464666402449, guid: 08b51db3476b2d74283f11c1ff06a0dc, type: 3}
+  m_PrefabInstance: {fileID: 3206641420523724513}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &4697288205726181495 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 7903916154805958294, guid: 08b51db3476b2d74283f11c1ff06a0dc, type: 3}
+  m_PrefabInstance: {fileID: 3206641420523724513}
+  m_PrefabAsset: {fileID: 0}
