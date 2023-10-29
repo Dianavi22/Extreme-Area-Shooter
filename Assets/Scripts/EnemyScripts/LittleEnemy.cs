@@ -45,9 +45,9 @@ public class LittleEnemy : MonoBehaviour
         //Rotation
         //Quaternion toRotation = Quaternion.LookRotation(_enemyDir, Vector3.up);
         //transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, 500 * Time.deltaTime);
-        if(_timer.seconds > 40)
+        if(_timer.seconds > 46)
         {
-            m_LittleEnemySpeed = 6;
+            m_LittleEnemySpeed = 6.3f;
         }
     }
 

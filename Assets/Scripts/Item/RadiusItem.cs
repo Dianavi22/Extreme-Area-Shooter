@@ -17,7 +17,6 @@ public class RadiusItem : MonoBehaviour
         if (collision.collider.CompareTag("Player"))
         {
             _item.isRadiusItem = true;
-            print("Take pils");
         }
 
     }

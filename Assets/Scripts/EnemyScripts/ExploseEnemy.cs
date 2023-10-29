@@ -45,7 +45,7 @@ public class ExploseEnemy : MonoBehaviour
 
         gameObject.transform.LookAt(_targetPlayer);
 
-        if(_timer.seconds > 40)
+        if(_timer.seconds > 46)
         {
             m_ExploseEnemySpeed = 12;
         }
