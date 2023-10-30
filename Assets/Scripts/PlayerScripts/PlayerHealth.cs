@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering.PostProcessing;
 
 public class PlayerHealth : MonoBehaviour
 {
@@ -21,6 +22,9 @@ public class PlayerHealth : MonoBehaviour
 
     private bool _isInvincible = false;
 
+    public bool isTakingDamage;
+    public GameObject lightHurt;
+    public PostProcessVolume postProcessVolume;
 
     private void Awake()
     {
@@ -54,10 +58,10 @@ public class PlayerHealth : MonoBehaviour
 
     public void TakeDamage()
     {
-
         if (!_isInvincible)
         {
-
+            lightHurt.SetActive(true);
+            postProcessVolume.weight = 1;
             _cameraController.shakeshake = true;
             _cameraController.duration = 0.4f;
             healthBar.damage = 5;
@@ -101,7 +105,6 @@ public class PlayerHealth : MonoBehaviour
     {
         yield return new WaitForSeconds(1.5f);
         _isInvincible = false;
-
     }
 
 

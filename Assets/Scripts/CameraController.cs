@@ -19,15 +19,16 @@ public class CameraController : MonoBehaviour
     public static CameraController _cameraController;
     public bool shakeshake = false;
 
-    [SerializeField] PostProcessVolume m_Volume;
+    [SerializeField] PlayerHealth _playerHealth;
 
 
-    // Start is called before the first frame update
+    private void Awake()
+    {
+    }
     void Start()
     {
     }
 
-    // Update is called once per frame
     void Update()
     {
         try{
@@ -51,9 +52,11 @@ public class CameraController : MonoBehaviour
         {
             elapsedTime += Time.deltaTime;
             transform.position = startPosition + Random.insideUnitSphere;
+
             yield return null;
         }
-
+        _playerHealth.postProcessVolume.weight = 0;
+        _playerHealth.lightHurt.SetActive(false);
         transform.position = startPosition;
     }
 }

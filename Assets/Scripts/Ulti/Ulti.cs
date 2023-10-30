@@ -26,6 +26,8 @@ public class Ulti : MonoBehaviour
     public ParticleSystem flashLaser;
     public ParticleSystem sparksLaser;
 
+    public GameObject ultiLight;
+
     void Start()
     {
         slider.value = 0;
@@ -38,6 +40,7 @@ public class Ulti : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.E) && _gameManager.isUltCharged)
         {
             Garlic();
+            ultiLight.SetActive(true);
             flashLaser.Play();
             sparksLaser.Play();
             _scale.LaunchUlti();
