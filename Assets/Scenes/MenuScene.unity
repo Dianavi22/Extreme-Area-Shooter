@@ -549,7 +549,7 @@ MonoBehaviour:
   m_Offset: {x: 0, y: 0, z: 0}
   duration: 1
   shakeshake: 1
-  m_Volume: {fileID: 0}
+  _playerHealth: {fileID: 0}
 --- !u!114 &154103436
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4544,7 +4544,7 @@ Light:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingLayerMask: 1
-  m_Lightmapping: 4
+  m_Lightmapping: 2
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
