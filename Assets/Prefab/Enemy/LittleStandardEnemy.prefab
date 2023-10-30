@@ -179,6 +179,7 @@ Transform:
   m_LocalScale: {x: 0.71716, y: 0.71716, z: 0.71716}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 7106944481588879615}
   - {fileID: 1034622821506807493}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -299,6 +300,9 @@ MonoBehaviour:
   m_CurrentHpEnemy: 0
   m_damageLittleEnemy: 1
   _damage: {fileID: 0}
+  _killParticules: {fileID: 1474756710905972329}
+  _gfxLittleEnemy: {fileID: 8163781176062173059}
+  _collider: {fileID: 1459947038528138345}
 --- !u!1 &3280132074275018292
 GameObject:
   m_ObjectHideFlags: 0
@@ -751,3 +755,70 @@ Transform:
   - {fileID: 6036402581186656599}
   m_Father: {fileID: 1518876156329345960}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &8590794284450437501
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1518876156329345960}
+    m_Modifications:
+    - target: {fileID: 1556083524935154050, guid: 4351aa5057d400449b7f5d04788c4141, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1556083524935154050, guid: 4351aa5057d400449b7f5d04788c4141, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1556083524935154050, guid: 4351aa5057d400449b7f5d04788c4141, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1556083524935154050, guid: 4351aa5057d400449b7f5d04788c4141, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1556083524935154050, guid: 4351aa5057d400449b7f5d04788c4141, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1556083524935154050, guid: 4351aa5057d400449b7f5d04788c4141, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1556083524935154050, guid: 4351aa5057d400449b7f5d04788c4141, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1556083524935154050, guid: 4351aa5057d400449b7f5d04788c4141, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1556083524935154050, guid: 4351aa5057d400449b7f5d04788c4141, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1556083524935154050, guid: 4351aa5057d400449b7f5d04788c4141, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2918294319750475011, guid: 4351aa5057d400449b7f5d04788c4141, type: 3}
+      propertyPath: m_Name
+      value: SparksLittleEnemy
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 4351aa5057d400449b7f5d04788c4141, type: 3}
+--- !u!198 &1474756710905972329 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 7156152224512696084, guid: 4351aa5057d400449b7f5d04788c4141, type: 3}
+  m_PrefabInstance: {fileID: 8590794284450437501}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &7106944481588879615 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1556083524935154050, guid: 4351aa5057d400449b7f5d04788c4141, type: 3}
+  m_PrefabInstance: {fileID: 8590794284450437501}
+  m_PrefabAsset: {fileID: 0}

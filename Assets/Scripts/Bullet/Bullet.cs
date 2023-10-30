@@ -6,19 +6,24 @@ public class Bullet : MonoBehaviour
 {
     private Collider playercollision;
     private Collider bulletcollision;
+    private Collider itemCollider;
     [SerializeField]
     public int m_DamageBullet = 1;
     void Start()
     {
         playercollision = FindObjectOfType<Player>().GetComponent<Collider>();
         bulletcollision = GetComponent<Collider>();
+
         StartCoroutine(DestroyBullet());
     }
 
     void Update()
     {
+       // itemCollider = FindObjectOfType<Item>().GetComponent<Collider>();
+
         Physics.IgnoreCollision(playercollision, bulletcollision);
         Physics.IgnoreCollision(bulletcollision, bulletcollision);
+       // Physics.IgnoreCollision(itemCollider, bulletcollision);
     }
 
     private void OnTriggerEnter(Collider other)

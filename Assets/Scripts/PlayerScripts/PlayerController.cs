@@ -22,6 +22,8 @@ public class PlayerController : MonoBehaviour
 
     private bool _isWalled;
     private Vector3 movementDirection;
+
+    public bool inMotion;
     private void Start()
     {
         _speed = baseSpeed;
@@ -30,11 +32,11 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-
         _rb.detectCollisions = true;
-        float horizontalInput = Input.GetAxis("Horizontal");
-        float verticalInput = Input.GetAxis("Vertical");
-
+        float horizontalInput = Input.GetAxisRaw("Horizontal");
+        float verticalInput = Input.GetAxisRaw("Vertical");
+        if (verticalInput == 0 && horizontalInput==0) { inMotion = false; }
+        else { inMotion = true; }
         movementDirection = new Vector3(horizontalInput, 0, verticalInput).normalized;
         var mousePos = Input.mousePosition;
         var wantedPos = Camera.main.ScreenToWorldPoint(new Vector3(mousePos.x, mousePos.y, Camera.main.transform.position.y));
@@ -87,7 +89,11 @@ public class PlayerController : MonoBehaviour
     private void FixedUpdate()
     {
         //_rb.position += movementDirection * _speed * Time.deltaTime;
-        transform.Translate(movementDirection * _speed * Time.deltaTime, Space.World);
+        // transform.position = Vector3.Lerp(transform.position, target.position, 0.1f);
+        if (inMotion)
+        {
+            transform.Translate(movementDirection * _speed * Time.smoothDeltaTime, Space.World);
+        }
     }
 
 

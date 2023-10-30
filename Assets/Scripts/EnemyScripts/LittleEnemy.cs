@@ -22,6 +22,10 @@ public class LittleEnemy : MonoBehaviour
     private GameManager _gameManager;
     private Timer _timer;
 
+    [SerializeField] ParticleSystem _killParticules;
+    [SerializeField] GameObject _gfxLittleEnemy;
+    [SerializeField] Collider _collider;
+
     private void Awake()
     {
         _rb = GetComponent<Rigidbody>();
@@ -39,13 +43,13 @@ public class LittleEnemy : MonoBehaviour
     {
         //Direction
         transform.position = Vector3.MoveTowards(this.transform.position, _targetPlayer.position, m_LittleEnemySpeed * Time.deltaTime);
-         _enemyDir = Vector3.MoveTowards(this.transform.position, _targetPlayer.position, m_LittleEnemySpeed * Time.deltaTime);
+        _enemyDir = Vector3.MoveTowards(this.transform.position, _targetPlayer.position, m_LittleEnemySpeed * Time.deltaTime);
 
         gameObject.transform.LookAt(_targetPlayer);
         //Rotation
         //Quaternion toRotation = Quaternion.LookRotation(_enemyDir, Vector3.up);
         //transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, 500 * Time.deltaTime);
-        if(_timer.seconds > 46)
+        if (_timer.seconds > 46)
         {
             m_LittleEnemySpeed = 6.3f;
         }
@@ -53,19 +57,18 @@ public class LittleEnemy : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-       
+
     }
 
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.collider.CompareTag("Bullet"))
         {
-                _gameManager.littleEnemyKilled++;
-                _gameManager.playerLevelUpgrade++;
-                _gameManager.playerScore = _gameManager.playerScore + 50;
-            _gameManager.ultCharge++;
-
-            Destroy(gameObject);
+            _killParticules.Play();
+            _collider.enabled = false;
+            _gfxLittleEnemy.SetActive(false);
+            Invoke("DestroyLittleEnemy", 1f);
+           
         }
         if (collision.collider.CompareTag("Player"))
         {
@@ -74,13 +77,23 @@ public class LittleEnemy : MonoBehaviour
         }
         if (collision.collider.CompareTag("Ulti"))
         {
-            Destroy(gameObject);
-            _gameManager.littleEnemyKilled++;
-            _gameManager.playerLevelUpgrade++;
-
+            _killParticules.Play();
+            _collider.enabled = false;
+            _gfxLittleEnemy.SetActive(false);
+            Invoke("DestroyLittleEnemy", 1f);
 
         }
     }
 
-   
+    private void DestroyLittleEnemy()
+    {
+        _gameManager.littleEnemyKilled++;
+        _gameManager.playerLevelUpgrade++;
+        _gameManager.playerScore = _gameManager.playerScore + 50;
+        _gameManager.ultCharge++;
+        Destroy(gameObject);
+
+    }
+
+
 }

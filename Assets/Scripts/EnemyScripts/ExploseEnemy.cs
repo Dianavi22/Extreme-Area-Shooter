@@ -23,6 +23,11 @@ public class ExploseEnemy : MonoBehaviour
     private GameManager _gameManager;
     private Timer _timer;
 
+    [SerializeField] ParticleSystem _explosionParticules;
+    [SerializeField] ParticleSystem _explosionFlash;
+    [SerializeField] GameObject _gfxSpeedEnemy;
+    [SerializeField] Collider _collider;
+
     private void Awake()
     {
         _rb = GetComponent<Rigidbody>();
@@ -61,7 +66,7 @@ public class ExploseEnemy : MonoBehaviour
             if (collider.tag == "Enemy")
             {
                 _gameManager.playerScore = _gameManager.playerScore + 100;
-                Destroy(gameObject);
+               // Destroy(gameObject);
                 if(collider.gameObject.tag == "Enemy")
                 {
                     Destroy(collider.gameObject);
@@ -99,23 +104,22 @@ public class ExploseEnemy : MonoBehaviour
     {
         if (collision.collider.CompareTag("Bullet"))
         {
+            PrepareExplode();
             ExplodeEnemy();
-            Destroy(gameObject);
-            _gameManager.speedEnemyKilled++;
-            _gameManager.ultCharge++;
-            _gameManager.playerLevelUpgrade = _gameManager.playerLevelUpgrade+5;
+            Invoke("DestroySpeedEnemy", 1.5f);
             
         }
         if (collision.collider.CompareTag("Player"))
         {
+            PrepareExplode();
             ExplodePlayer();
-            Destroy(gameObject);
+            Invoke("DestroySpeedEnemy", 1.5f);
         }
         if (collision.collider.CompareTag("Ulti"))
         {
-            _gameManager.speedEnemyKilled++;
-            _gameManager.speedEnemyKilled++;
-            Destroy(gameObject);
+            PrepareExplode();
+            ExplodeEnemy();
+            Invoke("DestroySpeedEnemy", 1.5f);
         }
     }
 
@@ -123,5 +127,22 @@ public class ExploseEnemy : MonoBehaviour
     {
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, explosionRadius);
+    }
+
+    private void PrepareExplode()
+    {
+        _explosionParticules.Play();
+        _explosionFlash.Play();
+        _gfxSpeedEnemy.SetActive(false);
+        _collider.enabled = false;
+        m_ExploseEnemySpeed = 0;
+    }
+
+    private void DestroySpeedEnemy()
+    {
+        Destroy(gameObject);
+        _gameManager.speedEnemyKilled++;
+        _gameManager.ultCharge++;
+        _gameManager.playerLevelUpgrade = _gameManager.playerLevelUpgrade + 5;
     }
 }
