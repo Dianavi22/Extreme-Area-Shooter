@@ -8,6 +8,7 @@ public class HealthBar : MonoBehaviour
 
     public static HealthBar healthBar;
     [SerializeField] PlayerHealth playerHealth;
+    [SerializeField] Ulti _ulti;
 
     [SerializeField] Slider hb1;
     [SerializeField] Slider hb2;
@@ -74,6 +75,24 @@ public class HealthBar : MonoBehaviour
         if (!playerHealth.isAlive)
         {
             hb4_life.SetActive(false);
+        }
+
+        if (_ulti.isRevived)
+        {
+            print("Revive");
+            hA1 = 35;
+            hA2 = 15;
+            hA3 = 35;
+            hA4 = 15;
+            hb1_life.SetActive(true);
+            hb2_life.SetActive(true);
+            hb3_life.SetActive(true);
+            hb4_life.SetActive(true);
+            UpdateHB();
+            UpdateHB2();
+            UpdateHB3();
+            UpdateHB4();
+            _ulti.isRevived = false;
         }
 
         //if (hA1 ==0 || hA2 <= 1)

@@ -30,23 +30,34 @@ public class Ulti : MonoBehaviour
     [SerializeField] ParticleSystem _ultBarPartSysteme;
 
     public PostProcessVolume ultiPostProcess;
-
+    [SerializeField] PlayerHealth _playerHealth;
+    [SerializeField] EnemySpawner _enemySpawner;
+    public bool isRevived;
     public GameObject ultiLight;
+
+    public bool isUltiBegin;
+    public bool isFirstTime = true;
+
+    private int _difficult = 0;
 
     void Start()
     {
         slider.value = 0;
         radiusGarlic = 0;
         _ultBarPartSysteme.Stop();
-
+        isRevived = false;
     }
 
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.E) && _gameManager.isUltCharged)
         {
-
+            _difficult++;
+            print(_difficult);
+            isUltiBegin = true;
+            UpSpawnRate();
             Garlic();
+            ReInitLifeBar();
             _ultBarPartSysteme.Stop();
             ultiPostProcess.weight = 1;
             ultiLight.SetActive(true);
@@ -70,9 +81,30 @@ public class Ulti : MonoBehaviour
             _currentSliderMaterial.material = _sliderEmptyMaterial;
 
         }
+        
 
 
+    }
 
+    public void UpSpawnRate()
+    {
+        if (isFirstTime)
+        {
+            _enemySpawner.m_Rate = 2f;
+            _enemySpawner.m_RateExploseEnemy = 1f;
+            _enemySpawner.m_RateBigEnemy = 0.6f;
+        }
+        isFirstTime = false;
+        _gameManager.maxUltCharge += 5;
+        _enemySpawner.m_Rate *= 1.3f; 
+        _enemySpawner.m_RateBigEnemy *= 1.3f; 
+        _enemySpawner.m_RateExploseEnemy *= 1.3f; 
+    }
+
+    public void ReInitLifeBar()
+    {
+        _playerHealth.m_currentHealth = _playerHealth.m_maxHealth;
+        isRevived = true;
     }
 
     public void UpdateUltBar()

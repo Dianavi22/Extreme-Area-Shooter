@@ -14,9 +14,7 @@ public class EnemySpawner : MonoBehaviour
     [SerializeField] private float m_Width;
 
     public float m_Rate = 1.5f;
-
     public float m_RateExploseEnemy = 0.5f;
-
     public float m_RateBigEnemy = 0.3f;
 
     [SerializeField] List<Spawner> spawners = new List<Spawner>();
@@ -27,6 +25,7 @@ public class EnemySpawner : MonoBehaviour
     private bool _isBigEnemyWave = true;
 
     [SerializeField] EventManager _eventManager;
+    [SerializeField] Ulti _ulti;
     public static EnemySpawner enemySpawner;
     private void Awake()
     {
@@ -43,7 +42,7 @@ public class EnemySpawner : MonoBehaviour
 
     void Update()
     {
-        if (_timer.seconds >= 60 && !_eventManager.isCurrentEvent)
+        if (_timer.seconds >= 60 && !_eventManager.isCurrentEvent && !_ulti.isUltiBegin)
         {
             m_Rate = 2f;
             m_RateExploseEnemy = 1f;

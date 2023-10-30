@@ -8972,7 +8972,7 @@ Light:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1432797789}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 10
   m_Type: 1
   m_Shape: 0
@@ -15940,6 +15940,7 @@ MonoBehaviour:
   - {fileID: 302333503}
   - {fileID: 608071585}
   _eventManager: {fileID: 405237232}
+  _ulti: {fileID: 1947599466}
 --- !u!1 &1750372169
 GameObject:
   m_ObjectHideFlags: 0
@@ -16562,6 +16563,7 @@ GameObject:
   - component: {fileID: 1895843127}
   - component: {fileID: 1895843129}
   - component: {fileID: 1895843128}
+  - component: {fileID: 1895843130}
   m_Layer: 5
   m_Name: Score
   m_TagString: Untagged
@@ -16686,6 +16688,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1895843126}
   m_CullTransparentMesh: 1
+--- !u!114 &1895843130
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1895843126}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3774195ff2580d347abea57d4d1e3e4f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startMarker: {fileID: 1895843127}
+  endMarker: {fileID: 2051495542}
+  speed: 1
+  isShaking: 0
 --- !u!1 &1900974298
 GameObject:
   m_ObjectHideFlags: 0
@@ -17197,7 +17215,12 @@ MonoBehaviour:
   sparksLaser: {fileID: 2037488447}
   _ultBarPartSysteme: {fileID: 1523753133}
   ultiPostProcess: {fileID: 2016624737}
+  _playerHealth: {fileID: 1378132737}
+  _enemySpawner: {fileID: 1744870671}
+  isRevived: 0
   ultiLight: {fileID: 204978950}
+  isUltiBegin: 0
+  isFirstTime: 0
 --- !u!1 &1992382696
 GameObject:
   m_ObjectHideFlags: 0
@@ -17770,6 +17793,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerHealth: {fileID: 1378132737}
+  _ulti: {fileID: 1947599466}
   hb1: {fileID: 42125701}
   hb2: {fileID: 865181154}
   hb3: {fileID: 1531351692}
@@ -18862,7 +18886,7 @@ AudioSource:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2138132212}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: e178f7614df6b734099a675e3e751dee, type: 3}

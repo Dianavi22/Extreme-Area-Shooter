@@ -8,7 +8,7 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField] HealthBar healthBar;
 
     [SerializeField]
-    private float m_maxHealth;
+    public float m_maxHealth;
     public float m_currentHealth;
     public static PlayerHealth instance;
 
