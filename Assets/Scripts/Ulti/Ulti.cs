@@ -35,6 +35,8 @@ public class Ulti : MonoBehaviour
     public bool isRevived;
     public GameObject ultiLight;
 
+    public Animation _pulsAnimation;
+
     public bool isUltiBegin;
     public bool isFirstTime = true;
 
@@ -82,7 +84,7 @@ public class Ulti : MonoBehaviour
 
         }
         
-
+       
 
     }
 
@@ -95,10 +97,12 @@ public class Ulti : MonoBehaviour
             _enemySpawner.m_RateBigEnemy = 0.6f;
         }
         isFirstTime = false;
-        _gameManager.maxUltCharge += 5;
-        _enemySpawner.m_Rate *= 1.3f; 
-        _enemySpawner.m_RateBigEnemy *= 1.3f; 
-        _enemySpawner.m_RateExploseEnemy *= 1.3f; 
+        _gameManager.maxUltCharge += 10;
+        _enemySpawner.m_Rate += 0.3f; 
+        _enemySpawner.m_RateBigEnemy += 0.3f; 
+        _enemySpawner.m_RateExploseEnemy += 0.3f;
+
+       
     }
 
     public void ReInitLifeBar()

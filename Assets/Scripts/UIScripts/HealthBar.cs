@@ -80,10 +80,10 @@ public class HealthBar : MonoBehaviour
         if (_ulti.isRevived)
         {
             print("Revive");
-            hA1 = 35;
-            hA2 = 15;
-            hA3 = 35;
-            hA4 = 15;
+            hA1 = 25;
+            hA2 = 5;
+            hA3 = 25;
+            hA4 = 5;
             hb1_life.SetActive(true);
             hb2_life.SetActive(true);
             hb3_life.SetActive(true);
@@ -130,22 +130,22 @@ public class HealthBar : MonoBehaviour
 
     }
 
-    public void UpdateHB() { hb1.value = hA1 / 35; }
-    public void UpdateHB2() { hb2.value = hA2 / 15; }
-    public void UpdateHB3() { hb3.value = hA3 / 35; }
-    public void UpdateHB4() { hb4.value = hA4 / 15; }
+    public void UpdateHB() { hb1.value = hA1 / 25; }
+    public void UpdateHB2() { hb2.value = hA2 / 5; }
+    public void UpdateHB3() { hb3.value = hA3 / 25; }
+    public void UpdateHB4() { hb4.value = hA4 / 5; }
 
     public void TakeDamageUI()
     {
         NotUnder0();
-        if (hA1 >= 0 && playerHealth.m_currentHealth >= 65)
+        if (hA1 >= 0 && playerHealth.m_currentHealth >= 58)
         {
             hA1 -= damage;
             NotUnder0();
             UpdateHB();
             SetActivSlider();
         }
-        else if (hA2 >= 0 && playerHealth.m_currentHealth < 65 && playerHealth.m_currentHealth >= 50)
+        else if (hA2 >= 0 && playerHealth.m_currentHealth < 58 && playerHealth.m_currentHealth >= 40)
         {
             hA2 -= damage;
             NotUnder0();
@@ -153,7 +153,7 @@ public class HealthBar : MonoBehaviour
             SetActivSlider();
             hb1_life.SetActive(false);
         }
-        else if (hA3 >= 0 && playerHealth.m_currentHealth < 50 && playerHealth.m_currentHealth >= 15)
+        else if (hA3 >= 0 && playerHealth.m_currentHealth < 40 && playerHealth.m_currentHealth >= 25)
         {
             hA3 -= damage;
             NotUnder0();
