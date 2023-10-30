@@ -50,7 +50,7 @@ public class StandardEnemy : MonoBehaviour
         //Rotation
         //Quaternion toRotation = Quaternion.LookRotation(_enemyDir, Vector3.up);
         //transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, 500 * Time.deltaTime);
-        if(_timer.seconds > 46)
+        if(_timer.seconds > 45.8)
         {
             m_StandardEnemySpeed = 6;
         }

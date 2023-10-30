@@ -33,7 +33,7 @@ public class BigEnemyMovement : MonoBehaviour
         _enemyDir = Vector3.MoveTowards(this.transform.position, _targetPlayer.position, _bigEnemySpeed * Time.deltaTime);
         gameObject.transform.LookAt(_targetPlayer);
 
-        if (_timer.seconds > 46)
+        if (_timer.seconds > 45.8)
         {
             _bigEnemySpeed = 4.2f;
         }

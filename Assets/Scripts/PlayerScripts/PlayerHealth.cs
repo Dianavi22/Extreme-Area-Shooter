@@ -26,6 +26,8 @@ public class PlayerHealth : MonoBehaviour
     public GameObject lightHurt;
     public PostProcessVolume postProcessVolume;
 
+    [SerializeField] private ParticleSystem _hurtParticuleSystem;
+
     private void Awake()
     {
         if(instance != null)
@@ -60,6 +62,7 @@ public class PlayerHealth : MonoBehaviour
     {
         if (!_isInvincible)
         {
+            _hurtParticuleSystem.Play();
             lightHurt.SetActive(true);
             postProcessVolume.weight = 1;
             _cameraController.shakeshake = true;

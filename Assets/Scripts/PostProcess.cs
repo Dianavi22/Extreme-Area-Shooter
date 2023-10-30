@@ -23,16 +23,7 @@ public class PostProcess : MonoBehaviour
 
     void Update()
     {
-        if (isGlitch)
-        {
-            test = Mathf.Lerp(1,0,t));
-
-        }
-        if (!isGlitch)
-        {
-            postProcessVolumeScreenFade.weight = 1;
-
-        }
+        
 
     }
 }

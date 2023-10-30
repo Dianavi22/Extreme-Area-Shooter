@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering.PostProcessing;
 using UnityEngine.UI;
 
 public class Ulti : MonoBehaviour
@@ -26,6 +27,8 @@ public class Ulti : MonoBehaviour
     public ParticleSystem flashLaser;
     public ParticleSystem sparksLaser;
 
+    public PostProcessVolume ultiPostProcess;
+
     public GameObject ultiLight;
 
     void Start()
@@ -39,7 +42,9 @@ public class Ulti : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.E) && _gameManager.isUltCharged)
         {
+
             Garlic();
+            ultiPostProcess.weight = 1;
             ultiLight.SetActive(true);
             flashLaser.Play();
             sparksLaser.Play();
