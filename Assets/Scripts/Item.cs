@@ -18,16 +18,18 @@ public class Item : MonoBehaviour
         if (collision.collider.CompareTag("Player"))
         {
             Destroy(gameObject);
-            // _radiusItem.gameObject.SetActive(true);
             _gameManager.TakeItem();
         }
     }
-
+    
     IEnumerator DestroyItem()
     {
         yield return new WaitForSeconds(5f);
         Destroy(gameObject);
     }
+    private void OnTriggerEnter(Collider other)
+    {
+        
+    }
 
-    
 }

@@ -19,7 +19,9 @@ public class Bullet : MonoBehaviour
 
     void Update()
     {
-       // itemCollider = FindObjectOfType<Item>().GetComponent<Collider>();
+
+       
+        // itemCollider = FindObjectOfType<Item>().GetComponent<Collider>();
 
         Physics.IgnoreCollision(playercollision, bulletcollision);
         Physics.IgnoreCollision(bulletcollision, bulletcollision);
@@ -43,6 +45,12 @@ public class Bullet : MonoBehaviour
         if (collision.collider.CompareTag("Enemy"))
         {
             Destroy(gameObject);
+        }
+
+        if (collision.gameObject.tag == "Item")
+        {
+            Destroy(gameObject);
+
         }
     }
 
