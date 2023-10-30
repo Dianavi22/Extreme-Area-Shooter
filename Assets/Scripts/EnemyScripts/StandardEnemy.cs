@@ -25,6 +25,8 @@ public class StandardEnemy : MonoBehaviour
     private GameManager _gameManager;
     private Timer _timer;
 
+    private bool _isDestroy = false; 
+
     private void Awake()
     {
         _collider = GetComponent<Collider>();
@@ -46,11 +48,14 @@ public class StandardEnemy : MonoBehaviour
         transform.position = Vector3.MoveTowards(this.transform.position, _targetPlayer.position, m_StandardEnemySpeed * Time.deltaTime);
          _enemyDir = Vector3.MoveTowards(this.transform.position, _targetPlayer.position, m_StandardEnemySpeed * Time.deltaTime);
 
-        gameObject.transform.LookAt(_targetPlayer);
+        if (!_isDestroy)
+        {
+            gameObject.transform.LookAt(_targetPlayer);
+        }
         //Rotation
         //Quaternion toRotation = Quaternion.LookRotation(_enemyDir, Vector3.up);
         //transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, 500 * Time.deltaTime);
-        if(_timer.seconds > 45.8)
+        if (_timer.seconds > 45.8)
         {
             m_StandardEnemySpeed = 6;
         }
@@ -65,6 +70,7 @@ public class StandardEnemy : MonoBehaviour
     {
         if (collision.collider.CompareTag("Bullet"))
         {
+            _isDestroy = true;
             _collider.enabled = false;
             _rb.freezeRotation = true;
             m_StandardEnemySpeed = 0;
@@ -75,12 +81,14 @@ public class StandardEnemy : MonoBehaviour
         }
         if (collision.collider.CompareTag("Player"))
         {
+            _isDestroy = true;
             _sparks.Play();
             Destroy(gameObject);
             _damage.TakeDamage();
         }
         if (collision.collider.CompareTag("Ulti"))
         {
+            _isDestroy = true;
             _collider.enabled = false;
             _rb.freezeRotation = true;
             m_StandardEnemySpeed = 0;

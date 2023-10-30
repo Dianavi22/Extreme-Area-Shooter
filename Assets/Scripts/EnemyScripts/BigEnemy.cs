@@ -23,6 +23,8 @@ public class BigEnemy : MonoBehaviour
     [SerializeField] BigEnemyMovement _BigEnemyMove;
     [SerializeField] float _speedBigEnemy;
 
+    [SerializeField] BigEnemyMovement _bigEnemyMovement;
+
     private void Awake()
     {
         _damage = FindObjectOfType<Player>().GetComponent<PlayerHealth>();

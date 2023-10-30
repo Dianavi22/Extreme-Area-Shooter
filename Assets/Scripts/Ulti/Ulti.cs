@@ -27,6 +27,8 @@ public class Ulti : MonoBehaviour
     public ParticleSystem flashLaser;
     public ParticleSystem sparksLaser;
 
+    [SerializeField] ParticleSystem _ultBarPartSysteme;
+
     public PostProcessVolume ultiPostProcess;
 
     public GameObject ultiLight;
@@ -35,6 +37,7 @@ public class Ulti : MonoBehaviour
     {
         slider.value = 0;
         radiusGarlic = 0;
+        _ultBarPartSysteme.Stop();
 
     }
 
@@ -44,6 +47,7 @@ public class Ulti : MonoBehaviour
         {
 
             Garlic();
+            _ultBarPartSysteme.Stop();
             ultiPostProcess.weight = 1;
             ultiLight.SetActive(true);
             flashLaser.Play();
@@ -58,8 +62,11 @@ public class Ulti : MonoBehaviour
         if(slider.value == 1)
         {
             _currentSliderMaterial.material = _sliderCompleteMaterial;
+            _ultBarPartSysteme.Play();
+
         }
-        else{
+        else
+        {
             _currentSliderMaterial.material = _sliderEmptyMaterial;
 
         }

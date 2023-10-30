@@ -26,6 +26,8 @@ public class LittleEnemy : MonoBehaviour
     [SerializeField] GameObject _gfxLittleEnemy;
     [SerializeField] Collider _collider;
 
+    private bool _isDestroy;
+
     private void Awake()
     {
         _rb = GetComponent<Rigidbody>();
@@ -44,8 +46,11 @@ public class LittleEnemy : MonoBehaviour
         //Direction
         transform.position = Vector3.MoveTowards(this.transform.position, _targetPlayer.position, m_LittleEnemySpeed * Time.deltaTime);
         _enemyDir = Vector3.MoveTowards(this.transform.position, _targetPlayer.position, m_LittleEnemySpeed * Time.deltaTime);
+        if (!_isDestroy)
+        {
+            gameObject.transform.LookAt(_targetPlayer);
 
-        gameObject.transform.LookAt(_targetPlayer);
+        }
         //Rotation
         //Quaternion toRotation = Quaternion.LookRotation(_enemyDir, Vector3.up);
         //transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, 500 * Time.deltaTime);
@@ -64,6 +69,7 @@ public class LittleEnemy : MonoBehaviour
     {
         if (collision.collider.CompareTag("Bullet"))
         {
+            _isDestroy = true;
             _killParticules.Play();
             _collider.enabled = false;
             _gfxLittleEnemy.SetActive(false);
@@ -77,6 +83,8 @@ public class LittleEnemy : MonoBehaviour
         }
         if (collision.collider.CompareTag("Ulti"))
         {
+            _isDestroy = true;
+
             _killParticules.Play();
             _collider.enabled = false;
             _gfxLittleEnemy.SetActive(false);

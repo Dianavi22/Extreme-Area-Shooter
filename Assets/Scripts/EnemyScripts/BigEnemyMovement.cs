@@ -12,7 +12,7 @@ public class BigEnemyMovement : MonoBehaviour
     public float _bigEnemySpeed = 2;
 
     [SerializeField] private Timer _timer;
-
+    [SerializeField] private BigEnemy _bigEnemy;
     private void Awake()
     {
         _timer = FindObjectOfType<Timer>().GetComponent<Timer>();
@@ -29,14 +29,17 @@ public class BigEnemyMovement : MonoBehaviour
         try
         {
 
-        transform.position = Vector3.MoveTowards(this.transform.position, _targetPlayer.position, _bigEnemySpeed * Time.deltaTime);
-        _enemyDir = Vector3.MoveTowards(this.transform.position, _targetPlayer.position, _bigEnemySpeed * Time.deltaTime);
-        gameObject.transform.LookAt(_targetPlayer);
+            transform.position = Vector3.MoveTowards(this.transform.position, _targetPlayer.position, _bigEnemySpeed * Time.deltaTime);
+            _enemyDir = Vector3.MoveTowards(this.transform.position, _targetPlayer.position, _bigEnemySpeed * Time.deltaTime);
+            
+                gameObject.transform.LookAt(_targetPlayer);
 
-        if (_timer.seconds > 45.8)
-        {
-            _bigEnemySpeed = 4.2f;
-        }
+            
+
+            if (_timer.seconds > 45.8)
+            {
+                _bigEnemySpeed = 4.2f;
+            }
         }
         catch
         {

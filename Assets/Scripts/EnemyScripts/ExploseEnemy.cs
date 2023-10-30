@@ -28,6 +28,8 @@ public class ExploseEnemy : MonoBehaviour
     [SerializeField] GameObject _gfxSpeedEnemy;
     [SerializeField] Collider _collider;
 
+    private bool _isDestroy = false;
+
     private void Awake()
     {
         _rb = GetComponent<Rigidbody>();
@@ -47,10 +49,13 @@ public class ExploseEnemy : MonoBehaviour
 
         transform.position = Vector3.MoveTowards(this.transform.position, _targetPlayer.position, m_ExploseEnemySpeed * Time.deltaTime);
         _enemyDir = Vector3.MoveTowards(this.transform.position, _targetPlayer.position, m_ExploseEnemySpeed * Time.deltaTime);
+        if (!_isDestroy)
+        {
+            gameObject.transform.LookAt(_targetPlayer);
 
-        gameObject.transform.LookAt(_targetPlayer);
+        }
 
-        if(_timer.seconds > 45.8)
+        if (_timer.seconds > 45.8)
         {
             m_ExploseEnemySpeed = 12;
         }
@@ -131,6 +136,7 @@ public class ExploseEnemy : MonoBehaviour
 
     private void PrepareExplode()
     {
+        _isDestroy = true;
         _explosionParticules.Play();
         _explosionFlash.Play();
         _gfxSpeedEnemy.SetActive(false);
