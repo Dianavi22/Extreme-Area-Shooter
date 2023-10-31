@@ -28,6 +28,11 @@ public class Ulti : MonoBehaviour
     public ParticleSystem sparksLaser;
 
     [SerializeField] ParticleSystem _ultBarPartSysteme;
+    public ParticleSystem ultPartSysteme1;
+    public ParticleSystem ultPartSysteme2;
+    public ParticleSystem ultPartSysteme3;
+    public ParticleSystem ultPartSysteme4;
+    public ParticleSystem ultPartSysteme5;
 
     public PostProcessVolume ultiPostProcess;
     [SerializeField] PlayerHealth _playerHealth;
@@ -42,6 +47,8 @@ public class Ulti : MonoBehaviour
 
     private int _difficult = 0;
 
+
+
     void Start()
     {
         slider.value = 0;
@@ -52,19 +59,14 @@ public class Ulti : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E) && _gameManager.isUltCharged)
+        if (Input.GetKeyDown(KeyCode.E) && _gameManager.isUltCharged && _playerHealth.isAlive)
         {
+            VisuelUlti();
             _difficult++;
-            print(_difficult);
             isUltiBegin = true;
             UpSpawnRate();
             Garlic();
             ReInitLifeBar();
-            _ultBarPartSysteme.Stop();
-            ultiPostProcess.weight = 1;
-            ultiLight.SetActive(true);
-            flashLaser.Play();
-            sparksLaser.Play();
             _scale.LaunchUlti();
             _gameManager.ultCharge = 0;
             UpdateUltBar();
@@ -84,7 +86,23 @@ public class Ulti : MonoBehaviour
 
         }
         
-       
+    }
+
+    public void VisuelUlti()
+    {
+        ultPartSysteme1.Play();
+        ultPartSysteme2.Play();
+        ultPartSysteme3.Play();
+        ultPartSysteme4.Play();
+        ultPartSysteme5.Play();
+
+        _ultBarPartSysteme.Stop();
+
+        ultiLight.SetActive(true);
+        flashLaser.Play();
+        sparksLaser.Play();
+
+        ultiPostProcess.weight = 1;
 
     }
 

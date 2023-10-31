@@ -27,6 +27,10 @@ public class PlayerHealth : MonoBehaviour
     public PostProcessVolume postProcessVolume;
 
     [SerializeField] private ParticleSystem _hurtParticuleSystem;
+    public ParticleSystem hurtSideParticules1;
+    public ParticleSystem hurtSideParticules2;
+    public ParticleSystem hurtSideParticules3;
+    public ParticleSystem hurtSideParticules4;
 
     public int current_damage;
     private void Awake()
@@ -63,11 +67,8 @@ public class PlayerHealth : MonoBehaviour
     {
         if (!_isInvincible)
         {
-            _hurtParticuleSystem.Play();
-            lightHurt.SetActive(true);
-            postProcessVolume.weight = 1;
-            _cameraController.shakeshake = true;
-            _cameraController.duration = 0.4f;
+            ParticulesDamage();
+            _gameManager.combo = 0;
             healthBar.damage = 5;
             healthBar.TakeDamageUI();
             m_currentHealth = m_currentHealth - 5;
@@ -90,8 +91,7 @@ public class PlayerHealth : MonoBehaviour
 
         if (!_isInvincible)
         {
-
-            _cameraController.shakeshake = true;
+            ParticulesDamage();
             healthBar.damage = 15;
             healthBar.TakeDamageUI();
             m_currentHealth = m_currentHealth - 15;
@@ -111,6 +111,19 @@ public class PlayerHealth : MonoBehaviour
     {
         yield return new WaitForSeconds(1.5f);
         _isInvincible = false;
+    }
+
+    public void ParticulesDamage()
+    {
+        postProcessVolume.weight = 1;
+        _cameraController.shakeshake = true;
+        _cameraController.duration = 0.4f;
+        lightHurt.SetActive(true);
+        _hurtParticuleSystem.Play();
+        hurtSideParticules1.Play();
+        hurtSideParticules2.Play();
+        hurtSideParticules3.Play();
+        hurtSideParticules4.Play();
     }
 
 

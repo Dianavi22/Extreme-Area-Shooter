@@ -56,7 +56,16 @@ public class CameraController : MonoBehaviour
             yield return null;
         }
         _playerHealth.postProcessVolume.weight = 0;
-        _playerHealth.lightHurt.SetActive(false);
+        StopHurt();
         transform.position = startPosition;
+    }
+
+    public void StopHurt()
+    {
+        _playerHealth.lightHurt.SetActive(false);
+        _playerHealth.hurtSideParticules1.Stop();
+        _playerHealth.hurtSideParticules2.Stop();
+        _playerHealth.hurtSideParticules3.Stop();
+        _playerHealth.hurtSideParticules4.Stop();
     }
 }

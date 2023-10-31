@@ -101,6 +101,7 @@ public class StandardEnemy : MonoBehaviour
     private void DieEnemy()
     {
         Destroy(gameObject);
+        _gameManager.combo++;
         _gameManager.standardEnemyKilled++;
         _gameManager.ultCharge++;
         _gameManager.playerLevelUpgrade++;

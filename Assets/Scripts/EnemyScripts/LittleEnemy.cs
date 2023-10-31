@@ -95,6 +95,7 @@ public class LittleEnemy : MonoBehaviour
 
     private void DestroyLittleEnemy()
     {
+        _gameManager.combo++;
         _gameManager.littleEnemyKilled++;
         _gameManager.playerLevelUpgrade++;
         _gameManager.playerScore = _gameManager.playerScore + 50;

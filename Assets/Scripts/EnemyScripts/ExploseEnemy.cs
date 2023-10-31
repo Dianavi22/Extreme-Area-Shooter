@@ -91,6 +91,7 @@ public class ExploseEnemy : MonoBehaviour
                 if (collider.tag == "Enemy")
                 {
                     Destroy(collider.gameObject);
+                    _gameManager.combo++;
                 }
                 else
                 {
@@ -146,6 +147,7 @@ public class ExploseEnemy : MonoBehaviour
 
     private void DestroySpeedEnemy()
     {
+        _gameManager.combo++;
         Destroy(gameObject);
         _gameManager.speedEnemyKilled++;
         _gameManager.ultCharge++;

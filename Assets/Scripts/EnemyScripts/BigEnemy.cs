@@ -64,7 +64,7 @@ public class BigEnemy : MonoBehaviour
         if(m_CurrentHpBigEnemy <= 0)
         {
             _gameManager.ultCharge++;
-
+            _gameManager.combo++;
             _gameManager.bigEnemyKilled++;
             _gameManager.playerLevelUpgrade = _gameManager.playerLevelUpgrade + 3;
             _speedBigEnemy = 0;

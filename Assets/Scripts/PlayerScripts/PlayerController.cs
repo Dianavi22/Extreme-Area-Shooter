@@ -24,6 +24,10 @@ public class PlayerController : MonoBehaviour
     private Vector3 movementDirection;
 
     public bool inMotion;
+
+    [SerializeField] ParticleSystem _dashParticleSystem;
+
+    [SerializeField] private ParticleSystem _takeItemParticules;
     private void Start()
     {
         _speed = baseSpeed;
@@ -49,6 +53,7 @@ public class PlayerController : MonoBehaviour
             {
                 _speed = _dashSpeed;
                 dashCounter = dashLenght;
+                _dashParticleSystem.Play();
             }
         }
         if (dashCounter > 0)
@@ -77,7 +82,10 @@ public class PlayerController : MonoBehaviour
             _isWalled = true;
         }
 
-       
+        if (collision.collider.CompareTag("Item"))
+        {
+            _takeItemParticules.Play();
+        }
     }
     private void OnCollisionExit(Collision collision)
     {
@@ -86,13 +94,14 @@ public class PlayerController : MonoBehaviour
             _isWalled = false;
         }
     }
+
     private void FixedUpdate()
     {
         //_rb.position += movementDirection * _speed * Time.deltaTime;
         // transform.position = Vector3.Lerp(transform.position, target.position, 0.1f);
         if (inMotion)
         {
-            transform.Translate(movementDirection * _speed * Time.smoothDeltaTime, Space.World);
+            transform.Translate(movementDirection * _speed * Time.deltaTime, Space.World);
         }
     }
 

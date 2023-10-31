@@ -47,13 +47,20 @@ public class GameManager : MonoBehaviour
     [SerializeField, HideInInspector] GameObject _enemySpawner;
 
     public bool isCurrentItem;
+
+    [SerializeField] ParticleSystem _partCombo;
+    [SerializeField] ParticleSystem _partBigCombo;
+    // [SerializeField] GameObject _animComboGO;
+    [SerializeField] Animator _animCombo;
+
+    public int combo;
     private void Awake()
     {
         //  _playerHealth = GetComponent<PlayerHealth>();
         _playerController = _player.GetComponent<PlayerController>();
         _playerHealth = _player.GetComponent<PlayerHealth>();
 
-
+       // _animCombo = _animComboGO.GetComponent<Animator>();
 
     }
     void Start()
@@ -72,6 +79,27 @@ public class GameManager : MonoBehaviour
             GameOver();
         }
         _playerScoreUI.text = playerScore.ToString();
+
+        if(combo >= 40 && _playerHealth.isAlive)
+        {
+            _partCombo.Play();
+            _animCombo.enabled = true;
+        }
+        else
+        {
+            _partCombo.Stop();
+            _animCombo.enabled = false;
+        }
+
+        if (combo >= 60 && _playerHealth.isAlive)
+        {
+            _partBigCombo.Play();
+        }
+        else
+        {
+            _partBigCombo.Stop();
+
+        }
 
         #region LevelWeapon
         if (playerLevelUpgrade >= 30)
