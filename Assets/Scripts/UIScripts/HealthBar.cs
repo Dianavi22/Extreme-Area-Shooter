@@ -50,47 +50,13 @@ public class HealthBar : MonoBehaviour
     void Update()
     {
         pv = playerHealth.m_currentHealth;
-        #region InputTest
-        //if (Input.GetKeyDown(KeyCode.J))
-        //{
-
-        //    TakeDamageUI();
-        //    if (_isReTakeDamage)
-        //    {
-
-        //        TakeDamageUI();
-        //        _isReTakeDamage = false;
-        //    }
-        //}
-        //if (Input.GetKeyDown(KeyCode.H))
-        //{
-        //    TakeHealUI();
-        //}
-        //if (Input.GetKeyDown(KeyCode.P))
-        //{
-        //    damage = 3;
-        //}
-        //if (Input.GetKeyDown(KeyCode.O))
-        //{
-
-        //    damage = 13;
-        //}
-        #endregion
-
-        if (!playerHealth.isAlive)
-        {
-            hb4_life.SetActive(false);
-        }
-
-        damage = playerHealth.current_damage;
 
         if (_ulti.isRevived)
         {
-            print("Revive");
-            hA1 = 25;
-            hA2 = 5;
-            hA3 = 25;
-            hA4 = 5;
+            hA1 = 1;
+            hA2 = 1;
+            hA3 = 1;
+            hA4 = 1;
             hb1_life.SetActive(true);
             hb2_life.SetActive(true);
             hb3_life.SetActive(true);
@@ -102,126 +68,77 @@ public class HealthBar : MonoBehaviour
             _ulti.isRevived = false;
         }
 
-        //if (hA1 ==0 || hA2 <= 1)
-        //{
-        //    hb1_life.SetActive(false);
-        //}
-        //else
-        //{
-        //    hb1_life.SetActive(true);
-        //}
-        //if (hA3 <= 1 || hA2 == 0)
-        //{
-        //    hb1_life.SetActive(false);
-        //    hb2_life.SetActive(false);
-
-        //}
-        //else
-        //{
-        //    hb1_life.SetActive(true);
-        //    hb2_life.SetActive(true);
-        //}
-        //if (hA4 <= 1 || hA3 == 0)
-        //{
-        //    hb1_life.SetActive(false);
-        //    hb2_life.SetActive(false);
-        //    hb3_life.SetActive(false);
-        //}
-        //else
-        //{
-        //    hb1_life.SetActive(true);
-        //    hb2_life.SetActive(true);
-        //    hb3_life.SetActive(true);
-        //}
-
-
     }
 
-    public void UpdateHB() { hb1.value = hA1 / 25; }
-    public void UpdateHB2() { hb2.value = hA2 / 5; }
-    public void UpdateHB3() { hb3.value = hA3 / 25; }
-    public void UpdateHB4() { hb4.value = hA4 / 5; }
+    public void UpdateHB() { hb1.value = hA1 / 1; }
+    public void UpdateHB2() { hb2.value = hA2 / 1; }
+    public void UpdateHB3() { hb3.value = hA3 / 1; }
+    public void UpdateHB4() { hb4.value = hA4 / 1; }
 
     public void TakeDamageUI()
     {
-        NotUnder0();
-        if (hA1 >= 0 && playerHealth.m_currentHealth >= 49)
+        print("m_currentHealth : " + playerHealth.m_currentHealth);
+        if (playerHealth.m_currentHealth == 5)
         {
-            hA1 -= damage;
-           // NotUnder0();
+            hb1.value = 1;
+            hb2.value = 1;
+            hb3.value = 1;
+            hb4.value = 1;
+            hb1_life.SetActive(true);
+            hb2_life.SetActive(true);
+            hb3_life.SetActive(true);
+            hb4_life.SetActive(true);
+
+        }
+        else if (playerHealth.m_currentHealth == 4)
+        {
+            hb1.value = 0;
             UpdateHB();
-           // SetActivSlider();
-        }
-        else if (hA2 >= 0 && playerHealth.m_currentHealth < 49 && playerHealth.m_currentHealth >= 40)
-        {
-            hA1 = 0;
-            hA2 -= damage;
-          //  NotUnder0();
-            UpdateHB2();
-           // SetActivSlider();
             hb1_life.SetActive(false);
+
+
         }
-        else if (hA3 >= 0 && playerHealth.m_currentHealth < 40 && playerHealth.m_currentHealth >= 15)
+        else if (playerHealth.m_currentHealth == 3)
         {
-            hA1 = 0;
-            hA2 = 0;
-            hA3 -= damage;
-          //  NotUnder0();
-            UpdateHB3();
-           // SetActivSlider();
+            hb1.value = 0;
+            hb2.value = 0;
+            UpdateHB2();
             hb1_life.SetActive(false);
             hb2_life.SetActive(false);
 
         }
-        else
+        else if (playerHealth.m_currentHealth == 2)
         {
-            hA1 = 0;
-            hA2 = 0;
-            hA3 = 0;
-            hA4 -= damage;
-           // NotUnder0();
-            UpdateHB4();
-           // SetActivSlider();
+            hb1.value = 0;
+            hb2.value = 0;
+            hb3.value = 0;
+            UpdateHB3();
             hb1_life.SetActive(false);
             hb2_life.SetActive(false);
             hb3_life.SetActive(false);
 
         }
-
-    }
-
-    public void TakeHealUI()
-    {
-        NotUnder0();
-        if (hA1 >= 0 && playerHealth.m_currentHealth > 65)
+        else if(playerHealth.m_currentHealth == 1)
         {
-            hA1 += heal;
-            NotUnder0();
-            UpdateHB();
-            SetActivSlider();
-        }
-        else if (hA2 >= 0 && playerHealth.m_currentHealth <= 65 && playerHealth.m_currentHealth > 50)
-        {
-            hA2 += heal;
-            NotUnder0();
-            UpdateHB2();
-            SetActivSlider();
-        }
-        else if (hA3 >= 0 && playerHealth.m_currentHealth <= 50 && playerHealth.m_currentHealth > 15)
-        {
-            hA3 += heal;
-            NotUnder0();
-            UpdateHB3();
-            SetActivSlider();
-        }
-        else
-        {
-            hA4 += heal;
+            hb1.value = 0;
+            hb2.value = 0;
+            hb3.value = 0;
+            hb4.value = 0;
             UpdateHB4();
-            SetActivSlider();
+            hb1_life.SetActive(false);
+            hb2_life.SetActive(false);
+            hb3_life.SetActive(false);
+            hb4_life.SetActive(false);
+
         }
+
     }
 
+
+
+
+
+    #region OldHealthBarSystemeFunctions
     public void NotUnder0()
     {
         if (hA1 < 0)
@@ -252,7 +169,7 @@ public class HealthBar : MonoBehaviour
             hA4 = 0;
             _isReTakeDamage = true;
         }
-       
+
         if (hA1 > 35) { hA1 = 35; }
         if (hA2 > 15) { hA2 = 15; }
         if (hA3 > 35) { hA3 = 35; }
@@ -275,5 +192,5 @@ public class HealthBar : MonoBehaviour
         if (hA4 > 0) { hb4_life.SetActive(true); }
         else { hb4_life.SetActive(false); }
     }
-
+    #endregion
 }

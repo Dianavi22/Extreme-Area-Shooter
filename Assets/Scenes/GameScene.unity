@@ -18599,6 +18599,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1432797789}
     - target: {fileID: 1873544119, guid: 549d85752e48acb45abb2f350ee2c5a2, type: 3}
+      propertyPath: m_maxHealth
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1873544119, guid: 549d85752e48acb45abb2f350ee2c5a2, type: 3}
       propertyPath: _gameManager
       value: 
       objectReference: {fileID: 405237230}
@@ -19779,7 +19783,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!82 &2138132213
 AudioSource:
   m_ObjectHideFlags: 0

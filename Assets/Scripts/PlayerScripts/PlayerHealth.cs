@@ -8,7 +8,7 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField] HealthBar healthBar;
 
     [SerializeField]
-    public float m_maxHealth = 60;
+    public float m_maxHealth = 5;
     public float m_currentHealth;
     public static PlayerHealth instance;
 
@@ -32,7 +32,6 @@ public class PlayerHealth : MonoBehaviour
     public ParticleSystem hurtSideParticules3;
     public ParticleSystem hurtSideParticules4;
 
-    public int current_damage;
     private void Awake()
     {
         if(instance != null)
@@ -69,10 +68,9 @@ public class PlayerHealth : MonoBehaviour
         {
             ParticulesDamage();
             _gameManager.combo = 0;
-            healthBar.damage = 5;
+            m_currentHealth = m_currentHealth - 1;
+
             healthBar.TakeDamageUI();
-            m_currentHealth = m_currentHealth - 5;
-            current_damage = 5;
             if (m_currentHealth <= 0)
             {
                 isAlive = false;
@@ -92,10 +90,10 @@ public class PlayerHealth : MonoBehaviour
         if (!_isInvincible)
         {
             ParticulesDamage();
-            healthBar.damage = 15;
+            if(m_currentHealth == 2) { m_currentHealth++; }
+            m_currentHealth = m_currentHealth - 2;
+            
             healthBar.TakeDamageUI();
-            m_currentHealth = m_currentHealth - 15;
-            current_damage = 15;
             if (m_currentHealth <= 0)
             {
                 isAlive = false;
