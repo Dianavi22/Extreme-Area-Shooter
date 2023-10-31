@@ -319,7 +319,7 @@ GameObject:
   - component: {fileID: 2576314732101221074}
   m_Layer: 0
   m_Name: Capsule (2)
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -402,7 +402,7 @@ GameObject:
   - component: {fileID: 2653835139557358195}
   m_Layer: 0
   m_Name: Capsule
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -485,7 +485,7 @@ GameObject:
   - component: {fileID: 1633326356809708285}
   m_Layer: 0
   m_Name: Capsule (3)
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -568,7 +568,7 @@ GameObject:
   - component: {fileID: 5372312378853321378}
   m_Layer: 0
   m_Name: Sphere
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -650,7 +650,7 @@ GameObject:
   - component: {fileID: 1034622821506807493}
   m_Layer: 0
   m_Name: Gfx
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -738,6 +738,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SparksSpeedEnemy
       objectReference: {fileID: 0}
+    - target: {fileID: 3780116174046408099, guid: d5b564fb0bc96f5469e638aae237269e, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -804,6 +808,10 @@ PrefabInstance:
     - target: {fileID: 4356392346892532603, guid: da2615f68b343d44385d568f32e25ed6, type: 3}
       propertyPath: m_Name
       value: FlashSpeedEnemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 4356392346892532603, guid: da2615f68b343d44385d568f32e25ed6, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

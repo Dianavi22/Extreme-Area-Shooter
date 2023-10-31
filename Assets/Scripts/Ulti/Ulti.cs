@@ -47,12 +47,11 @@ public class Ulti : MonoBehaviour
 
     private int _difficult = 0;
 
-
+    public ParticleSystem garlicParticules;
 
     void Start()
     {
         slider.value = 0;
-        radiusGarlic = 0;
         _ultBarPartSysteme.Stop();
         isRevived = false;
     }
@@ -73,8 +72,19 @@ public class Ulti : MonoBehaviour
             _gameManager.isUltCharged = false;
             _gameManager.OldUltCharge = 0;
         }
+        if(radiusGarlic == 7)
+        {
+            colliders = Physics.OverlapSphere(_player.transform.position, radiusGarlic);
+            foreach (Collider collider in colliders)
+            {
+                if (collider.tag == "Enemy")
+                {
+                    Destroy(collider.gameObject);
 
-        if(slider.value == 1)
+                }
+            }
+        }
+        if (slider.value == 1)
         {
             _currentSliderMaterial.material = _sliderCompleteMaterial;
             _ultBarPartSysteme.Play();
@@ -137,16 +147,7 @@ public class Ulti : MonoBehaviour
     public void Garlic()
     {
         radiusGarlic = 7;
-        colliders = Physics.OverlapSphere(_player.transform.position, radiusGarlic);
-        foreach (Collider collider in colliders)
-        {
-            if (collider.tag == "Enemy")
-            {
-               // print("ENEMY IN RADIUS");
-                Destroy(collider.gameObject);
-
-            }
-        }
+        garlicParticules.Play();
     }
 
     private void OnDrawGizmosSelected()

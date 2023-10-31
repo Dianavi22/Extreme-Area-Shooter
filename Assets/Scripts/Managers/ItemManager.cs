@@ -15,6 +15,7 @@ public class ItemManager : MonoBehaviour
     [SerializeField] GameObject canonSup1;
     [SerializeField] GameObject canonSup2;
 
+    [SerializeField] ParticleSystem _shieldParticules;
 
     private void Update()
     {
@@ -43,9 +44,9 @@ public class ItemManager : MonoBehaviour
     {
         StartCoroutine(EndItem());
         colliders = Physics.OverlapSphere(_player.transform.position, radiusGarlic);
+        _shieldParticules.Play();
         foreach (Collider collider in colliders)
         {
-
             if (collider.tag == "Enemy")
             {
                 Destroy(collider.gameObject);
@@ -69,5 +70,7 @@ public class ItemManager : MonoBehaviour
         isMegaBallsItem = false;
         isDobleCanonItem = false;
         _gameManager.isCurrentItem = false;
+        _shieldParticules.Play();
+        _shieldParticules.Stop();
     }
 }

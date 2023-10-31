@@ -12,6 +12,7 @@ public class EventManager : MonoBehaviour
     private bool isCurrentEventReady = false;
     private bool isEventStarting = true;
 
+
     void Start()
     {
         

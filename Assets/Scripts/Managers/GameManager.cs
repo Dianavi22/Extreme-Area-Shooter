@@ -54,6 +54,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] Animator _animCombo;
 
     public int combo;
+    private bool _isPlayingPart;
+    private bool _isPlayingBigPart;
     private void Awake()
     {
         //  _playerHealth = GetComponent<PlayerHealth>();
@@ -74,31 +76,34 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        if (!_playerHealth.isAlive)
+        if (!_playerHealth.isAlive )
         {
             GameOver();
         }
         _playerScoreUI.text = playerScore.ToString();
 
-        if(combo >= 40 && _playerHealth.isAlive)
+        if(combo >= 40 && _playerHealth.isAlive && !_isPlayingPart)
         {
             _partCombo.Play();
+            _isPlayingPart = true;
             _animCombo.enabled = true;
         }
-        else
+        else if (combo < 40 && _playerHealth.isAlive && _isPlayingPart)
         {
             _partCombo.Stop();
             _animCombo.enabled = false;
+            _isPlayingPart = false;
         }
 
-        if (combo >= 60 && _playerHealth.isAlive)
+        if (combo >= 60 && _playerHealth.isAlive && !_isPlayingBigPart)
         {
             _partBigCombo.Play();
+            _isPlayingBigPart = true;
         }
-        else
+        else if(combo < 60 && _playerHealth.isAlive && _isPlayingBigPart)
         {
             _partBigCombo.Stop();
-
+            _isPlayingBigPart = false;
         }
 
         #region LevelWeapon

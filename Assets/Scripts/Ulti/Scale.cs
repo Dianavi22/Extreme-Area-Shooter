@@ -90,7 +90,8 @@ public class Scale : MonoBehaviour
         _ulti.ultPartSysteme5.Stop();
 
         _ulti.ultiPostProcess.weight = 0;
-
+        _ulti.radiusGarlic = 0;
+        _ulti.garlicParticules.Stop();
         _ulti.ultiLight.SetActive(false);
         yield return null;
     }
@@ -99,7 +100,6 @@ public class Scale : MonoBehaviour
     {
         yield return new WaitForSeconds(1.5f);
         isCurrentUlti = false;
-        _ulti.radiusGarlic = 0;
         _camera.shakeshake = false;
     }
 }
