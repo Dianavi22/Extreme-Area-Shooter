@@ -31,6 +31,8 @@ public class HealthBar : MonoBehaviour
 
     private bool _isReTakeDamage = false;
 
+    public float pv;
+
 
     private void Awake()
     {
@@ -38,13 +40,16 @@ public class HealthBar : MonoBehaviour
         hb2_life.SetActive(true);
         hb3_life.SetActive(true);
         hb4_life.SetActive(true);
+        
     }
     void Start()
     {
+        
     }
 
     void Update()
     {
+        pv = playerHealth.m_currentHealth;
         #region InputTest
         //if (Input.GetKeyDown(KeyCode.J))
         //{
@@ -76,6 +81,8 @@ public class HealthBar : MonoBehaviour
         {
             hb4_life.SetActive(false);
         }
+
+        damage = playerHealth.current_damage;
 
         if (_ulti.isRevived)
         {
@@ -138,37 +145,43 @@ public class HealthBar : MonoBehaviour
     public void TakeDamageUI()
     {
         NotUnder0();
-        if (hA1 >= 0 && playerHealth.m_currentHealth >= 58)
+        if (hA1 >= 0 && playerHealth.m_currentHealth >= 49)
         {
             hA1 -= damage;
-            NotUnder0();
+           // NotUnder0();
             UpdateHB();
-            SetActivSlider();
+           // SetActivSlider();
         }
-        else if (hA2 >= 0 && playerHealth.m_currentHealth < 58 && playerHealth.m_currentHealth >= 40)
+        else if (hA2 >= 0 && playerHealth.m_currentHealth < 49 && playerHealth.m_currentHealth >= 40)
         {
+            hA1 = 0;
             hA2 -= damage;
-            NotUnder0();
+          //  NotUnder0();
             UpdateHB2();
-            SetActivSlider();
+           // SetActivSlider();
             hb1_life.SetActive(false);
         }
-        else if (hA3 >= 0 && playerHealth.m_currentHealth < 40 && playerHealth.m_currentHealth >= 25)
+        else if (hA3 >= 0 && playerHealth.m_currentHealth < 40 && playerHealth.m_currentHealth >= 15)
         {
+            hA1 = 0;
+            hA2 = 0;
             hA3 -= damage;
-            NotUnder0();
+          //  NotUnder0();
             UpdateHB3();
-            SetActivSlider();
+           // SetActivSlider();
             hb1_life.SetActive(false);
             hb2_life.SetActive(false);
 
         }
         else
         {
+            hA1 = 0;
+            hA2 = 0;
+            hA3 = 0;
             hA4 -= damage;
-            NotUnder0();
+           // NotUnder0();
             UpdateHB4();
-            SetActivSlider();
+           // SetActivSlider();
             hb1_life.SetActive(false);
             hb2_life.SetActive(false);
             hb3_life.SetActive(false);

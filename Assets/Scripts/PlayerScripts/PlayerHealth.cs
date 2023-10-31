@@ -28,6 +28,7 @@ public class PlayerHealth : MonoBehaviour
 
     [SerializeField] private ParticleSystem _hurtParticuleSystem;
 
+    public int current_damage;
     private void Awake()
     {
         if(instance != null)
@@ -70,6 +71,7 @@ public class PlayerHealth : MonoBehaviour
             healthBar.damage = 5;
             healthBar.TakeDamageUI();
             m_currentHealth = m_currentHealth - 5;
+            current_damage = 5;
             if (m_currentHealth <= 0)
             {
                 isAlive = false;
@@ -93,6 +95,7 @@ public class PlayerHealth : MonoBehaviour
             healthBar.damage = 15;
             healthBar.TakeDamageUI();
             m_currentHealth = m_currentHealth - 15;
+            current_damage = 15;
             if (m_currentHealth <= 0)
             {
                 isAlive = false;
