@@ -39,14 +39,19 @@ public class PlayerController : MonoBehaviour
         _rb.detectCollisions = true;
         float horizontalInput = Input.GetAxisRaw("Horizontal");
         float verticalInput = Input.GetAxisRaw("Vertical");
-        if (verticalInput == 0 && horizontalInput==0) { inMotion = false; }
-        else { inMotion = true; }
-        movementDirection = new Vector3(horizontalInput, 0, verticalInput).normalized;
+
+        if (verticalInput != 0 || horizontalInput != 0)
+        {
+            movementDirection = new Vector3(horizontalInput, 0, verticalInput).normalized;
+            transform.Translate(movementDirection * _speed * Time.deltaTime, Space.World);
+        }
+        
         var mousePos = Input.mousePosition;
         var wantedPos = Camera.main.ScreenToWorldPoint(new Vector3(mousePos.x, mousePos.y, Camera.main.transform.position.y));
 
         transform.LookAt(wantedPos);
-
+        
+        #region Dash
         if (Input.GetKeyDown(KeyCode.Space) && !_isWalled)
         {
             if(dashCoolCounter <= 0 && dashCounter <= 0)
@@ -71,7 +76,7 @@ public class PlayerController : MonoBehaviour
             dashCoolCounter -= Time.deltaTime;
         }
 
-
+        #endregion
 
     }
     private void OnCollisionEnter(Collision collision)
@@ -95,15 +100,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void FixedUpdate()
-    {
-        //_rb.position += movementDirection * _speed * Time.deltaTime;
-        // transform.position = Vector3.Lerp(transform.position, target.position, 0.1f);
-        if (inMotion)
-        {
-            transform.Translate(movementDirection * _speed * Time.deltaTime, Space.World);
-        }
-    }
+   
 
 
 

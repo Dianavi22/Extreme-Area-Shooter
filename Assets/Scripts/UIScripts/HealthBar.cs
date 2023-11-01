@@ -33,6 +33,8 @@ public class HealthBar : MonoBehaviour
 
     public float pv;
 
+    [SerializeField] ParticleSystem _lastChanceParticules;
+    [SerializeField] ParticleSystem _lastChanceParticules2;
 
     private void Awake()
     {
@@ -66,6 +68,8 @@ public class HealthBar : MonoBehaviour
             UpdateHB3();
             UpdateHB4();
             _ulti.isRevived = false;
+            _lastChanceParticules.Stop();
+            _lastChanceParticules2.Stop();
         }
 
     }
@@ -129,6 +133,8 @@ public class HealthBar : MonoBehaviour
             hb2_life.SetActive(false);
             hb3_life.SetActive(false);
             hb4_life.SetActive(false);
+            _lastChanceParticules.Play();
+            _lastChanceParticules2.Play();
 
         }
 

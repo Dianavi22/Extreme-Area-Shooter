@@ -50,6 +50,7 @@ public class ItemManager : MonoBehaviour
             if (collider.tag == "Enemy")
             {
                 Destroy(collider.gameObject);
+                _gameManager.ultCharge++;
             }
         }
         StopCoroutine(EndItem());

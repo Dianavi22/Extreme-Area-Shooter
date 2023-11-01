@@ -126,9 +126,9 @@ public class Ulti : MonoBehaviour
         }
         isFirstTime = false;
         _gameManager.maxUltCharge += 10;
-        _enemySpawner.m_Rate += 0.3f; 
-        _enemySpawner.m_RateBigEnemy += 0.3f; 
-        _enemySpawner.m_RateExploseEnemy += 0.3f;
+        _enemySpawner.m_Rate *= 1.15f; 
+        _enemySpawner.m_RateBigEnemy *= 1.15f; 
+        _enemySpawner.m_RateExploseEnemy *= 1.15f;
 
        
     }

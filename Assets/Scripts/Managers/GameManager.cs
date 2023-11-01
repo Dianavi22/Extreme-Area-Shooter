@@ -24,6 +24,12 @@ public class GameManager : MonoBehaviour
     [SerializeField, HideInInspector] private GameObject _canon2;
     [SerializeField, HideInInspector] private GameObject _canon3;
     [SerializeField, HideInInspector] private GameObject _canon4;
+    [SerializeField] private ParticleSystem _upgradePartSysteme1;
+    [SerializeField] private ParticleSystem _upgradePartSysteme2;
+    [SerializeField] private ParticleSystem _upgradePartSysteme3;
+    private bool _isUpgrade1;
+    private bool _isUpgrade2;
+    private bool _isUpgrade3;
 
     [Header("Kill enemy")]
     public int standardEnemyKilled;
@@ -46,16 +52,18 @@ public class GameManager : MonoBehaviour
     [SerializeField, HideInInspector] private GameObject _player;
     [SerializeField, HideInInspector] GameObject _enemySpawner;
 
-    public bool isCurrentItem;
-
+    [Header("Combo")]
     [SerializeField] ParticleSystem _partCombo;
     [SerializeField] ParticleSystem _partBigCombo;
-    // [SerializeField] GameObject _animComboGO;
+    [SerializeField] ParticleSystem _partCombo2;
+    [SerializeField] ParticleSystem _partBigCombo2;
     [SerializeField] Animator _animCombo;
-
     public int combo;
     private bool _isPlayingPart;
     private bool _isPlayingBigPart;
+
+    public bool isCurrentItem;
+
     private void Awake()
     {
         //  _playerHealth = GetComponent<PlayerHealth>();
@@ -82,15 +90,19 @@ public class GameManager : MonoBehaviour
         }
         _playerScoreUI.text = playerScore.ToString();
 
-        if(combo >= 40 && _playerHealth.isAlive && !_isPlayingPart)
+        #region Combo
+
+        if (combo >= 40 && _playerHealth.isAlive && !_isPlayingPart)
         {
             _partCombo.Play();
+            _partCombo2.Play();
             _isPlayingPart = true;
             _animCombo.enabled = true;
         }
         else if (combo < 40 && _playerHealth.isAlive && _isPlayingPart)
         {
             _partCombo.Stop();
+            _partCombo2.Stop();
             _animCombo.enabled = false;
             _isPlayingPart = false;
         }
@@ -98,13 +110,16 @@ public class GameManager : MonoBehaviour
         if (combo >= 60 && _playerHealth.isAlive && !_isPlayingBigPart)
         {
             _partBigCombo.Play();
+            _partBigCombo2.Play();
             _isPlayingBigPart = true;
         }
         else if(combo < 60 && _playerHealth.isAlive && _isPlayingBigPart)
         {
             _partBigCombo.Stop();
+            _partBigCombo2.Stop();
             _isPlayingBigPart = false;
         }
+        #endregion
 
         #region LevelWeapon
         if (playerLevelUpgrade >= 30)
@@ -112,12 +127,20 @@ public class GameManager : MonoBehaviour
             _canon2.SetActive(true);
             _canon3.SetActive(true);
             _uiIcons._isLightOnIcon2 = true;
+            if (!_isUpgrade1)
+            {
+                _upgradePartSysteme1.Play();
+                _isUpgrade1 = true;
+            }
+
         }
         else
         {
             _canon2.SetActive(false);
             _canon3.SetActive(false);
             _uiIcons._isLightOnIcon2 = false;
+            _isUpgrade1 = false;
+
 
         }
 
@@ -125,21 +148,35 @@ public class GameManager : MonoBehaviour
         {
             _canon4.SetActive(true);
             _uiIcons._isLightOnIcon3 = true;
-
+            if (!_isUpgrade2)
+            {
+                _upgradePartSysteme2.Play();
+                _isUpgrade2 = true;
+            }
         }
         else
         {
             _canon4.SetActive(false);
             _uiIcons._isLightOnIcon3 = false;
+            _isUpgrade2 = false;
+
 
         }
         if (playerLevelUpgrade >= 110)
         {
             _uiIcons._isLightOnIcon4 = true;
+            if (!_isUpgrade3)
+            {
+                _upgradePartSysteme3.Play();
+                _isUpgrade3 = true;
+            }
+
         }
         else
         {
             _uiIcons._isLightOnIcon4 = false;
+            _isUpgrade3 = false;
+
         }
         if (playerLevelUpgrade < 0) { playerLevelUpgrade = 0; }
         if (playerLevelUpgrade > 110) { playerLevelUpgrade = 110; }
