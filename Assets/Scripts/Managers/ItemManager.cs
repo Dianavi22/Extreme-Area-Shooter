@@ -16,6 +16,8 @@ public class ItemManager : MonoBehaviour
     [SerializeField] GameObject canonSup2;
 
     [SerializeField] ParticleSystem _shieldParticules;
+    [SerializeField] ParticleSystem _shieldDamageParticules;
+    [SerializeField] ParticleSystem _shieldDamagePointParticules;
 
     private void Update()
     {
@@ -49,6 +51,10 @@ public class ItemManager : MonoBehaviour
         {
             if (collider.tag == "Enemy")
             {
+                _shieldDamageParticules.transform.position = collider.transform.position;
+                _shieldDamageParticules.Play();
+                _shieldDamagePointParticules.transform.position = collider.transform.position;
+                _shieldDamagePointParticules.Play();
                 Destroy(collider.gameObject);
                 _gameManager.ultCharge++;
             }

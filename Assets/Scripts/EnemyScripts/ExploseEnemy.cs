@@ -21,7 +21,7 @@ public class ExploseEnemy : MonoBehaviour
     public float explosionRadius = 4f;
 
     private GameManager _gameManager;
-    private Timer _timer;
+   
 
     [SerializeField] ParticleSystem _explosionParticules;
     [SerializeField] ParticleSystem _explosionFlash;
@@ -36,7 +36,7 @@ public class ExploseEnemy : MonoBehaviour
         _targetPlayer = FindObjectOfType<Player>().transform;
         _damage = FindObjectOfType<Player>().GetComponent<PlayerHealth>();
         _gameManager = FindObjectOfType<GameManager>().GetComponent<GameManager>();
-        _timer = FindObjectOfType<Timer>().GetComponent<Timer>();
+       
 
     }
     void Start()
@@ -55,7 +55,7 @@ public class ExploseEnemy : MonoBehaviour
 
         }
 
-        if (_timer.seconds > 45.8)
+        if (_gameManager.isPhase2)
         {
             m_ExploseEnemySpeed = 12;
         }

@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
     [SerializeField, HideInInspector] private PlayerHealth _playerHealth;
     [SerializeField, HideInInspector] private UIIncons _uiIcons;
     [SerializeField, HideInInspector] private BulletSpawn _bulletSpawn;
+    [SerializeField] private Timer _timer;
 
     public static GameManager gameManager;
     private PlayerController _playerController;
@@ -38,7 +39,7 @@ public class GameManager : MonoBehaviour
     public int littleEnemyKilled;
 
     [Header("Ulti")]
-    [SerializeField] private Ulti _ulit;
+    [SerializeField] private Ulti _ulti;
     public float ultCharge = 0;
     public float maxUltCharge = 3;
     public float OldUltCharge = 0;
@@ -64,6 +65,10 @@ public class GameManager : MonoBehaviour
 
     public bool isCurrentItem;
 
+    public bool isFirstUlti = true;
+
+    public bool isPhase2 = false;
+
     private void Awake()
     {
         //  _playerHealth = GetComponent<PlayerHealth>();
@@ -84,6 +89,10 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
+        isFirstUlti = _ulti.isFirstTime;
+
+        if (_timer.seconds > 45.8) { isPhase2 = true;}
+
         if (!_playerHealth.isAlive )
         {
             GameOver();
@@ -181,6 +190,7 @@ public class GameManager : MonoBehaviour
         if (playerLevelUpgrade < 0) { playerLevelUpgrade = 0; }
         if (playerLevelUpgrade > 110) { playerLevelUpgrade = 110; }
         #endregion
+
         #region Ulti
         if (ultCharge > maxUltCharge) { ultCharge = maxUltCharge; }
 
@@ -188,7 +198,7 @@ public class GameManager : MonoBehaviour
         else { isUltCharged = false; }
         if (ultCharge > OldUltCharge)
         {
-            _ulit.UpdateUltBar();
+            _ulti.UpdateUltBar();
             OldUltCharge = ultCharge;
         }
         #endregion

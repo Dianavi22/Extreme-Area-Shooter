@@ -23,9 +23,12 @@ public class StandardEnemy : MonoBehaviour
 
     [Header("Import")]
     private GameManager _gameManager;
-    private Timer _timer;
 
-    private bool _isDestroy = false; 
+    private bool _isDestroy = false;
+
+    private AudioSource _audioSource;
+    [SerializeField] AudioClip _killStandardEnemy;
+
 
     private void Awake()
     {
@@ -34,8 +37,9 @@ public class StandardEnemy : MonoBehaviour
         _targetPlayer = FindObjectOfType<Player>().transform;
         _damage = FindObjectOfType<Player>().GetComponent<PlayerHealth>();
         _gameManager = FindObjectOfType<GameManager>().GetComponent<GameManager>();
-        _timer = FindObjectOfType<Timer>().GetComponent<Timer>();
         _sparks = GetComponentInChildren<ParticleSystem>();
+        _audioSource = GetComponent<AudioSource>();
+       
     }
     void Start()
     {
@@ -55,9 +59,17 @@ public class StandardEnemy : MonoBehaviour
         //Rotation
         //Quaternion toRotation = Quaternion.LookRotation(_enemyDir, Vector3.up);
         //transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, 500 * Time.deltaTime);
-        if (_timer.seconds > 45.8)
+        if (_gameManager.isPhase2)
         {
-            m_StandardEnemySpeed = 6;
+            if (!_gameManager.isFirstUlti)
+            {
+                m_StandardEnemySpeed = 7.5f;
+
+            }
+            else
+            {
+                m_StandardEnemySpeed = 6;
+            }
         }
     }
 
@@ -70,6 +82,8 @@ public class StandardEnemy : MonoBehaviour
     {
         if (collision.collider.CompareTag("Bullet"))
         {
+            if (!_gameManager.isPhase2) {_audioSource.PlayOneShot(_killStandardEnemy, 0.5f);}
+            else {_audioSource.PlayOneShot(_killStandardEnemy, 1.5f); }
             _isDestroy = true;
             _collider.enabled = false;
             _rb.freezeRotation = true;

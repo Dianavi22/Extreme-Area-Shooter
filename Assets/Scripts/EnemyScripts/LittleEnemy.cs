@@ -20,7 +20,6 @@ public class LittleEnemy : MonoBehaviour
 
     [Header("Import")]
     private GameManager _gameManager;
-    private Timer _timer;
 
     [SerializeField] ParticleSystem _killParticules;
     [SerializeField] GameObject _gfxLittleEnemy;
@@ -34,7 +33,6 @@ public class LittleEnemy : MonoBehaviour
         _targetPlayer = FindObjectOfType<Player>().transform;
         _damage = FindObjectOfType<Player>().GetComponent<PlayerHealth>();
         _gameManager = FindObjectOfType<GameManager>().GetComponent<GameManager>();
-        _timer = FindObjectOfType<Timer>().GetComponent<Timer>();
     }
     void Start()
     {
@@ -54,7 +52,7 @@ public class LittleEnemy : MonoBehaviour
         //Rotation
         //Quaternion toRotation = Quaternion.LookRotation(_enemyDir, Vector3.up);
         //transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, 500 * Time.deltaTime);
-        if (_timer.seconds > 45.8)
+        if (_gameManager.isPhase2)
         {
             m_LittleEnemySpeed = 6.3f;
         }

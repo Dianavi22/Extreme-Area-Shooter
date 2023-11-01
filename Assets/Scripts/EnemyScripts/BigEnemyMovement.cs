@@ -13,9 +13,11 @@ public class BigEnemyMovement : MonoBehaviour
 
     [SerializeField] private Timer _timer;
     [SerializeField] private BigEnemy _bigEnemy;
+    [SerializeField] private GameManager _gameManager;
     private void Awake()
     {
         _timer = FindObjectOfType<Timer>().GetComponent<Timer>();
+        _gameManager = FindObjectOfType<GameManager>().GetComponent<GameManager>();
 
     }
     void Start()
@@ -36,7 +38,7 @@ public class BigEnemyMovement : MonoBehaviour
 
             
 
-            if (_timer.seconds > 45.8)
+            if (_gameManager.isPhase2)
             {
                 _bigEnemySpeed = 4.2f;
             }

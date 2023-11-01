@@ -33,14 +33,12 @@ public class EventManager : MonoBehaviour
 
     public void EventStandardEnemy()
     {
-        print("Standard");
         _enemySpawner.current_Rate = 4f;
         _enemySpawner.current_RateExploseEnemy = 0f;
         _enemySpawner.current_RateBigEnemy = 0f;
     }
     public void EventBigEnemy()
     {
-        print("BigEnemy");
 
         _enemySpawner.current_RateBigEnemy = 1.3f;
         _enemySpawner.current_RateExploseEnemy = 0f;
@@ -49,7 +47,6 @@ public class EventManager : MonoBehaviour
 
     public void EventSpeedEnemy()
     {
-        print("Speed");
 
         _enemySpawner.current_RateExploseEnemy = 5f;
         _enemySpawner.current_RateBigEnemy = 0f;
@@ -58,7 +55,6 @@ public class EventManager : MonoBehaviour
 
     IEnumerator LaunchRandomEvent()
     {
-        print("IN COROUTINE");
 
         isCurrentEvent = true;
         isCurrentEventReady = false;

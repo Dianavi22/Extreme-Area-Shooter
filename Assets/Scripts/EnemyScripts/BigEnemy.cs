@@ -16,7 +16,6 @@ public class BigEnemy : MonoBehaviour
 
     [Header("Imports")]
     private GameManager _gameManager;
-    [SerializeField] private Timer _timer;
 
     [SerializeField] ParticleSystem _explosionParticules;
     [SerializeField] ParticleSystem _explosionFlash;
@@ -29,7 +28,6 @@ public class BigEnemy : MonoBehaviour
     {
         _damage = FindObjectOfType<Player>().GetComponent<PlayerHealth>();
         _gameManager = FindObjectOfType<GameManager>().GetComponent<GameManager>();
-        _timer = FindObjectOfType<Timer>().GetComponent<Timer>();
         _speedBigEnemy = _BigEnemyMove._bigEnemySpeed;
     }
     void Start()

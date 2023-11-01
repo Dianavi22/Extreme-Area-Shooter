@@ -73,6 +73,7 @@ public class Ulti : MonoBehaviour
             UpdateUltBar();
             _gameManager.isUltCharged = false;
             _gameManager.OldUltCharge = 0;
+            if(_gameManager.playerLevelUpgrade < 90) {  _gameManager.playerLevelUpgrade = 90; }
         }
         if(radiusGarlic == 7)
         {
@@ -122,13 +123,16 @@ public class Ulti : MonoBehaviour
     {
         if (isFirstTime)
         {
-           _enemySpawner.ResetSpawnEnemy();
+            isFirstTime = false;
+            _enemySpawner.ResetSpawnEnemy();
+            _enemySpawner.m_Rate += 0.5f;
+            _enemySpawner.m_RateBigEnemy += 0.5f;
+            _enemySpawner.m_RateExploseEnemy += 0.5f;
         }
-        isFirstTime = false;
         _gameManager.maxUltCharge += 30;
-        _enemySpawner.m_Rate *= 1.25f; 
-        _enemySpawner.m_RateBigEnemy *= 1.25f; 
-        _enemySpawner.m_RateExploseEnemy *= 1.25f;
+        _enemySpawner.m_Rate *= 1.4f; 
+        _enemySpawner.m_RateBigEnemy *= 1.4f; 
+        _enemySpawner.m_RateExploseEnemy *= 1.4f;
 
        
     }
