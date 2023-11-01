@@ -13,9 +13,13 @@ public class EnemySpawner : MonoBehaviour
 
     [SerializeField] private float m_Width;
 
-    public float m_Rate = 1.5f;
-    public float m_RateExploseEnemy = 0.5f;
-    public float m_RateBigEnemy = 0.3f;
+    public float m_Rate = 1.7f;
+    public float m_RateExploseEnemy = 0.7f;
+    public float m_RateBigEnemy = 0.5f;
+
+    public float current_Rate = 1.5f;
+    public float current_RateExploseEnemy = 0.5f;
+    public float current_RateBigEnemy = 0.3f;
 
     [SerializeField] List<Spawner> spawners = new List<Spawner>();
 
@@ -34,22 +38,19 @@ public class EnemySpawner : MonoBehaviour
     }
     void Start()
     {
-        _lastSpawn = Time.time;
-        _lastSpawnExploseEnemy = Time.time;
-        _lastSpawnBigEnemy = Time.time;
-
+        ResetTimeSpawn();
     }
 
     void Update()
     {
-        if (_timer.seconds >= 60 && !_eventManager.isCurrentEvent && !_ulti.isUltiBegin)
-        {
-            m_Rate = 2f;
-            m_RateExploseEnemy = 1f;
-            m_RateBigEnemy = 0.6f;
-        }
+        //if (_timer.seconds >= 60 && !_eventManager.isCurrentEvent)
+        //{
+        //    current_Rate = m_Rate;
+        //    current_RateExploseEnemy = m_RateExploseEnemy;
+        //    current_RateBigEnemy = m_RateBigEnemy;
+        //}
 
-        if ((Time.time - _lastSpawn) >= (1f / m_Rate))
+        if ((Time.time - _lastSpawn) >= (1f / current_Rate))
         {
             _lastSpawn = Time.time;
             StandardEnemySpawn();
@@ -81,9 +82,15 @@ public class EnemySpawner : MonoBehaviour
     public void ExploseEnemySpawn() { spawners[Random.Range(0, spawners.Count)].SpawnEnemy(m_ExploseEnemyPrefab); }
     public void BigEnemySpawn() { spawners[Random.Range(0, spawners.Count)].SpawnEnemy(m_BigEnemyPrefab); }
 
+    public void ResetTimeSpawn() {
+        _lastSpawn = Time.time;
+        _lastSpawnExploseEnemy = Time.time;
+        _lastSpawnBigEnemy = Time.time;
+    }
+
     public void SpawnSpeedEnemy()
     {
-        if ((Time.time - _lastSpawnExploseEnemy) >= (1f / m_RateExploseEnemy))
+        if ((Time.time - _lastSpawnExploseEnemy) >= (1f / current_RateExploseEnemy))
         {
             _lastSpawnExploseEnemy = Time.time;
             ExploseEnemySpawn();
@@ -92,8 +99,9 @@ public class EnemySpawner : MonoBehaviour
 
     public void SpawnBigEnemy()
     {
-        if ((Time.time - _lastSpawnBigEnemy) >= (1f / m_RateBigEnemy))
+        if ((Time.time - _lastSpawnBigEnemy) >= (1f / current_RateBigEnemy))
         {
+
             _lastSpawnBigEnemy = Time.time;
             BigEnemySpawn();
         }
@@ -107,5 +115,12 @@ public class EnemySpawner : MonoBehaviour
         _isSpeedEnemyWave = false;
         yield return new WaitForSeconds(20f);
         _isBigEnemyWave = false;
+    }
+
+    public void ResetSpawnEnemy()
+    {
+        current_Rate = m_Rate;
+        current_RateExploseEnemy = m_RateExploseEnemy;
+        current_RateBigEnemy = m_RateBigEnemy;
     }
 }

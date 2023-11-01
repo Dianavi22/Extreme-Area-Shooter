@@ -381,6 +381,11 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
+--- !u!82 &44354552 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 3311348598860703340, guid: 549d85752e48acb45abb2f350ee2c5a2, type: 3}
+  m_PrefabInstance: {fileID: 2037488446}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &60643086
 GameObject:
   m_ObjectHideFlags: 0
@@ -2419,6 +2424,7 @@ MonoBehaviour:
   _enemySpawner: {fileID: 1744870671}
   _timer: {fileID: 2051495545}
   isCurrentEvent: 0
+  isCurrentEventReady: 0
 --- !u!114 &405237233
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12006,6 +12012,9 @@ MonoBehaviour:
   m_Rate: 1.5
   m_RateExploseEnemy: 0.5
   m_RateBigEnemy: 0.3
+  current_Rate: 1.5
+  current_RateExploseEnemy: 0.5
+  current_RateBigEnemy: 0.3
   spawners:
   - {fileID: 124822506}
   - {fileID: 2096291053}
@@ -13458,9 +13467,10 @@ MonoBehaviour:
   isRevived: 0
   ultiLight: {fileID: 204978950}
   _pulsAnimation: {fileID: 0}
-  isUltiBegin: 0
   isFirstTime: 0
   garlicParticules: {fileID: 69724680}
+  _audioSource: {fileID: 44354552}
+  _laser: {fileID: 8300000, guid: d9d35517bc1cfe7438dd0aa6b54cd89f, type: 3}
 --- !u!1 &1992382696
 GameObject:
   m_ObjectHideFlags: 0
@@ -14132,10 +14142,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1432797789}
     - target: {fileID: 1873544119, guid: 549d85752e48acb45abb2f350ee2c5a2, type: 3}
-      propertyPath: m_maxHealth
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 1873544119, guid: 549d85752e48acb45abb2f350ee2c5a2, type: 3}
       propertyPath: _gameManager
       value: 
       objectReference: {fileID: 405237230}
@@ -14164,25 +14170,41 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1835101223}
     - target: {fileID: 1916535222, guid: 549d85752e48acb45abb2f350ee2c5a2, type: 3}
+      propertyPath: _timer
+      value: 
+      objectReference: {fileID: 2051495545}
+    - target: {fileID: 1916535222, guid: 549d85752e48acb45abb2f350ee2c5a2, type: 3}
       propertyPath: _itemManager
       value: 
       objectReference: {fileID: 405237233}
+    - target: {fileID: 899791939415924668, guid: 549d85752e48acb45abb2f350ee2c5a2, type: 3}
+      propertyPath: _timer
+      value: 
+      objectReference: {fileID: 2051495545}
     - target: {fileID: 899791939415924668, guid: 549d85752e48acb45abb2f350ee2c5a2, type: 3}
       propertyPath: _itemManager
       value: 
       objectReference: {fileID: 405237233}
     - target: {fileID: 2396504799558030145, guid: 549d85752e48acb45abb2f350ee2c5a2, type: 3}
+      propertyPath: _timer
+      value: 
+      objectReference: {fileID: 2051495545}
+    - target: {fileID: 2396504799558030145, guid: 549d85752e48acb45abb2f350ee2c5a2, type: 3}
       propertyPath: _itemManager
       value: 
       objectReference: {fileID: 405237233}
     - target: {fileID: 2938465775313325596, guid: 549d85752e48acb45abb2f350ee2c5a2, type: 3}
+      propertyPath: _timer
+      value: 
+      objectReference: {fileID: 2051495545}
+    - target: {fileID: 2938465775313325596, guid: 549d85752e48acb45abb2f350ee2c5a2, type: 3}
       propertyPath: _itemManager
       value: 
       objectReference: {fileID: 405237233}
-    - target: {fileID: 4798639624076361998, guid: 549d85752e48acb45abb2f350ee2c5a2, type: 3}
-      propertyPath: playOnAwake
-      value: 0
-      objectReference: {fileID: 0}
+    - target: {fileID: 5098921928879026249, guid: 549d85752e48acb45abb2f350ee2c5a2, type: 3}
+      propertyPath: _timer
+      value: 
+      objectReference: {fileID: 2051495545}
     - target: {fileID: 5098921928879026249, guid: 549d85752e48acb45abb2f350ee2c5a2, type: 3}
       propertyPath: _itemManager
       value: 
@@ -14243,6 +14265,10 @@ PrefabInstance:
       propertyPath: _camera
       value: 
       objectReference: {fileID: 963194231}
+    - target: {fileID: 9086988083736152179, guid: 549d85752e48acb45abb2f350ee2c5a2, type: 3}
+      propertyPath: _timer
+      value: 
+      objectReference: {fileID: 2051495545}
     - target: {fileID: 9086988083736152179, guid: 549d85752e48acb45abb2f350ee2c5a2, type: 3}
       propertyPath: _itemManager
       value: 
@@ -15360,7 +15386,7 @@ AudioSource:
   m_GameObject: {fileID: 2138132212}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: -291092268467315137, guid: e83fc087a63e81a409031801bed04230, type: 2}
   m_audioClip: {fileID: 8300000, guid: e178f7614df6b734099a675e3e751dee, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1

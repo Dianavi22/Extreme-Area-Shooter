@@ -42,12 +42,14 @@ public class Ulti : MonoBehaviour
 
     public Animation _pulsAnimation;
 
-    public bool isUltiBegin;
     public bool isFirstTime = true;
 
     private int _difficult = 0;
 
     public ParticleSystem garlicParticules;
+
+    [SerializeField] private AudioSource _audioSource;
+    [SerializeField] private AudioClip _laser;
 
     void Start()
     {
@@ -61,8 +63,8 @@ public class Ulti : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.E) && _gameManager.isUltCharged && _playerHealth.isAlive)
         {
             VisuelUlti();
+            _audioSource.PlayOneShot(_laser, 2f);
             _difficult++;
-            isUltiBegin = true;
             UpSpawnRate();
             Garlic();
             ReInitLifeBar();
@@ -120,15 +122,13 @@ public class Ulti : MonoBehaviour
     {
         if (isFirstTime)
         {
-            _enemySpawner.m_Rate = 2f;
-            _enemySpawner.m_RateExploseEnemy = 1f;
-            _enemySpawner.m_RateBigEnemy = 0.6f;
+           _enemySpawner.ResetSpawnEnemy();
         }
         isFirstTime = false;
-        _gameManager.maxUltCharge += 10;
-        _enemySpawner.m_Rate *= 1.15f; 
-        _enemySpawner.m_RateBigEnemy *= 1.15f; 
-        _enemySpawner.m_RateExploseEnemy *= 1.15f;
+        _gameManager.maxUltCharge += 30;
+        _enemySpawner.m_Rate *= 1.25f; 
+        _enemySpawner.m_RateBigEnemy *= 1.25f; 
+        _enemySpawner.m_RateExploseEnemy *= 1.25f;
 
        
     }

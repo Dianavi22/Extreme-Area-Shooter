@@ -20,7 +20,7 @@ public class PlayerHealth : MonoBehaviour
     [SerializeField]
     private CameraController _cameraController;
 
-    private bool _isInvincible = false;
+    [SerializeField]  private bool _isInvincible = false;
 
     public bool isTakingDamage;
     public GameObject lightHurt;

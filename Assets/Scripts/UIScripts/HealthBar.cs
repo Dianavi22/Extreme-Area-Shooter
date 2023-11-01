@@ -81,7 +81,6 @@ public class HealthBar : MonoBehaviour
 
     public void TakeDamageUI()
     {
-        print("m_currentHealth : " + playerHealth.m_currentHealth);
         if (playerHealth.m_currentHealth == 5)
         {
             hb1.value = 1;

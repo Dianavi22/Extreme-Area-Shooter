@@ -15,7 +15,6 @@ public class AudioManager : MonoBehaviour
     private void Update()
     {
         _audioSource.volume = volume;
-
         if (!_audioSource.isPlaying)
         {
             _audioSource.clip = songs[1];

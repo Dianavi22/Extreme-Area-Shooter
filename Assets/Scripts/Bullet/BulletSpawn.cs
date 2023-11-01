@@ -22,6 +22,13 @@ public class BulletSpawn : MonoBehaviour
 
     [SerializeField] GameObject megaBalls;
 
+    [SerializeField] AudioSource _audioSource;
+    [SerializeField] AudioClip _blasterSound;
+
+    [SerializeField] bool _isPlayingSound;
+
+    [SerializeField] Timer _timer;
+
 
     private void Start()
     {
@@ -64,13 +71,30 @@ public class BulletSpawn : MonoBehaviour
     }
     private void Shoot()
     {
-            GameObject bullet = Instantiate(m_bulletPrefab, m_bulletSpawnPoint.position, m_bulletSpawnPoint.rotation);
+        if (_isPlayingSound && _timer.seconds < 45.8)
+        {
+            _audioSource.PlayOneShot(_blasterSound, 0.04f);
+        }else if (_isPlayingSound && _timer.seconds >= 45.8)
+        {
+            _audioSource.PlayOneShot(_blasterSound, 0.2f);
+
+        }
+        GameObject bullet = Instantiate(m_bulletPrefab, m_bulletSpawnPoint.position, m_bulletSpawnPoint.rotation);
             Rigidbody rbBullet = bullet.GetComponent<Rigidbody>();
             rbBullet.AddForce(m_bulletSpawnPoint.forward * _bulletForce, ForceMode.Impulse);
     }
 
     private void SuperShoot()
     {
+        if (_isPlayingSound && _timer.seconds < 45.8)
+        {
+            _audioSource.PlayOneShot(_blasterSound, 0.08f);
+        }
+        else if (_isPlayingSound && _timer.seconds >= 45.8)
+        {
+            _audioSource.PlayOneShot(_blasterSound, 0.25f);
+
+        }
         GameObject bullet = Instantiate(megaBalls, m_bulletSpawnPoint.position, m_bulletSpawnPoint.rotation);
         Rigidbody rbBullet = bullet.GetComponent<Rigidbody>();
         rbBullet.AddForce(m_bulletSpawnPoint.forward * _bulletForce, ForceMode.Impulse);

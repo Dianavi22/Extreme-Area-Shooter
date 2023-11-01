@@ -9,7 +9,7 @@ public class EventManager : MonoBehaviour
     [SerializeField] Timer _timer;
     private bool isEventStandardEnemy;
     public bool isCurrentEvent = false;
-    private bool isCurrentEventReady = false;
+    [SerializeField] private bool isCurrentEventReady = false;
     private bool isEventStarting = true;
 
 
@@ -27,31 +27,39 @@ public class EventManager : MonoBehaviour
         if(_timer.seconds > 70 && isCurrentEventReady && !isCurrentEvent)
         {
             StartCoroutine(LaunchRandomEvent());
+            print("HERE");
         }
     }
 
     public void EventStandardEnemy()
     {
-        _enemySpawner.m_Rate = 4f;
-        _enemySpawner.m_RateBigEnemy = 0f;
-        _enemySpawner.m_RateExploseEnemy = 0f;
+        print("Standard");
+        _enemySpawner.current_Rate = 4f;
+        _enemySpawner.current_RateExploseEnemy = 0f;
+        _enemySpawner.current_RateBigEnemy = 0f;
     }
     public void EventBigEnemy()
     {
-        _enemySpawner.m_RateBigEnemy = 1.3f;
-        _enemySpawner.m_RateExploseEnemy = 0f;
-        _enemySpawner.m_Rate = 0f;
+        print("BigEnemy");
+
+        _enemySpawner.current_RateBigEnemy = 1.3f;
+        _enemySpawner.current_RateExploseEnemy = 0f;
+        _enemySpawner.current_Rate = 0f;
     }
 
     public void EventSpeedEnemy()
     {
-        _enemySpawner.m_RateExploseEnemy = 5f;
-        _enemySpawner.m_RateBigEnemy = 0f;
-        _enemySpawner.m_Rate = 0f;
+        print("Speed");
+
+        _enemySpawner.current_RateExploseEnemy = 5f;
+        _enemySpawner.current_RateBigEnemy = 0f;
+        _enemySpawner.current_Rate = 0f;
     }
 
     IEnumerator LaunchRandomEvent()
     {
+        print("IN COROUTINE");
+
         isCurrentEvent = true;
         isCurrentEventReady = false;
         int _currentEvent = Random.Range(0, 5);
@@ -62,10 +70,14 @@ public class EventManager : MonoBehaviour
         else if(_currentEvent == 4) { EventStandardEnemy(); }
         else { EventSpeedEnemy(); }
 
-        yield return new WaitForSeconds(15f);
+        yield return new WaitForSeconds(10f);
         isCurrentEvent = false;
+        _enemySpawner.ResetTimeSpawn();
+        _enemySpawner.ResetSpawnEnemy();
 
         yield return new WaitForSeconds(25f);
         isCurrentEventReady = true;
     }
+
+
 }
