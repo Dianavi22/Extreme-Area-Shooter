@@ -10,6 +10,8 @@ public class BulletSpawn : MonoBehaviour
     [SerializeField] private float _bulletForce = 20f;
     [SerializeField] private float nextFire = 0.001f;
     [SerializeField] private float myTime = 0.0F;
+
+    [SerializeField] private ParticleSystem _shootPart;
     
     public float fireDelta;
 
@@ -40,6 +42,7 @@ public class BulletSpawn : MonoBehaviour
         myTime = myTime + Time.deltaTime;
         if (Input.GetMouseButton(0) && myTime > nextFire && !_scale.isCurrentUlti && !_itemManager.isMegaBallsItem)
         {
+            _shootPart.Play();
             nextFire = myTime + fireDelta;
             Shoot();
             nextFire = nextFire - myTime;

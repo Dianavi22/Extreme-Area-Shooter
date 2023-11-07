@@ -28,6 +28,9 @@ public class ExploseEnemy : MonoBehaviour
     [SerializeField] GameObject _gfxSpeedEnemy;
     [SerializeField] Collider _collider;
 
+    [SerializeField] AudioClip _killSpeedEnemy;
+    private AudioSource _audioSource;
+
     private bool _isDestroy = false;
 
     private void Awake()
@@ -36,7 +39,9 @@ public class ExploseEnemy : MonoBehaviour
         _targetPlayer = FindObjectOfType<Player>().transform;
         _damage = FindObjectOfType<Player>().GetComponent<PlayerHealth>();
         _gameManager = FindObjectOfType<GameManager>().GetComponent<GameManager>();
-       
+        _audioSource = GetComponent<AudioSource>();
+
+
 
     }
     void Start()
@@ -64,7 +69,15 @@ public class ExploseEnemy : MonoBehaviour
 
     void ExplodeEnemy()
     {
+        if (!_gameManager.isPhase2)
+        {
+            _audioSource.PlayOneShot(_killSpeedEnemy, 0.08f);
+        }
+        else
+        {
+            _audioSource.PlayOneShot(_killSpeedEnemy, 0.4f);
 
+        }
         Collider[] colliders = Physics.OverlapSphere(transform.position, explosionRadius);
         foreach (Collider collider in colliders)
         {
@@ -82,6 +95,7 @@ public class ExploseEnemy : MonoBehaviour
 
     void ExplodePlayer()
     {
+        
         Collider[] colliders = Physics.OverlapSphere(transform.position, explosionRadius);
         foreach (Collider collider in colliders)
         {

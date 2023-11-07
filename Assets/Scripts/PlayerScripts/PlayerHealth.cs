@@ -32,6 +32,9 @@ public class PlayerHealth : MonoBehaviour
     public ParticleSystem hurtSideParticules3;
     public ParticleSystem hurtSideParticules4;
 
+    [SerializeField] AudioSource _audioSource;
+    [SerializeField] AudioClip _hitSound;
+
     private void Awake()
     {
         if(instance != null)
@@ -66,6 +69,15 @@ public class PlayerHealth : MonoBehaviour
     {
         if (!_isInvincible)
         {
+            if (!_gameManager.isPhase2) { 
+            _audioSource.PlayOneShot(_hitSound, 1f);
+
+            }
+            else
+            {
+                _audioSource.PlayOneShot(_hitSound, 2f);
+
+            }
             ParticulesDamage();
             _gameManager.combo = 0;
             m_currentHealth = m_currentHealth - 1;
