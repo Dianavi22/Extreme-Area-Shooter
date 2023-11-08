@@ -35,11 +35,18 @@ public class ExploseEnemy : MonoBehaviour
 
     private void Awake()
     {
-        _rb = GetComponent<Rigidbody>();
-        _targetPlayer = FindObjectOfType<Player>().transform;
-        _damage = FindObjectOfType<Player>().GetComponent<PlayerHealth>();
-        _gameManager = FindObjectOfType<GameManager>().GetComponent<GameManager>();
-        _audioSource = GetComponent<AudioSource>();
+        try
+        {
+            _rb = GetComponent<Rigidbody>();
+            _targetPlayer = FindObjectOfType<Player>().transform;
+            _damage = FindObjectOfType<Player>().GetComponent<PlayerHealth>();
+            _gameManager = FindObjectOfType<GameManager>().GetComponent<GameManager>();
+            _audioSource = GetComponent<AudioSource>();
+        }
+        catch
+        {
+            return;
+        }
 
 
 

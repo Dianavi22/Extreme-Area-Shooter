@@ -26,9 +26,17 @@ public class BigEnemy : MonoBehaviour
 
     private void Awake()
     {
-        _damage = FindObjectOfType<Player>().GetComponent<PlayerHealth>();
-        _gameManager = FindObjectOfType<GameManager>().GetComponent<GameManager>();
-        _speedBigEnemy = _BigEnemyMove._bigEnemySpeed;
+        try
+        {
+            _damage = FindObjectOfType<Player>().GetComponent<PlayerHealth>();
+            _gameManager = FindObjectOfType<GameManager>().GetComponent<GameManager>();
+            _speedBigEnemy = _BigEnemyMove._bigEnemySpeed;
+        }
+        catch
+        {
+            return;
+        }
+      
     }
     void Start()
     {

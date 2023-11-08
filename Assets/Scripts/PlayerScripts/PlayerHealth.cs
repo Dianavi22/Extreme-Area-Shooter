@@ -43,7 +43,15 @@ public class PlayerHealth : MonoBehaviour
         }
         instance = this;
         //  _gameManager = FindObjectOfType<GameManager>().GetComponent<GameManager>();
-        _cameraController.GetComponent<CameraController>();
+        try
+        {
+            _cameraController.GetComponent<CameraController>();
+
+        }
+        catch
+        {
+            return ;
+        }
     }
     void Start()
     {

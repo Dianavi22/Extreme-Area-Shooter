@@ -32,13 +32,22 @@ public class StandardEnemy : MonoBehaviour
 
     private void Awake()
     {
-        _collider = GetComponent<Collider>();
-        _rb = GetComponent<Rigidbody>();
-        _targetPlayer = FindObjectOfType<Player>().transform;
-        _damage = FindObjectOfType<Player>().GetComponent<PlayerHealth>();
-        _gameManager = FindObjectOfType<GameManager>().GetComponent<GameManager>();
-        _sparks = GetComponentInChildren<ParticleSystem>();
-        _audioSource = GetComponent<AudioSource>();
+        try
+        {
+            _collider = GetComponent<Collider>();
+            _rb = GetComponent<Rigidbody>();
+            _targetPlayer = FindObjectOfType<Player>().transform;
+            _damage = FindObjectOfType<Player>().GetComponent<PlayerHealth>();
+            _gameManager = FindObjectOfType<GameManager>().GetComponent<GameManager>();
+            _sparks = GetComponentInChildren<ParticleSystem>();
+            _audioSource = GetComponent<AudioSource>();
+        }
+        catch
+        {
+            return;
+        }
+
+       
        
     }
     void Start()

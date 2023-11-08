@@ -16,8 +16,18 @@ public class BigEnemyMovement : MonoBehaviour
     [SerializeField] private GameManager _gameManager;
     private void Awake()
     {
-        _timer = FindObjectOfType<Timer>().GetComponent<Timer>();
-        _gameManager = FindObjectOfType<GameManager>().GetComponent<GameManager>();
+        try
+        {
+
+            _timer = FindObjectOfType<Timer>().GetComponent<Timer>();
+            _gameManager = FindObjectOfType<GameManager>().GetComponent<GameManager>();
+        }
+        catch
+        {
+            return;
+        }
+
+
 
     }
     void Start()
@@ -33,10 +43,10 @@ public class BigEnemyMovement : MonoBehaviour
 
             transform.position = Vector3.MoveTowards(this.transform.position, _targetPlayer.position, _bigEnemySpeed * Time.deltaTime);
             _enemyDir = Vector3.MoveTowards(this.transform.position, _targetPlayer.position, _bigEnemySpeed * Time.deltaTime);
-            
-                gameObject.transform.LookAt(_targetPlayer);
 
-            
+            gameObject.transform.LookAt(_targetPlayer);
+
+
 
             if (_gameManager.isPhase2)
             {
