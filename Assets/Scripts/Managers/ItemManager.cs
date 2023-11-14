@@ -19,6 +19,15 @@ public class ItemManager : MonoBehaviour
     [SerializeField] ParticleSystem _shieldDamageParticules;
     [SerializeField] ParticleSystem _shieldDamagePointParticules;
 
+    [SerializeField] AudioClip _dissolveEnemy;
+    private AudioSource _audioSource;
+
+    private void Start()
+    {
+            _audioSource = GetComponent<AudioSource>();
+
+    }
+
     private void Update()
     {
         if (isRadiusItem)
@@ -51,6 +60,17 @@ public class ItemManager : MonoBehaviour
         {
             if (collider.tag == "Enemy")
             {
+
+                if (!_gameManager.isPhase2)
+                {
+                    _audioSource.PlayOneShot(_dissolveEnemy, 0.08f);
+
+                }
+                else
+                {
+                    _audioSource.PlayOneShot(_dissolveEnemy, 0.4f);
+
+                }
                 _shieldDamageParticules.transform.position = collider.transform.position;
                 _shieldDamageParticules.Play();
                 _shieldDamagePointParticules.transform.position = collider.transform.position;

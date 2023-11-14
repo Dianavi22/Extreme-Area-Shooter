@@ -48,8 +48,6 @@ public class ExploseEnemy : MonoBehaviour
             return;
         }
 
-
-
     }
     void Start()
     {
