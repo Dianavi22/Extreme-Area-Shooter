@@ -28,9 +28,14 @@ public class PlayerController : MonoBehaviour
     [SerializeField] ParticleSystem _dashParticleSystem;
 
     [SerializeField] private ParticleSystem _takeItemParticules;
+    private AudioSource _audioSource;
+    [SerializeField] AudioClip _takeItemSound;
+
     private void Start()
     {
         _speed = baseSpeed;
+        _audioSource = GetComponent<AudioSource>();
+
         _rb = GetComponent<Rigidbody>();
     }
 
@@ -89,6 +94,8 @@ public class PlayerController : MonoBehaviour
 
         if (collision.collider.CompareTag("Item"))
         {
+            if (!_gameManager.isPhase2) { _audioSource.PlayOneShot(_takeItemSound, 0.5f); }
+            else { _audioSource.PlayOneShot(_takeItemSound, 2.1f); }
             _takeItemParticules.Play();
         }
     }
@@ -98,12 +105,9 @@ public class PlayerController : MonoBehaviour
         {
             _isWalled = false;
         }
+    
+      
     }
-
-   
-
-
-
 
 }
 

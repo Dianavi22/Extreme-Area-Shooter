@@ -33,7 +33,10 @@ public class PlayerHealth : MonoBehaviour
     public ParticleSystem hurtSideParticules4;
 
     [SerializeField] AudioSource _audioSource;
+    [SerializeField] AudioSource _audioSourceGameOver;
     [SerializeField] AudioClip _hitSound;
+    [SerializeField] AudioClip _lastHitSound;
+    [SerializeField] AudioClip _gameOver;
 
     private void Awake()
     {
@@ -77,24 +80,19 @@ public class PlayerHealth : MonoBehaviour
     {
         if (!_isInvincible)
         {
-            if (!_gameManager.isPhase2) { 
-            _audioSource.PlayOneShot(_hitSound, 1f);
-
-            }
-            else
-            {
-                _audioSource.PlayOneShot(_hitSound, 2f);
-
-            }
             ParticulesDamage();
             _gameManager.combo = 0;
-            m_currentHealth = m_currentHealth - 1;
-
-            healthBar.TakeDamageUI();
+            m_currentHealth--;
             if (m_currentHealth <= 0)
             {
+                if (!_gameManager.isPhase2) {_audioSourceGameOver.PlayOneShot(_gameOver, 3f);}
+                else { _audioSourceGameOver.PlayOneShot(_gameOver, 4f);}
                 isAlive = false;
             }
+
+            if (!_gameManager.isPhase2 && m_currentHealth > 1) { _audioSource.PlayOneShot(_hitSound, 1f);} else { _audioSource.PlayOneShot(_hitSound, 2f);  }
+            if (!_gameManager.isPhase2 && m_currentHealth == 1) { _audioSource.PlayOneShot(_lastHitSound, 1f);  } else if (_gameManager.isPhase2 && m_currentHealth == 1) { _audioSource.PlayOneShot(_lastHitSound, 2f); }
+            healthBar.TakeDamageUI();
            
             _gameManager.playerLevelUpgrade = _gameManager.playerLevelUpgrade - 50;
             _isInvincible = true;

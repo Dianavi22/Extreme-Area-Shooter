@@ -7,6 +7,9 @@ public class Item : MonoBehaviour
     [SerializeField] private GameManager _gameManager;
     [SerializeField] private RadiusItem _radiusItem;
     [SerializeField] ParticleSystem _spawnItem;
+    [SerializeField] GameObject _gfx;
+    [SerializeField] Collider _collider;
+    [SerializeField] ParticleSystem _destroyItem;
     private void Start()
     {
      // FindObjectOfType<GameManager>().GetComponent<ItemManager>().isRadiusItem = true;
@@ -14,6 +17,7 @@ public class Item : MonoBehaviour
         _radiusItem = GetComponent<RadiusItem>();
       StartCoroutine(DestroyItem());
         _spawnItem.Play();
+        _collider = GetComponent<Collider>();
     }
     private void OnCollisionEnter(Collision collision)
     {
@@ -27,7 +31,10 @@ public class Item : MonoBehaviour
     IEnumerator DestroyItem()
     {
         yield return new WaitForSeconds(5f);
-        Destroy(gameObject);
+        _collider.enabled = false;
+        _gfx.SetActive(false);
+        _destroyItem.Play();
+       
     }
     private void OnTriggerEnter(Collider other)
     {

@@ -7,6 +7,7 @@ public class AudioManager : MonoBehaviour
     [SerializeField] AudioSource _audioSource;
     public AudioClip[] songs;
     public float volume;
+    [SerializeField] GameManager _gameManager;
 
     private void Start()
     {
@@ -15,6 +16,10 @@ public class AudioManager : MonoBehaviour
     private void Update()
     {
         _audioSource.volume = volume;
+        if (!_gameManager.isGamePlaying)
+        {
+            _audioSource.volume = 0.35f;
+        }
         if (!_audioSource.isPlaying)
         {
             _audioSource.clip = songs[1];

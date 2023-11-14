@@ -69,12 +69,15 @@ public class GameManager : MonoBehaviour
 
     public bool isPhase2 = false;
 
+    public bool isGamePlaying = true;
+
+
     private void Awake()
     {
         //  _playerHealth = GetComponent<PlayerHealth>();
         _playerController = _player.GetComponent<PlayerController>();
         _playerHealth = _player.GetComponent<PlayerHealth>();
-
+        isGamePlaying = true;
        // _animCombo = _animComboGO.GetComponent<Animator>();
 
     }
@@ -208,6 +211,7 @@ public class GameManager : MonoBehaviour
 
     private void GameOver()
     {
+        isGamePlaying = false;
         _playerController.gameObject.SetActive(false);
         _enemySpawner.SetActive(false);
         _itemSpawners.SetActive(false);
@@ -217,6 +221,7 @@ public class GameManager : MonoBehaviour
 
     public void TakeItem()
     {
+        
         isCurrentItem = true;
     }
 
