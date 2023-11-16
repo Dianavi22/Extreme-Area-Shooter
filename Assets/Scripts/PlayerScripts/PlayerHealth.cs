@@ -55,11 +55,11 @@ public class PlayerHealth : MonoBehaviour
         {
             return ;
         }
-        postProcessVolume.weight = 0;
     }
     void Start()
     {
         m_currentHealth = m_maxHealth;
+        postProcessVolume.weight = 0;
 
     }
 

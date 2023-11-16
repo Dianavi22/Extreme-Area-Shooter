@@ -24,6 +24,12 @@ public class Ulti : MonoBehaviour
 
     [SerializeField] Collider[] colliders;
 
+    [SerializeField] GameObject imageUlt1;
+    [SerializeField] GameObject imageUlt2;
+    [SerializeField] GameObject imageUlt3;
+    [SerializeField] GameObject imageUlt4;
+    [SerializeField] GameObject textUlt;
+
     public ParticleSystem flashLaser;
     public ParticleSystem sparksLaser;
 
@@ -33,6 +39,7 @@ public class Ulti : MonoBehaviour
     public ParticleSystem ultPartSysteme3;
     public ParticleSystem ultPartSysteme4;
     public ParticleSystem ultPartSysteme5;
+    public ParticleSystem ultPartSide;
 
     public PostProcessVolume ultiPostProcess;
     [SerializeField] PlayerHealth _playerHealth;
@@ -50,6 +57,8 @@ public class Ulti : MonoBehaviour
 
     [SerializeField] private AudioSource _audioSource;
     [SerializeField] private AudioClip _laser;
+
+    bool _isPlayed = false;
 
     void Start()
     {
@@ -91,14 +100,31 @@ public class Ulti : MonoBehaviour
         {
             _currentSliderMaterial.material = _sliderCompleteMaterial;
             _ultBarPartSysteme.Play();
+            imageUlt1.SetActive(true);
+            imageUlt2.SetActive(true);
+            imageUlt4.SetActive(true);
+            imageUlt3.SetActive(true);
+            textUlt.SetActive(true);
+            if (!_isPlayed)
+            {
+                ultPartSide.Play();
+                _isPlayed = true;
+            }
 
         }
         else
         {
             _currentSliderMaterial.material = _sliderEmptyMaterial;
+            imageUlt1.SetActive(false);
+            imageUlt2.SetActive(false);
+            imageUlt4.SetActive(false);
+            textUlt.SetActive(false);
+            imageUlt3.SetActive(false);
+            _isPlayed = false;
+
 
         }
-        
+
     }
 
     public void VisuelUlti()

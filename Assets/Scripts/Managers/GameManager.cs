@@ -44,6 +44,7 @@ public class GameManager : MonoBehaviour
     public float maxUltCharge = 3;
     public float OldUltCharge = 0;
     public bool isUltCharged = false;
+    
 
     [Header("GameOver")]
     [SerializeField] private GameObject _gameOverUI;
