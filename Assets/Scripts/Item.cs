@@ -10,6 +10,9 @@ public class Item : MonoBehaviour
     [SerializeField] GameObject _gfx;
     [SerializeField] Collider _collider;
     [SerializeField] ParticleSystem _destroyItem;
+
+    [SerializeField] AudioSource _audioSource;
+    [SerializeField] AudioClip _destroyItemSound;
     private void Start()
     {
      // FindObjectOfType<GameManager>().GetComponent<ItemManager>().isRadiusItem = true;
@@ -18,6 +21,7 @@ public class Item : MonoBehaviour
       StartCoroutine(DestroyItem());
         _spawnItem.Play();
         _collider = GetComponent<Collider>();
+        _audioSource = GetComponent<AudioSource>();
     }
     private void OnCollisionEnter(Collision collision)
     {
@@ -31,6 +35,14 @@ public class Item : MonoBehaviour
     IEnumerator DestroyItem()
     {
         yield return new WaitForSeconds(5f);
+        if (!_gameManager.isPhase2)
+        {
+            _audioSource.PlayOneShot(_destroyItemSound, 1.5f);
+        }
+        else
+        {
+            _audioSource.PlayOneShot(_destroyItemSound, 3f);
+        }
         _collider.enabled = false;
         _gfx.SetActive(false);
         _destroyItem.Play();

@@ -55,6 +55,7 @@ public class PlayerHealth : MonoBehaviour
         {
             return ;
         }
+        postProcessVolume.weight = 0;
     }
     void Start()
     {
