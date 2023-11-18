@@ -2515,7 +2515,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &426895210
 Transform:
   m_ObjectHideFlags: 0
@@ -3365,7 +3365,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &571622656
 Transform:
   m_ObjectHideFlags: 0
@@ -4419,6 +4419,10 @@ PrefabInstance:
     - target: {fileID: 5753754095892556472, guid: 549d85752e48acb45abb2f350ee2c5a2, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5753754095892556473, guid: 549d85752e48acb45abb2f350ee2c5a2, type: 3}
+      propertyPath: m_Constraints
+      value: 94
       objectReference: {fileID: 0}
     - target: {fileID: 5753754095892556474, guid: 549d85752e48acb45abb2f350ee2c5a2, type: 3}
       propertyPath: _speed
@@ -7568,7 +7572,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1286709468
 Transform:
   m_ObjectHideFlags: 0
@@ -8244,7 +8248,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1444539064
 Transform:
   m_ObjectHideFlags: 0
@@ -11319,7 +11323,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &2013580404
 MonoBehaviour:
   m_ObjectHideFlags: 0
