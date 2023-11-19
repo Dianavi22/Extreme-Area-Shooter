@@ -65,6 +65,8 @@ public class Ulti : MonoBehaviour
         slider.value = 0;
         _ultBarPartSysteme.Stop();
         isRevived = false;
+        _nbBlink = 0;
+
     }
 
     void Update()
@@ -100,26 +102,20 @@ public class Ulti : MonoBehaviour
         {
             _currentSliderMaterial.material = _sliderCompleteMaterial;
             _ultBarPartSysteme.Play();
-            imageUlt1.SetActive(true);
-            imageUlt2.SetActive(true);
-            imageUlt4.SetActive(true);
-            imageUlt3.SetActive(true);
+           
             textUlt.SetActive(true);
             if (!_isPlayed)
             {
                 ultPartSide.Play();
+                StartCoroutine(BlinkGreen());
                 _isPlayed = true;
             }
-
         }
         else
         {
             _currentSliderMaterial.material = _sliderEmptyMaterial;
-            imageUlt1.SetActive(false);
-            imageUlt2.SetActive(false);
-            imageUlt4.SetActive(false);
+           
             textUlt.SetActive(false);
-            imageUlt3.SetActive(false);
             _isPlayed = false;
 
 
@@ -186,5 +182,31 @@ public class Ulti : MonoBehaviour
         Gizmos.DrawWireSphere(_player.transform.position, radiusGarlic);
     }
 
+    private int _nbBlink;
+
+    IEnumerator BlinkGreen()
+    {
+        while (_nbBlink < 4)
+        {
+            imageUlt1.SetActive(true);
+            imageUlt2.SetActive(true);
+            imageUlt4.SetActive(true);
+            imageUlt3.SetActive(true);
+            yield return new WaitForSeconds(0.1f);
+            imageUlt1.SetActive(false);
+            imageUlt2.SetActive(false);
+            imageUlt4.SetActive(false);
+            imageUlt3.SetActive(false);
+            yield return new WaitForSeconds(0.1f);
+            _nbBlink++;
+        }
+        imageUlt1.SetActive(false);
+        imageUlt2.SetActive(false);
+        imageUlt4.SetActive(false);
+        imageUlt3.SetActive(false);
+        _nbBlink = 0;
+        yield return null;
+
+    }
 
 }
