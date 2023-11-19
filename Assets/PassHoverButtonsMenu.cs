@@ -22,19 +22,31 @@ public class PassHoverButtonsMenu : MonoBehaviour
     private void OnMouseEnter()
     {
         _isHover = true;
-        _part1.Play();
-        _part2.Play();
+       
         _part3.Play();
         _part4.Play();
+        Invoke("HorizontalPartEnter", 0.3f);
+    }
+
+    public void HorizontalPartEnter()
+    {
+        _part1.Play();
+        _part2.Play();
+    }
+    public void HorizontalPartExit()
+    {
+        _part1.Stop();
+        _part2.Stop();
     }
 
     private void OnMouseExit()
     {
         _isHover = false;
-        _part1.Stop();
-        _part2.Stop();
+       
         _part3.Stop();
         _part4.Stop();
+        Invoke("HorizontalPartExit", 0.3f);
+
 
     }
 }
