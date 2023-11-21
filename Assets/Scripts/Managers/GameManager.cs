@@ -49,6 +49,8 @@ public class GameManager : MonoBehaviour
     [Header("GameOver")]
     [SerializeField] private GameObject _gameOverUI;
     public bool isGameFinished = false;
+    [SerializeField] ParticleSystem _gameOverPartSysteme;
+    private bool _isPartGOPlayed = false;
 
     public int playerLevelUpgrade;
     [SerializeField, HideInInspector] private GameObject _player;
@@ -213,6 +215,11 @@ public class GameManager : MonoBehaviour
     private void GameOver()
     {
         isGamePlaying = false;
+        if (!_isPartGOPlayed)
+        {
+            _gameOverPartSysteme.Play();
+            _isPartGOPlayed = true;
+        }
         _playerController.gameObject.SetActive(false);
         _enemySpawner.SetActive(false);
         _itemSpawners.SetActive(false);
