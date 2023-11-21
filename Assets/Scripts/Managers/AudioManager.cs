@@ -16,11 +16,11 @@ public class AudioManager : MonoBehaviour
     private void Update()
     {
         _audioSource.volume = volume;
-        if (!_gameManager.isGamePlaying)
+        if (!_gameManager.isGamePlaying && !PauseMenu.gameIsPaused)
         {
             _audioSource.volume = 0.35f;
         }
-        if (!_audioSource.isPlaying)
+        if (!_audioSource.isPlaying && !PauseMenu.gameIsPaused)
         {
             _audioSource.clip = songs[1];
             _audioSource.loop = true;

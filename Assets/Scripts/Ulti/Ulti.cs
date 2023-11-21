@@ -59,7 +59,6 @@ public class Ulti : MonoBehaviour
     [SerializeField] private AudioClip _laser;
 
     bool _isPlayed = false;
-
     void Start()
     {
         slider.value = 0;

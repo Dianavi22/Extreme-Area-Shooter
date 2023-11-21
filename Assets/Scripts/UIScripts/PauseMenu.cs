@@ -6,49 +6,54 @@ public class PauseMenu : MonoBehaviour
 {
 
     public static bool gameIsPaused = false;
-    public GameObject _player;
-    public GameObject _enemys;
-    public GameObject _pauseMenuUI;
+    [SerializeField] GameObject _player;
+    [SerializeField] GameObject _enemys;
+    [SerializeField] GameObject _pauseMenuUI;
+    [SerializeField] AudioSource _music;
+    [SerializeField] AudioSource _musicPause;
+    [SerializeField] Scale _scale;
 
     [Header("Particules Start")]
-    public ParticleSystem _resumeButtonPart1;
-    public ParticleSystem _resumeButtonPart2;
-    public ParticleSystem _resumeButtonPart3;
-    public ParticleSystem _resumeButtonPart4;
-    public ParticleSystem _resumeButtonPart5;
-    public ParticleSystem _resumeButtonPart6;
+    [SerializeField] ParticleSystem _resumeButtonPart1;
+    [SerializeField] ParticleSystem _resumeButtonPart2;
+    [SerializeField] ParticleSystem _resumeButtonPart3;
+    [SerializeField] ParticleSystem _resumeButtonPart4;
+    [SerializeField] ParticleSystem _resumeButtonPart5;
+    [SerializeField] ParticleSystem _resumeButtonPart6;
 
     [Header("Particules Retry")]
-    public ParticleSystem _retryButtonPart1;
-    public ParticleSystem _retryButtonPart2;
-    public ParticleSystem _retryButtonPart3;
-    public ParticleSystem _retryButtonPart4;
-    public ParticleSystem _retryButtonPart5;
-    public ParticleSystem _retryButtonPart6;
+    [SerializeField] ParticleSystem _retryButtonPart1;
+    [SerializeField] ParticleSystem _retryButtonPart2;
+    [SerializeField] ParticleSystem _retryButtonPart3;
+    [SerializeField] ParticleSystem _retryButtonPart4;
+    [SerializeField] ParticleSystem _retryButtonPart5;
+    [SerializeField] ParticleSystem _retryButtonPart6;
 
     [Header("Particules Menu")]
-    public ParticleSystem _menuButtonPart1;
-    public ParticleSystem _menuButtonPart2;
-    public ParticleSystem _menuButtonPart3;
-    public ParticleSystem _menuButtonPart4;
-    public ParticleSystem _menuButtonPart5;
-    public ParticleSystem _menuButtonPart6;
+    [SerializeField] ParticleSystem _menuButtonPart1;
+    [SerializeField] ParticleSystem _menuButtonPart2;
+    [SerializeField] ParticleSystem _menuButtonPart3;
+    [SerializeField] ParticleSystem _menuButtonPart4;
+    [SerializeField] ParticleSystem _menuButtonPart5;
+    [SerializeField] ParticleSystem _menuButtonPart6;
 
     [Header("Particules Quit")]
-    public ParticleSystem _quitButtonPart1;
-    public ParticleSystem _quitButtonPart2;
-    public ParticleSystem _quitButtonPart3;
-    public ParticleSystem _quitButtonPart4;
-    public ParticleSystem _quitButtonPart5;
-    public ParticleSystem _quitButtonPart6;
-    void Start()
+    [SerializeField] ParticleSystem _quitButtonPart1;
+    [SerializeField] ParticleSystem _quitButtonPart2;
+    [SerializeField] ParticleSystem _quitButtonPart3;
+    [SerializeField] ParticleSystem _quitButtonPart4;
+    [SerializeField] ParticleSystem _quitButtonPart5;
+    [SerializeField] ParticleSystem _quitButtonPart6;
+
+    
+    void Start() 
     {
 
     }
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape) && !_scale.isCurrentUlti)
         {
             if (gameIsPaused) { Resume(); } else { Paused(); }
         }
@@ -61,7 +66,8 @@ public class PauseMenu : MonoBehaviour
         Time.timeScale = 1;
         _player.SetActive(true);
         _enemys.SetActive(true);
-
+        _musicPause.Stop();
+        _music.Play();
     }
     public void Paused()
     {
@@ -71,6 +77,9 @@ public class PauseMenu : MonoBehaviour
         Time.timeScale = 0;
         _enemys.SetActive(false);
         _player.SetActive(false);
+
+        _music.Pause();
+        _musicPause.Play();
 
     }
 
