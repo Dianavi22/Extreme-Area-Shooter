@@ -17,6 +17,7 @@ public class GameOver : MonoBehaviour
     [SerializeField]  private TMP_Text _littleEnemyKillText;
     [SerializeField]  private TMP_Text _totalKillsText;
     [SerializeField]  private TMP_Text _playerScoreText;
+    [SerializeField]  private TMP_Text _titleEnd;
     public int totalKills;
     void Start()
     {
@@ -25,6 +26,11 @@ public class GameOver : MonoBehaviour
 
     void Update()
     {
+        if (gameManager.isSecretGOScreen)
+        {
+            _titleEnd.fontSize = 95;
+            _titleEnd.text = "IT'S NOT A BUG, IS A FEATURE";
+        }
         if (gameManager.isGameFinished)
         {
             _saveData.VerifTimeRecord();

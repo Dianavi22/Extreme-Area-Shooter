@@ -14,6 +14,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Timer _timer;
 
     public static GameManager gameManager;
+    [SerializeField] CameraController _cameraController;
     private PlayerController _playerController;
     [SerializeField] GameObject _itemSpawners;  
 
@@ -73,6 +74,17 @@ public class GameManager : MonoBehaviour
     public bool isPhase2 = false;
 
     public bool isGamePlaying = true;
+
+    [Header("SecretEnd")]
+    public bool isSecretEnd = false;
+    public bool isSecretGOScreen = false;
+    [SerializeField] ParticleSystem _debrisSecretEnd;
+    [SerializeField] GameObject _animSecretEnd;
+    [SerializeField] GameObject _playerGfx;
+    [SerializeField] GameObject _playerCanons;
+    [SerializeField] GameObject _debrisSecretEndGO;
+    [SerializeField] ParticleSystem _secretEndParticules;
+
 
 
     private void Awake()
@@ -209,13 +221,18 @@ public class GameManager : MonoBehaviour
         }
         #endregion
 
+        if (isSecretEnd)
+        {
+            Invoke("SecretEnd", 2);
+            
 
+        }
     }
 
     private void GameOver()
     {
         isGamePlaying = false;
-        if (!_isPartGOPlayed)
+        if (!_isPartGOPlayed && !isSecretGOScreen)
         {
             _gameOverPartSysteme.Play();
             _isPartGOPlayed = true;
@@ -231,6 +248,56 @@ public class GameManager : MonoBehaviour
     {
         
         isCurrentItem = true;
+    }
+
+    public void SecretEnd()
+    {
+
+        _player.GetComponent<PlayerController>().enabled = false;
+        _player.GetComponent<PlayerHealth>().enabled = false;
+        _player.transform.position = new Vector3(0,0,0);
+        _playerGfx.SetActive(false);
+        _playerCanons.SetActive(false);
+        _animSecretEnd.SetActive(true);
+        StartCoroutine(PlayPartSecret());
+        isGamePlaying = false;
+        _cameraController.shakeshake = true;
+        _debrisSecretEndGO.SetActive(true);
+
+    }
+
+    IEnumerator PlayPartSecret()
+    {
+        yield return new WaitForSeconds(3f);
+
+        yield return new WaitForSeconds(7.5f);
+        _cameraController.shakeshake = false;
+
+        _secretEndParticules.Play();
+        _animSecretEnd.SetActive(false);
+
+        yield return new WaitForSeconds(0.2f);
+        _enemySpawner.SetActive(false);
+
+
+        yield return new WaitForSeconds(2f);
+        EndAfterSecretEnd();
+
+
+    }
+
+    public void EndAfterSecretEnd() 
+    {
+        _secretEndParticules.Stop();
+
+        _playerHealth.isAlive = false;
+        _player.SetActive(false);
+        _itemSpawners.SetActive(false);
+        isGameFinished = true;
+        _gameOverUI.SetActive(true);
+        isSecretEnd = false;
+        isSecretGOScreen = true;
+
     }
 
 }

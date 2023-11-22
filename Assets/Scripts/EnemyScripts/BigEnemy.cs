@@ -57,7 +57,7 @@ public class BigEnemy : MonoBehaviour
             _gameManager.playerLevelUpgrade++;
             Destroy(gameObject);
         }
-        if (collision.collider.CompareTag("Player"))
+        if (collision.collider.CompareTag("Player") && !_gameManager.isSecretEnd)
         {
             _damage.TakeDamage();
             Destroy(gameObject);

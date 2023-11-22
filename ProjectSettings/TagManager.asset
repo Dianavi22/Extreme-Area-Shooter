@@ -9,6 +9,7 @@ TagManager:
   - Enemy
   - Ulti
   - Item
+  - SecretEnd
   layers:
   - Default
   - TransparentFX

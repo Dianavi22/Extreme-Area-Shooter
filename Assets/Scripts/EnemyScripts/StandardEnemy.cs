@@ -102,7 +102,7 @@ public class StandardEnemy : MonoBehaviour
             Invoke("DieEnemy", 0.5f);
            
         }
-        if (collision.collider.CompareTag("Player"))
+        if (collision.collider.CompareTag("Player") && !_gameManager.isSecretEnd)
         {
             _isDestroy = true;
             _sparks.Play();

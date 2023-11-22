@@ -74,7 +74,7 @@ public class LittleEnemy : MonoBehaviour
             Invoke("DestroyLittleEnemy", 1f);
            
         }
-        if (collision.collider.CompareTag("Player"))
+        if (collision.collider.CompareTag("Player") && !_gameManager.isSecretEnd)
         {
             Destroy(gameObject);
             _damage.TakeDamage();

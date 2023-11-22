@@ -104,7 +104,7 @@ public class ExploseEnemy : MonoBehaviour
         Collider[] colliders = Physics.OverlapSphere(transform.position, explosionRadius);
         foreach (Collider collider in colliders)
         {
-            if (collider.tag == "Enemy" || collider.tag == "Player")
+            if (collider.tag == "Enemy" || collider.tag == "Player" && !_gameManager.isSecretEnd)
             {
                     Destroy(gameObject);
                 if (collider.tag == "Enemy")
