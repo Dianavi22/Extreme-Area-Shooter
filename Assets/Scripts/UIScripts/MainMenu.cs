@@ -13,6 +13,8 @@ public class MainMenu : MonoBehaviour
 
     public bool isFullScreen;
 
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -45,6 +47,13 @@ public class MainMenu : MonoBehaviour
         SceneManager.LoadScene("CommandScene");
 
        
+    }
+
+    public void Credits()
+    {
+        SceneManager.LoadScene("CreditsScene");
+
+
     }
 
     public void QuitGame()
