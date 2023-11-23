@@ -12,7 +12,7 @@ public class MainMenu : MonoBehaviour
     public bool isHover;
 
     public bool isFullScreen;
-
+    private int _isCheckedCommmands;
 
 
     // Start is called before the first frame update
@@ -24,6 +24,8 @@ public class MainMenu : MonoBehaviour
         Transform _startImage4 = _image4;
         isFullScreen = true;
         Screen.fullScreen = isFullScreen;
+
+        _isCheckedCommmands = PlayerPrefs.GetInt("CommandChecked");
     }
 
     // Update is called once per frame
@@ -44,9 +46,22 @@ public class MainMenu : MonoBehaviour
 
     public void StartGame()
     {
-        SceneManager.LoadScene("CommandScene");
+        if (_isCheckedCommmands == 0)
+        {
+            SceneManager.LoadScene("CommandScene");
 
-       
+        }
+        else { 
+            SceneManager.LoadScene("GameScene");
+
+        }
+
+    } 
+    public void StartCommands()
+    {
+     
+            SceneManager.LoadScene("CommandScene");
+
     }
 
     public void Credits()
