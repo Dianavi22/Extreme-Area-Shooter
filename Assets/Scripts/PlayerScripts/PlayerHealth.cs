@@ -108,6 +108,9 @@ public class PlayerHealth : MonoBehaviour
             m_currentHealth = m_currentHealth - 2;
             
             healthBar.TakeDamageUI();
+            if (!_gameManager.isPhase2 && m_currentHealth > 1) { _audioSource.PlayOneShot(_hitSound, 1f); } else { _audioSource.PlayOneShot(_hitSound, 2f); }
+            if (!_gameManager.isPhase2 && m_currentHealth == 1) { _audioSource.PlayOneShot(_lastHitSound, 1f); } else if (_gameManager.isPhase2 && m_currentHealth == 1) { _audioSource.PlayOneShot(_lastHitSound, 2f); }
+
             if (m_currentHealth <= 0)
             {
                 isAlive = false;
