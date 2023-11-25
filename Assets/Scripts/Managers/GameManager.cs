@@ -250,21 +250,9 @@ public class GameManager : MonoBehaviour
         isCurrentItem = true;
     }
 
-    public void SecretEnd()
-    {
+   
 
-        _player.GetComponent<PlayerController>().enabled = false;
-        _player.GetComponent<PlayerHealth>().enabled = false;
-        _player.transform.position = new Vector3(0,0,0);
-        _playerGfx.SetActive(false);
-        _playerCanons.SetActive(false);
-        _animSecretEnd.SetActive(true);
-        StartCoroutine(PlayPartSecret());
-        isGamePlaying = false;
-        _cameraController.shakeshake = true;
-        _debrisSecretEndGO.SetActive(true);
-
-    }
+    #region Secret
 
     IEnumerator PlayPartSecret()
     {
@@ -285,7 +273,21 @@ public class GameManager : MonoBehaviour
 
 
     }
+    public void SecretEnd()
+    {
 
+        _player.GetComponent<PlayerController>().enabled = false;
+        _player.GetComponent<PlayerHealth>().enabled = false;
+        _player.transform.position = new Vector3(0, 0, 0);
+        _playerGfx.SetActive(false);
+        _playerCanons.SetActive(false);
+        _animSecretEnd.SetActive(true);
+        StartCoroutine(PlayPartSecret());
+        isGamePlaying = false;
+        _cameraController.shakeshake = true;
+        _debrisSecretEndGO.SetActive(true);
+
+    }
     public void EndAfterSecretEnd() 
     {
         _secretEndParticules.Stop();
@@ -299,5 +301,6 @@ public class GameManager : MonoBehaviour
         isSecretGOScreen = true;
 
     }
+    #endregion
 
 }

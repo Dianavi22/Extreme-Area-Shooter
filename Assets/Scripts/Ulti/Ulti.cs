@@ -57,6 +57,13 @@ public class Ulti : MonoBehaviour
 
     [SerializeField] private AudioSource _audioSource;
     [SerializeField] private AudioClip _laser;
+    [SerializeField] private AudioClip _ultIsReadySound;
+
+    [SerializeField] private MeshRenderer _playerPart1;
+    [SerializeField] private MeshRenderer _playerPart2;
+    [SerializeField] private MeshRenderer _playerPart3;
+    [SerializeField] private MeshRenderer _playerPart4;
+    [SerializeField] private Material _playerMaterial;
 
     bool _isPlayed = false;
     void Start()
@@ -83,7 +90,14 @@ public class Ulti : MonoBehaviour
             UpdateUltBar();
             _gameManager.isUltCharged = false;
             _gameManager.OldUltCharge = 0;
-            if(_gameManager.playerLevelUpgrade < 90) {  _gameManager.playerLevelUpgrade = 90; }
+
+            _playerPart1.material = _playerMaterial;
+            _playerPart2.material = _playerMaterial;
+            _playerPart3.material = _playerMaterial;
+            _playerPart4.material = _playerMaterial;
+
+
+            if (_gameManager.playerLevelUpgrade < 90) {  _gameManager.playerLevelUpgrade = 90; }
         }
         if(radiusGarlic == 7)
         {
@@ -107,6 +121,12 @@ public class Ulti : MonoBehaviour
             {
                 ultPartSide.Play();
                 StartCoroutine(BlinkGreen());
+                _audioSource.PlayOneShot(_ultIsReadySound,1.5f);
+                _playerPart1.material = _sliderCompleteMaterial;
+                _playerPart2.material = _sliderCompleteMaterial;
+                _playerPart3.material = _sliderCompleteMaterial;
+                _playerPart4.material = _sliderCompleteMaterial;
+
                 _isPlayed = true;
             }
         }
@@ -137,7 +157,6 @@ public class Ulti : MonoBehaviour
         sparksLaser.Play();
 
         ultiPostProcess.weight = 1;
-
     }
 
     public void UpSpawnRate()
