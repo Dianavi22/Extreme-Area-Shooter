@@ -29,7 +29,7 @@ public class GameOver : MonoBehaviour
         if (gameManager.isSecretGOScreen)
         {
             _titleEnd.fontSize = 95;
-            _titleEnd.text = "IT'S NOT A BUG, IS A FEATURE";
+            _titleEnd.text = "IT'S NOT A BUG, IT'S A FEATURE";
         }
         if (gameManager.isGameFinished)
         {
