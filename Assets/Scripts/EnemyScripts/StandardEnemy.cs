@@ -22,7 +22,7 @@ public class StandardEnemy : MonoBehaviour
     public PlayerHealth _damage;
 
     [Header("Import")]
-    private GameManager _gameManager;
+      private GameManager _gameManager;
 
     private bool _isDestroy = false;
 
@@ -58,7 +58,9 @@ public class StandardEnemy : MonoBehaviour
     void Update()
     {
         //Direction
-        transform.position = Vector3.MoveTowards(this.transform.position, _targetPlayer.position, m_StandardEnemySpeed * Time.deltaTime);
+
+        transform.Translate(Vector3.forward * m_StandardEnemySpeed * Time.deltaTime);
+      //  transform.position = Vector3.MoveTowards(this.transform.position, _targetPlayer.position, m_StandardEnemySpeed * Time.deltaTime);
          _enemyDir = Vector3.MoveTowards(this.transform.position, _targetPlayer.position, m_StandardEnemySpeed * Time.deltaTime);
 
         if (!_isDestroy)

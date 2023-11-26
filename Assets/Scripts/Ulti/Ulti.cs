@@ -14,32 +14,43 @@ public class Ulti : MonoBehaviour
 
     [Header("Garlic")]
     public float radiusGarlic;
-    [SerializeField] GameObject _player;
+    [SerializeField] private GameObject _player;
 
-    [Header("UI")]
+    [Header("UI UltBar")]
     [SerializeField] private Slider slider;
     [SerializeField] private Material _sliderEmptyMaterial;
     [SerializeField] private Image _currentSliderMaterial;
     [SerializeField] private Material _sliderCompleteMaterial;
+    [SerializeField] private GameObject textUlt;
+
+    [Header("UI Ult Ready")]
+    [SerializeField] private GameObject imageUlt1;
+    [SerializeField] private GameObject imageUlt2;
+    [SerializeField] private GameObject imageUlt3;
+    [SerializeField] private GameObject imageUlt4;
+    [SerializeField] private ParticleSystem _ultBarPartSysteme;
+    [SerializeField] private ParticleSystem ultPartSide;
+
+
+    [Header("Player When Ulti is Ready")]
+    [SerializeField] private MeshRenderer _playerPart1;
+    [SerializeField] private MeshRenderer _playerPart2;
+    [SerializeField] private MeshRenderer _playerPart3;
+    [SerializeField] private MeshRenderer _playerPart4;
+    [SerializeField] private Material _playerMaterial;
+
 
     [SerializeField] Collider[] colliders;
-
-    [SerializeField] GameObject imageUlt1;
-    [SerializeField] GameObject imageUlt2;
-    [SerializeField] GameObject imageUlt3;
-    [SerializeField] GameObject imageUlt4;
-    [SerializeField] GameObject textUlt;
 
     public ParticleSystem flashLaser;
     public ParticleSystem sparksLaser;
 
-    [SerializeField] ParticleSystem _ultBarPartSysteme;
+    [Header("Particules Up Ulti")]
     public ParticleSystem ultPartSysteme1;
     public ParticleSystem ultPartSysteme2;
     public ParticleSystem ultPartSysteme3;
     public ParticleSystem ultPartSysteme4;
     public ParticleSystem ultPartSysteme5;
-    public ParticleSystem ultPartSide;
 
     public PostProcessVolume ultiPostProcess;
     [SerializeField] PlayerHealth _playerHealth;
@@ -51,19 +62,19 @@ public class Ulti : MonoBehaviour
 
     public bool isFirstTime = true;
 
-    private int _difficult = 0;
 
     public ParticleSystem garlicParticules;
 
     [SerializeField] private AudioSource _audioSource;
     [SerializeField] private AudioClip _laser;
     [SerializeField] private AudioClip _ultIsReadySound;
+    [SerializeField] private AudioClip _spaceBreakingSound;
 
-    [SerializeField] private MeshRenderer _playerPart1;
-    [SerializeField] private MeshRenderer _playerPart2;
-    [SerializeField] private MeshRenderer _playerPart3;
-    [SerializeField] private MeshRenderer _playerPart4;
-    [SerializeField] private Material _playerMaterial;
+    [Header("SpaceBreaker")]
+    [SerializeField] private ParticleSystem _breakingSpace1;
+    [SerializeField] private ParticleSystem _breakingSpace2;
+    [SerializeField] private ParticleSystem _breakingSpace3;
+    [SerializeField] private ParticleSystem _breakingSpace4;
 
     bool _isPlayed = false;
     void Start()
@@ -72,7 +83,6 @@ public class Ulti : MonoBehaviour
         _ultBarPartSysteme.Stop();
         isRevived = false;
         _nbBlink = 0;
-
     }
 
     void Update()
@@ -80,24 +90,14 @@ public class Ulti : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.E) && _gameManager.isUltCharged && _playerHealth.isAlive)
         {
             VisuelUlti();
-            _audioSource.PlayOneShot(_laser, 2f);
-            _difficult++;
             UpSpawnRate();
             Garlic();
             ReInitLifeBar();
             _scale.LaunchUlti();
-            _gameManager.ultCharge = 0;
-            UpdateUltBar();
-            _gameManager.isUltCharged = false;
-            _gameManager.OldUltCharge = 0;
-
-            _playerPart1.material = _playerMaterial;
-            _playerPart2.material = _playerMaterial;
-            _playerPart3.material = _playerMaterial;
-            _playerPart4.material = _playerMaterial;
-
-
+            ReIntUltBar();
+            ReInitPlayerGfx();
             if (_gameManager.playerLevelUpgrade < 90) {  _gameManager.playerLevelUpgrade = 90; }
+            Invoke("SpaceBreak", 1.7f);
         }
         if(radiusGarlic == 7)
         {
@@ -119,14 +119,8 @@ public class Ulti : MonoBehaviour
             textUlt.SetActive(true);
             if (!_isPlayed)
             {
-                ultPartSide.Play();
-                StartCoroutine(BlinkGreen());
-                _audioSource.PlayOneShot(_ultIsReadySound,1.5f);
-                _playerPart1.material = _sliderCompleteMaterial;
-                _playerPart2.material = _sliderCompleteMaterial;
-                _playerPart3.material = _sliderCompleteMaterial;
-                _playerPart4.material = _sliderCompleteMaterial;
-
+                PrepareUltiVisuel();
+                ChangePlayerGfxForUlti();
                 _isPlayed = true;
             }
         }
@@ -142,6 +136,34 @@ public class Ulti : MonoBehaviour
 
     }
 
+    #region UltiReady
+    public void PrepareUltiVisuel()
+    {
+        ultPartSide.Play();
+        StartCoroutine(BlinkGreen());
+        _audioSource.PlayOneShot(_ultIsReadySound, 1.5f);
+    }
+    public void ChangePlayerGfxForUlti()
+    {
+        _playerPart1.material = _sliderCompleteMaterial;
+        _playerPart2.material = _sliderCompleteMaterial;
+        _playerPart3.material = _sliderCompleteMaterial;
+        _playerPart4.material = _sliderCompleteMaterial;
+    }
+    #endregion
+
+    #region Ulti 
+    public void Garlic()
+    {
+        radiusGarlic = 7;
+        garlicParticules.Play();
+    }
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(_player.transform.position, radiusGarlic);
+    }
+
     public void VisuelUlti()
     {
         ultPartSysteme1.Play();
@@ -149,6 +171,7 @@ public class Ulti : MonoBehaviour
         ultPartSysteme3.Play();
         ultPartSysteme4.Play();
         ultPartSysteme5.Play();
+        _audioSource.PlayOneShot(_laser, 2f);
 
         _ultBarPartSysteme.Stop();
 
@@ -159,22 +182,26 @@ public class Ulti : MonoBehaviour
         ultiPostProcess.weight = 1;
     }
 
+
+    #endregion
+
+    #region Event After ulti
     public void UpSpawnRate()
     {
-        if (isFirstTime)
-        {
-            isFirstTime = false;
-            _enemySpawner.ResetSpawnEnemy();
-            _enemySpawner.m_Rate += 0.5f;
-            _enemySpawner.m_RateBigEnemy += 0.5f;
-            _enemySpawner.m_RateExploseEnemy += 0.5f;
-        }
-        _gameManager.maxUltCharge += 30;
-        _enemySpawner.m_Rate *= 1.4f; 
-        _enemySpawner.m_RateBigEnemy *= 1.4f; 
-        _enemySpawner.m_RateExploseEnemy *= 1.4f;
-
        
+            if (isFirstTime)
+            {
+                isFirstTime = false;
+                _enemySpawner.ResetSpawnEnemy();
+                _enemySpawner.m_Rate += 0.5f;
+                _enemySpawner.m_RateBigEnemy += 0.5f;
+                _enemySpawner.m_RateExploseEnemy += 0.5f;
+            }
+            _enemySpawner.m_Rate *= 1.4f;
+            _enemySpawner.m_RateBigEnemy *= 1.4f;
+            _enemySpawner.m_RateExploseEnemy *= 1.4f;
+    
+            _gameManager.maxUltCharge += 30;
     }
 
     public void ReInitLifeBar()
@@ -186,18 +213,58 @@ public class Ulti : MonoBehaviour
     public void UpdateUltBar()
     {
         slider.value = _gameManager.ultCharge / _gameManager.maxUltCharge;
+       
+    }
+    public void ReIntUltBar()
+    {
+        UpdateUltBar();
+        _gameManager.ultCharge = 0;
+        _gameManager.isUltCharged = false;
+        _gameManager.OldUltCharge = 0;
     }
 
-    public void Garlic()
+    public void ReInitPlayerGfx()
     {
-        radiusGarlic = 7;
-        garlicParticules.Play();
+
+        _playerPart1.material = _playerMaterial;
+        _playerPart2.material = _playerMaterial;
+        _playerPart3.material = _playerMaterial;
+        _playerPart4.material = _playerMaterial;
     }
 
-    private void OnDrawGizmosSelected()
+    #endregion
+
+
+    public void SpaceBreak()
     {
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(_player.transform.position, radiusGarlic);
+        _gameManager.wavesCount++;
+        if (_gameManager.wavesCount == 1)
+        {
+            _breakingSpace1.Play();
+            _audioSource.PlayOneShot(_spaceBreakingSound, 2.5f);
+        }
+        else if (_gameManager.wavesCount == 2)
+        {
+            _breakingSpace2.Play();
+            _audioSource.PlayOneShot(_spaceBreakingSound, 2.5f);
+
+        }
+        else if (_gameManager.wavesCount == 3)
+        {
+            _breakingSpace3.Play();
+            _audioSource.PlayOneShot(_spaceBreakingSound, 2.5f);
+
+        }
+        else if (_gameManager.wavesCount == 4)
+        {
+            _breakingSpace4.Play();
+            _audioSource.PlayOneShot(_spaceBreakingSound, 2.5f);
+
+        }
+        else
+        {
+            _audioSource.PlayOneShot(_spaceBreakingSound, 2.5f);
+        }
     }
 
     private int _nbBlink;

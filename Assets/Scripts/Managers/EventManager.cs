@@ -27,7 +27,6 @@ public class EventManager : MonoBehaviour
         if(_timer.seconds > 70 && isCurrentEventReady && !isCurrentEvent)
         {
             StartCoroutine(LaunchRandomEvent());
-            print("HERE");
         }
     }
 

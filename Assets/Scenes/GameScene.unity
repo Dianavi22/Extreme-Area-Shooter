@@ -2505,7 +2505,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!199 &301989163
 ParticleSystemRenderer:
   serializedVersion: 6
@@ -12826,6 +12826,7 @@ MonoBehaviour:
   maxUltCharge: 100
   OldUltCharge: 0
   isUltCharged: 0
+  wavesCount: 0
   _gameOverUI: {fileID: 137014825}
   isGameFinished: 0
   _gameOverPartSysteme: {fileID: 105278950}
@@ -13966,6 +13967,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 487820317}
   m_CullTransparentMesh: 1
+--- !u!198 &494951895 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 797990431296593208, guid: cb6f6ba5d6d837644b1af140bc7a10be, type: 3}
+  m_PrefabInstance: {fileID: 9182118994479427040}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &500101932
 GameObject:
   m_ObjectHideFlags: 0
@@ -16012,6 +16018,10 @@ PrefabInstance:
       value: SpaceBreak (3)
       objectReference: {fileID: 0}
     - target: {fileID: 797990431296593208, guid: cb6f6ba5d6d837644b1af140bc7a10be, type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 797990431296593208, guid: cb6f6ba5d6d837644b1af140bc7a10be, type: 3}
       propertyPath: InitialModule.startSize.scalar
       value: 0.05
       objectReference: {fileID: 0}
@@ -16028,6 +16038,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cb6f6ba5d6d837644b1af140bc7a10be, type: 3}
+--- !u!198 &725749656 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 797990431296593208, guid: cb6f6ba5d6d837644b1af140bc7a10be, type: 3}
+  m_PrefabInstance: {fileID: 725749655}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &726176208
 GameObject:
   m_ObjectHideFlags: 0
@@ -19874,6 +19889,10 @@ PrefabInstance:
       value: SpaceBreak (1)
       objectReference: {fileID: 0}
     - target: {fileID: 797990431296593208, guid: cb6f6ba5d6d837644b1af140bc7a10be, type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 797990431296593208, guid: cb6f6ba5d6d837644b1af140bc7a10be, type: 3}
       propertyPath: InitialModule.startSize.scalar
       value: 0.05
       objectReference: {fileID: 0}
@@ -19890,6 +19909,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cb6f6ba5d6d837644b1af140bc7a10be, type: 3}
+--- !u!198 &1069853887 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 797990431296593208, guid: cb6f6ba5d6d837644b1af140bc7a10be, type: 3}
+  m_PrefabInstance: {fileID: 1069853886}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1074967990
 GameObject:
   m_ObjectHideFlags: 0
@@ -22930,7 +22954,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!199 &1393555595
 ParticleSystemRenderer:
   serializedVersion: 6
@@ -29092,6 +29116,10 @@ PrefabInstance:
       value: SpaceBreak (2)
       objectReference: {fileID: 0}
     - target: {fileID: 797990431296593208, guid: cb6f6ba5d6d837644b1af140bc7a10be, type: 3}
+      propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 797990431296593208, guid: cb6f6ba5d6d837644b1af140bc7a10be, type: 3}
       propertyPath: InitialModule.startSize.scalar
       value: 0.05
       objectReference: {fileID: 0}
@@ -29108,6 +29136,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cb6f6ba5d6d837644b1af140bc7a10be, type: 3}
+--- !u!198 &1505646594 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 797990431296593208, guid: cb6f6ba5d6d837644b1af140bc7a10be, type: 3}
+  m_PrefabInstance: {fileID: 1505646593}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1517243864
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -48058,21 +48091,26 @@ MonoBehaviour:
   _sliderEmptyMaterial: {fileID: 2100000, guid: 4dd09568e7897b948b65cf97fad804a3, type: 2}
   _currentSliderMaterial: {fileID: 1300585600}
   _sliderCompleteMaterial: {fileID: 2100000, guid: 7cba7eb8a732ae44ca125e1be0723ce2, type: 2}
-  colliders: []
+  textUlt: {fileID: 1328459982}
   imageUlt1: {fileID: 1592654109}
   imageUlt2: {fileID: 1934940374}
   imageUlt3: {fileID: 759233033}
   imageUlt4: {fileID: 1140628472}
-  textUlt: {fileID: 1328459982}
+  _ultBarPartSysteme: {fileID: 1523753133}
+  ultPartSide: {fileID: 1704299483}
+  _playerPart1: {fileID: 463930441}
+  _playerPart2: {fileID: 1189762170}
+  _playerPart3: {fileID: 1489482457}
+  _playerPart4: {fileID: 779833896}
+  _playerMaterial: {fileID: 2100000, guid: 79335ee338209514abb32c09822028f9, type: 2}
+  colliders: []
   flashLaser: {fileID: 549986771}
   sparksLaser: {fileID: 2037488447}
-  _ultBarPartSysteme: {fileID: 1523753133}
   ultPartSysteme1: {fileID: 2066070895}
   ultPartSysteme2: {fileID: 2033642695}
   ultPartSysteme3: {fileID: 1843231692}
   ultPartSysteme4: {fileID: 1218869324}
   ultPartSysteme5: {fileID: 1481494232}
-  ultPartSide: {fileID: 1704299483}
   ultiPostProcess: {fileID: 2016624737}
   _playerHealth: {fileID: 1378132737}
   _enemySpawner: {fileID: 1744870671}
@@ -48084,11 +48122,11 @@ MonoBehaviour:
   _audioSource: {fileID: 44354552}
   _laser: {fileID: 8300000, guid: d9d35517bc1cfe7438dd0aa6b54cd89f, type: 3}
   _ultIsReadySound: {fileID: 8300000, guid: df198e4e20b49f3498ffcf83ebe72288, type: 3}
-  _playerPart1: {fileID: 463930441}
-  _playerPart2: {fileID: 1189762170}
-  _playerPart3: {fileID: 1489482457}
-  _playerPart4: {fileID: 779833896}
-  _playerMaterial: {fileID: 2100000, guid: 79335ee338209514abb32c09822028f9, type: 2}
+  _spaceBreakingSound: {fileID: 8300000, guid: a12e8dfcea2bf9a4bbc2b19da918d17b, type: 3}
+  _breakingSpace1: {fileID: 1069853887}
+  _breakingSpace2: {fileID: 1505646594}
+  _breakingSpace3: {fileID: 725749656}
+  _breakingSpace4: {fileID: 494951895}
 --- !u!1001 &1970142092
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -57031,10 +57069,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: SpaceBreak
       objectReference: {fileID: 0}
-    - target: {fileID: 797990431296593208, guid: cb6f6ba5d6d837644b1af140bc7a10be, type: 3}
-      propertyPath: InitialModule.startLifetime.scalar
-      value: 100000
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -57074,7 +57108,7 @@ SceneRoots:
   - {fileID: 182142087}
   - {fileID: 301989165}
   - {fileID: 1393555597}
-  - {fileID: 9182118994479427040}
   - {fileID: 1069853886}
   - {fileID: 1505646593}
   - {fileID: 725749655}
+  - {fileID: 9182118994479427040}

@@ -31764,7 +31764,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: EXTREME AREA SHOOTER
+  m_text: SPACE  BREAKER
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: cf501d451edcd0541b933219915fe141, type: 2}
   m_sharedMaterial: {fileID: -6164098592835804674, guid: cf501d451edcd0541b933219915fe141, type: 2}
@@ -31791,8 +31791,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 80
-  m_fontSizeBase: 80
+  m_fontSize: 90
+  m_fontSizeBase: 90
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -31827,7 +31827,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 0.000003795667, z: 0, w: 0}
+  m_margin: {x: -78.78415, y: 0.000003795667, z: -104.94507, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0

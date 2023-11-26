@@ -57,7 +57,9 @@ public class ExploseEnemy : MonoBehaviour
     void Update()
     {
 
-        transform.position = Vector3.MoveTowards(this.transform.position, _targetPlayer.position, m_ExploseEnemySpeed * Time.deltaTime);
+        transform.Translate(Vector3.forward * m_ExploseEnemySpeed * Time.deltaTime);
+
+        //transform.position = Vector3.MoveTowards(this.transform.position, _targetPlayer.position, m_ExploseEnemySpeed * Time.deltaTime);
         _enemyDir = Vector3.MoveTowards(this.transform.position, _targetPlayer.position, m_ExploseEnemySpeed * Time.deltaTime);
         if (!_isDestroy)
         {

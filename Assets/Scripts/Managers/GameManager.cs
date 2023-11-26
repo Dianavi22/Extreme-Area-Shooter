@@ -45,6 +45,7 @@ public class GameManager : MonoBehaviour
     public float maxUltCharge = 3;
     public float OldUltCharge = 0;
     public bool isUltCharged = false;
+    public int wavesCount = 0;
     
 
     [Header("GameOver")]

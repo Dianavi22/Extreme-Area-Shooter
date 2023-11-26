@@ -34,14 +34,16 @@ public class BigEnemyMovement : MonoBehaviour
     {
         _rb = GetComponent<Rigidbody>();
         _targetPlayer = FindObjectOfType<Player>().transform;
+        Invoke("DestroyBigEnemy", 20) ;
     }
 
     void Update()
     {
         try
         {
+            transform.Translate(Vector3.forward * _bigEnemySpeed * Time.deltaTime);
 
-            transform.position = Vector3.MoveTowards(this.transform.position, _targetPlayer.position, _bigEnemySpeed * Time.deltaTime);
+           // transform.position = Vector3.MoveTowards(this.transform.position, _targetPlayer.position, _bigEnemySpeed * Time.deltaTime);
             _enemyDir = Vector3.MoveTowards(this.transform.position, _targetPlayer.position, _bigEnemySpeed * Time.deltaTime);
 
             gameObject.transform.LookAt(_targetPlayer);
@@ -57,6 +59,11 @@ public class BigEnemyMovement : MonoBehaviour
         {
             return;
         }
+    }
+
+    private void DestroyBigEnemy()
+    {
+        Destroy(gameObject);
     }
 }
 

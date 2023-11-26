@@ -42,7 +42,9 @@ public class LittleEnemy : MonoBehaviour
     void Update()
     {
         //Direction
-        transform.position = Vector3.MoveTowards(this.transform.position, _targetPlayer.position, m_LittleEnemySpeed * Time.deltaTime);
+        transform.Translate(Vector3.forward * m_LittleEnemySpeed * Time.deltaTime);
+
+        //transform.position = Vector3.MoveTowards(this.transform.position, _targetPlayer.position, m_LittleEnemySpeed * Time.deltaTime);
         _enemyDir = Vector3.MoveTowards(this.transform.position, _targetPlayer.position, m_LittleEnemySpeed * Time.deltaTime);
         if (!_isDestroy)
         {
