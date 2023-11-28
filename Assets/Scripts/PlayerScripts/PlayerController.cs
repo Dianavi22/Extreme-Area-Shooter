@@ -20,7 +20,7 @@ public class PlayerController : MonoBehaviour
     private float dashCounter;
     private float dashCoolCounter;
 
-    private bool _isWalled;
+    [SerializeField] private bool _isWalled;
     private Vector3 movementDirection;
 
     public bool inMotion;
@@ -97,6 +97,13 @@ public class PlayerController : MonoBehaviour
             if (!_gameManager.isPhase2) { _audioSource.PlayOneShot(_takeItemSound, 0.5f); }
             else { _audioSource.PlayOneShot(_takeItemSound, 2.1f); }
             _takeItemParticules.Play();
+            _isWalled = false;
+
+        }
+
+        if (collision.collider.CompareTag("Enemy"))
+        {
+            _isWalled = false;
         }
     }
     private void OnCollisionExit(Collision collision)

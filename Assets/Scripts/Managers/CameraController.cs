@@ -22,11 +22,13 @@ public class CameraController : MonoBehaviour
     [SerializeField] PlayerHealth _playerHealth;
 
 
+
     private void Awake()
     {
     }
     void Start()
     {
+
     }
 
     void Update()
