@@ -9,6 +9,9 @@ public class Credits : MonoBehaviour
     [SerializeField] private GameObject _particules;
     private AudioMenuManager _dontDestroyOnLoad;
 
+
+    [SerializeField] AudioSource _audioSource;
+    [SerializeField] AudioClip _buttonClip;
     private void Awake()
     {
 
@@ -16,6 +19,8 @@ public class Credits : MonoBehaviour
     }
     void Start()
     {
+        _audioSource.PlayOneShot(_buttonClip, 0.5f);
+
         Invoke("SetActiveCubes", 0.65f);
     }
 
@@ -26,8 +31,7 @@ public class Credits : MonoBehaviour
 
     private void SetActiveCubes()
     {
-        //_cubes.SetActive(true);
-        //_particules.SetActive(false);
+        _particules.SetActive(false);
         _cubes.SetActive(true);
     }
 
@@ -35,7 +39,5 @@ public class Credits : MonoBehaviour
     {
         SceneManager.LoadScene("MenuScene");
         Destroy(_dontDestroyOnLoad.gameObject);
-
-
     }
 }

@@ -14,8 +14,10 @@ public class MainMenu : MonoBehaviour
     public bool isFullScreen;
     private int _isCheckedCommmands;
 
-  
+    [SerializeField] AudioSource _audioSource;
+    [SerializeField] AudioClip _buttonClip;
 
+    [SerializeField] private static bool _isSoundPlaying = true;
     // Start is called before the first frame update
 
     private void Awake()
@@ -25,6 +27,16 @@ public class MainMenu : MonoBehaviour
     }
     void Start()
     {
+
+        if (_isSoundPlaying) 
+        {
+            return;
+        }
+        else
+        {
+            _audioSource.PlayOneShot(_buttonClip, 0.5f);
+
+        }
         Transform _startImage1 = _image1;
         Transform _startImage2 = _image2;
         Transform _startImage3 = _image3;
@@ -52,9 +64,12 @@ public class MainMenu : MonoBehaviour
     {
         if (_isCheckedCommmands == 0)
         {
+            _isSoundPlaying = false;
             SceneManager.LoadScene("CommandScene");
         }
-        else { 
+        else {
+            _isSoundPlaying = false;
+
             SceneManager.LoadScene("GameScene");
 
         }
@@ -62,14 +77,21 @@ public class MainMenu : MonoBehaviour
     } 
     public void StartCommands()
     {
-     
-            SceneManager.LoadScene("CommandScene");
+        _isSoundPlaying = false;
+
+        SceneManager.LoadScene("CommandScene");
 
     }
 
     public void Credits()
     {
+
+
+        _isSoundPlaying = false;
+        print(_isSoundPlaying);
+
         SceneManager.LoadScene("CreditScene");
+
     }
 
     public void QuitGame()
