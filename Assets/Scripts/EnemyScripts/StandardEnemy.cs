@@ -71,15 +71,9 @@ public class StandardEnemy : MonoBehaviour
         //transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, 500 * Time.deltaTime);
         if (_gameManager.isPhase2)
         {
-            if (!_gameManager.isFirstUlti)
-            {
-                m_StandardEnemySpeed = 5.5f;
-
-            }
-            else
-            {
-                m_StandardEnemySpeed = 6;
-            }
+           
+                m_StandardEnemySpeed = 7;
+            
         }
     }
 

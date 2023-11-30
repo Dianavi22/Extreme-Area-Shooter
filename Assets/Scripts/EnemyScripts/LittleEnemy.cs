@@ -56,7 +56,7 @@ public class LittleEnemy : MonoBehaviour
         //transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, 500 * Time.deltaTime);
         if (_gameManager.isPhase2)
         {
-            m_LittleEnemySpeed = 3.3f;
+            m_LittleEnemySpeed = 6f;
         }
     }
 

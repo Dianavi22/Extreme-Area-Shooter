@@ -10,6 +10,7 @@ public class BigEnemy : MonoBehaviour
 
     [Header("DamageByBigEnemy")]
     public PlayerHealth _damage;
+    [SerializeField] BigEnemyMovement _enemyMovement;
     [SerializeField] private List<Spawner> spawners = new List<Spawner>();
     [SerializeField] private GameObject _littleStandardEnemy;
     [SerializeField] private Bullet _bullet;
@@ -73,7 +74,8 @@ public class BigEnemy : MonoBehaviour
             _gameManager.combo++;
             _gameManager.bigEnemyKilled++;
             _gameManager.playerLevelUpgrade = _gameManager.playerLevelUpgrade + 3;
-            _speedBigEnemy = 0;
+            _enemyMovement.enabled = false;
+
             _explosionFlash.Play();
             _explosionParticules.Play();
             EnemySpawn();

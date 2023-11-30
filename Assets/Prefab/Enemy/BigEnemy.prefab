@@ -295,7 +295,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _targetPlayer: {fileID: 0}
   _rb: {fileID: 0}
-  _bigEnemySpeed: 1
+  _bigEnemySpeed: 2.3
   _timer: {fileID: 0}
   _bigEnemy: {fileID: 0}
   _gameManager: {fileID: 0}
@@ -936,6 +936,7 @@ MonoBehaviour:
   m_MaxHpBigEnemy: 5
   m_CurrentHpBigEnemy: 0
   _damage: {fileID: 0}
+  _enemyMovement: {fileID: 773944425667637340}
   spawners:
   - {fileID: 5453940021197931382}
   - {fileID: 1005913029263695488}
@@ -947,7 +948,7 @@ MonoBehaviour:
   _explosionFlash: {fileID: 2181841031119580306}
   _BigEnemyMove: {fileID: 773944425667637340}
   _speedBigEnemy: 0
-  _bigEnemyMovement: {fileID: 0}
+  _bigEnemyMovement: {fileID: 773944425667637340}
 --- !u!54 &6691612949787919797
 Rigidbody:
   m_ObjectHideFlags: 0

@@ -218,7 +218,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 760e40c7ff5ded540aa27d9edaec42c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _pauseMenu: {fileID: 1848959750}
 --- !u!1 &27739955
 GameObject:
   m_ObjectHideFlags: 0
@@ -13001,6 +13000,7 @@ MonoBehaviour:
   _uiIcons: {fileID: 322822307}
   _bulletSpawn: {fileID: 0}
   _timer: {fileID: 2051495545}
+  _enemySpawnScript: {fileID: 1744870671}
   _cameraController: {fileID: 963194231}
   _itemSpawners: {fileID: 962490590}
   _playerScoreUI: {fileID: 1279981158}

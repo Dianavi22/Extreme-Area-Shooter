@@ -267,7 +267,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _targetPlayer: {fileID: 0}
   _rb: {fileID: 0}
-  m_LittleEnemySpeed: 2
+  m_LittleEnemySpeed: 3
   m_MaxHpEnemy: 0
   m_CurrentHpEnemy: 0
   m_damageLittleEnemy: 1
