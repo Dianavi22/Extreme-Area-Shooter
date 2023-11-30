@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    private Collider playercollision;
+    [SerializeField]  private Collider playercollision;
     private Collider bulletcollision;
     private Collider itemCollider;
     [SerializeField]

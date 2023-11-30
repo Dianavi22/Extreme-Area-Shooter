@@ -9,6 +9,11 @@ public class PassHoverButtonsMenu : MonoBehaviour
     public ParticleSystem _part2;
     public ParticleSystem _part3;
     public ParticleSystem _part4;
+
+
+    [SerializeField] AudioSource _audioSource;
+    [SerializeField] AudioClip _buttonSound;
+
     void Start()
     {
 
@@ -26,6 +31,8 @@ public class PassHoverButtonsMenu : MonoBehaviour
         _part3.Play();
         _part4.Play();
         Invoke("HorizontalPartEnter", 0.3f);
+        _audioSource.PlayOneShot(_buttonSound, 0.5f);
+
     }
 
     public void HorizontalPartEnter()

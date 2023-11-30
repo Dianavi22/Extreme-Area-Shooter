@@ -14,8 +14,15 @@ public class MainMenu : MonoBehaviour
     public bool isFullScreen;
     private int _isCheckedCommmands;
 
+  
 
     // Start is called before the first frame update
+
+    private void Awake()
+    {
+        
+
+    }
     void Start()
     {
         Transform _startImage1 = _image1;
@@ -33,12 +40,9 @@ public class MainMenu : MonoBehaviour
     {
         if (isHover)
         {
+
             HoverButton();
             
-        }
-        else
-        {
-         //   _image1 = 
         }
 
         
@@ -49,7 +53,6 @@ public class MainMenu : MonoBehaviour
         if (_isCheckedCommmands == 0)
         {
             SceneManager.LoadScene("CommandScene");
-
         }
         else { 
             SceneManager.LoadScene("GameScene");
@@ -67,8 +70,6 @@ public class MainMenu : MonoBehaviour
     public void Credits()
     {
         SceneManager.LoadScene("CreditScene");
-
-
     }
 
     public void QuitGame()
@@ -83,7 +84,6 @@ public class MainMenu : MonoBehaviour
 
     public void HoverButton()
     {
-        print("HOVER");
         _image1.localScale = new Vector3(_image1.localScale.x, 0, _image1.localScale.z); ; 
         _image2.localScale = new Vector3(_image2.localScale.x, 0, _image2.localScale.z); ; 
         _image3.localScale = new Vector3(_image3.localScale.x, 0, _image3.localScale.z); ; 

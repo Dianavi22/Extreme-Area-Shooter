@@ -100,7 +100,7 @@ SphereCollider:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 256
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
@@ -120,6 +120,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dabd34645cf9f3843869e41288121cff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playercollision: {fileID: 0}
   m_DamageBullet: 1
 --- !u!54 &519881788
 Rigidbody:

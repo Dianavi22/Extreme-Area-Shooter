@@ -86,10 +86,14 @@ public class GameManager : MonoBehaviour
     [SerializeField] GameObject _debrisSecretEndGO;
     [SerializeField] ParticleSystem _secretEndParticules;
 
-
+    private AudioMenuManager _dontDestroyOnLoad;
 
     private void Awake()
     {
+
+        _dontDestroyOnLoad = FindAnyObjectByType<AudioMenuManager>();
+        Destroy(_dontDestroyOnLoad.gameObject);
+
         //  _playerHealth = GetComponent<PlayerHealth>();
         _playerController = _player.GetComponent<PlayerController>();
         _playerHealth = _player.GetComponent<PlayerHealth>();
@@ -99,6 +103,9 @@ public class GameManager : MonoBehaviour
     }
     void Start()
     {
+
+        //Destroy Dont destroy on load
+        
         _canon2.SetActive(false);
         _canon3.SetActive(false);
         _canon4.SetActive(false);
