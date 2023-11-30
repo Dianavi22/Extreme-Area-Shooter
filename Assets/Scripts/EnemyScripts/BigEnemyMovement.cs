@@ -9,7 +9,7 @@ public class BigEnemyMovement : MonoBehaviour
     [SerializeField] private Transform _targetPlayer;
     [SerializeField] private Rigidbody _rb;
     private Vector3 _enemyDir;
-    public float _bigEnemySpeed = 2;
+    public float _bigEnemySpeed = 1.5f;
 
     [SerializeField] private Timer _timer;
     [SerializeField] private BigEnemy _bigEnemy;
@@ -52,7 +52,7 @@ public class BigEnemyMovement : MonoBehaviour
 
             if (_gameManager.isPhase2)
             {
-                _bigEnemySpeed = 4.2f;
+                _bigEnemySpeed = 3.2f;
             }
         }
         catch

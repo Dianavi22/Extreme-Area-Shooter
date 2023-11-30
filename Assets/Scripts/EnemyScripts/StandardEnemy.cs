@@ -6,7 +6,6 @@ public class StandardEnemy : MonoBehaviour
 {
     [Header("Movement")]
     [SerializeField] private Transform _targetPlayer;
-    [SerializeField] private Rigidbody _rb;
     [SerializeField] private float m_StandardEnemySpeed;
     private Vector3 _enemyDir;
 
@@ -35,7 +34,7 @@ public class StandardEnemy : MonoBehaviour
         try
         {
             _collider = GetComponent<Collider>();
-            _rb = GetComponent<Rigidbody>();
+            //_rb = GetComponent<Rigidbody>();
             _targetPlayer = FindObjectOfType<Player>().transform;
             _damage = FindObjectOfType<Player>().GetComponent<PlayerHealth>();
             _gameManager = FindObjectOfType<GameManager>().GetComponent<GameManager>();
@@ -74,7 +73,7 @@ public class StandardEnemy : MonoBehaviour
         {
             if (!_gameManager.isFirstUlti)
             {
-                m_StandardEnemySpeed = 7.5f;
+                m_StandardEnemySpeed = 5.5f;
 
             }
             else
@@ -97,7 +96,7 @@ public class StandardEnemy : MonoBehaviour
             else {_audioSource.PlayOneShot(_killStandardEnemy, 1.5f); }
             _isDestroy = true;
             _collider.enabled = false;
-            _rb.freezeRotation = true;
+            //_rb.freezeRotation = true;
             m_StandardEnemySpeed = 0;
             _gfx.SetActive(false);
             _sparks.Play();
@@ -115,7 +114,7 @@ public class StandardEnemy : MonoBehaviour
         {
             _isDestroy = true;
             _collider.enabled = false;
-            _rb.freezeRotation = true;
+            //_rb.freezeRotation = true; 
             m_StandardEnemySpeed = 0;
             _gfx.SetActive(false);
             _sparks.Play();

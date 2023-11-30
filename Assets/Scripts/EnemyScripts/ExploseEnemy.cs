@@ -7,7 +7,6 @@ public class ExploseEnemy : MonoBehaviour
     [Header("Movement")]
     [SerializeField]  private float m_ExploseEnemySpeed = 5f;
     [SerializeField] private Transform _targetPlayer;
-    [SerializeField] private Rigidbody _rb;
     private Vector3 _enemyDir;
 
     [Header("HP")]
@@ -37,7 +36,6 @@ public class ExploseEnemy : MonoBehaviour
     {
         try
         {
-            _rb = GetComponent<Rigidbody>();
             _targetPlayer = FindObjectOfType<Player>().transform;
             _damage = FindObjectOfType<Player>().GetComponent<PlayerHealth>();
             _gameManager = FindObjectOfType<GameManager>().GetComponent<GameManager>();
@@ -67,9 +65,9 @@ public class ExploseEnemy : MonoBehaviour
 
         }
 
-        if (_gameManager.isPhase2)
+        if (_gameManager.isPhase2 )
         {
-            m_ExploseEnemySpeed = 12;
+            m_ExploseEnemySpeed = 7;
         }
       
     }

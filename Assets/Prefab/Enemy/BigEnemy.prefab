@@ -295,9 +295,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _targetPlayer: {fileID: 0}
   _rb: {fileID: 0}
-  _bigEnemySpeed: 2
+  _bigEnemySpeed: 1
   _timer: {fileID: 0}
   _bigEnemy: {fileID: 0}
+  _gameManager: {fileID: 0}
 --- !u!1 &1797510104423139562
 GameObject:
   m_ObjectHideFlags: 0
@@ -942,7 +943,6 @@ MonoBehaviour:
   - {fileID: 4324479251971341545}
   _littleStandardEnemy: {fileID: 1518876156329345965, guid: 80fb28a3ebef12341a90472613985f15, type: 3}
   _bullet: {fileID: 0}
-  _timer: {fileID: 0}
   _explosionParticules: {fileID: 4697288205726181495}
   _explosionFlash: {fileID: 2181841031119580306}
   _BigEnemyMove: {fileID: 773944425667637340}
