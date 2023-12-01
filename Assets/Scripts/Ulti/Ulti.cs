@@ -192,16 +192,18 @@ public class Ulti : MonoBehaviour
             if (isFirstTime)
             {
                 isFirstTime = false;
-                _enemySpawner.ResetSpawnEnemy();
                 _enemySpawner.m_Rate += 0.5f;
                 _enemySpawner.m_RateBigEnemy += 0.5f;
                 _enemySpawner.m_RateExploseEnemy += 0.5f;
-            }
-            _enemySpawner.m_Rate *= 1.4f;
+            _enemySpawner.ResetSpawnEnemy();
+
+        }
+        _enemySpawner.m_Rate *= 1.4f;
             _enemySpawner.m_RateBigEnemy *= 1.4f;
             _enemySpawner.m_RateExploseEnemy *= 1.4f;
-    
-            _gameManager.maxUltCharge += 30;
+                _enemySpawner.ResetSpawnEnemy();
+
+        _gameManager.maxUltCharge += 30;
     }
 
     public void ReInitLifeBar()

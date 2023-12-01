@@ -2,10 +2,9 @@ using UnityEngine;
 
 public class CursorLock : MonoBehaviour
 {
-    [SerializeField] PauseMenu _pauseMenu;
     void Update()
     {
-        if (!_pauseMenu)
+        if (!PauseMenu.gameIsPaused)
         {
             Cursor.lockState = CursorLockMode.Confined;
         }

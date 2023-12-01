@@ -13,7 +13,6 @@ public class ExploseEnemy : MonoBehaviour
     [SerializeField] private int m_MaxHpEnemy;
     [SerializeField] private int m_CurrentHpEnemy;
 
-    [SerializeField] public int m_damageStandardEnemy = 5;
 
     [Header("DamagePlayer")]
     public PlayerHealth _damage;
@@ -67,7 +66,7 @@ public class ExploseEnemy : MonoBehaviour
 
         if (_gameManager.isPhase2 )
         {
-            m_ExploseEnemySpeed = 7;
+            m_ExploseEnemySpeed = 8.5f;
         }
       
     }

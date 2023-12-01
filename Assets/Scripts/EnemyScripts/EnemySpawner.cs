@@ -29,8 +29,12 @@ public class EnemySpawner : MonoBehaviour
     private bool _isBigEnemyWave = true;
 
     [SerializeField] EventManager _eventManager;
+    [SerializeField] GameManager _gameManager;
     [SerializeField] Ulti _ulti;
     public static EnemySpawner enemySpawner;
+
+    public bool _isPhaseTwo = true;
+
     private void Awake()
     {
         _timer = FindObjectOfType<Timer>().GetComponent<Timer>();
@@ -75,7 +79,10 @@ public class EnemySpawner : MonoBehaviour
             SpawnBigEnemy();
         }
 
-
+        if (_gameManager.isPhase2)
+        {
+            PhaseTwoSpawn();
+        }
     }
 
     public void StandardEnemySpawn() { spawners[Random.Range(0, spawners.Count)].SpawnEnemy(m_StandardEnemyPrefab); }
@@ -107,6 +114,20 @@ public class EnemySpawner : MonoBehaviour
         }
     }
 
+    public void PhaseTwoSpawn()
+    {
+        if (_isPhaseTwo) {
+            ResetSpawnEnemy();
+            current_Rate *= 1.4f;
+            m_Rate = current_Rate;
+            current_RateBigEnemy *= 1.4f;
+            m_RateBigEnemy = current_RateBigEnemy;
+            current_RateExploseEnemy *= 1.4f;
+            m_RateExploseEnemy = current_RateExploseEnemy;
+
+            _isPhaseTwo = false;
+        }
+    }
    
     IEnumerator WaitingEnemyWave()
     {

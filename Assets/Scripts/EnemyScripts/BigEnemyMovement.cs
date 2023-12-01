@@ -52,7 +52,7 @@ public class BigEnemyMovement : MonoBehaviour
 
             if (_gameManager.isPhase2)
             {
-                _bigEnemySpeed = 3.2f;
+                _bigEnemySpeed = 5f;
             }
         }
         catch
