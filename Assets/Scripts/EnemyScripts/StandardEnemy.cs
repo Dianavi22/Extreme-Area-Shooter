@@ -72,7 +72,7 @@ public class StandardEnemy : MonoBehaviour
         if (_gameManager.isPhase2)
         {
            
-                m_StandardEnemySpeed = 7;
+                m_StandardEnemySpeed = 6;
             
         }
     }
@@ -86,8 +86,8 @@ public class StandardEnemy : MonoBehaviour
     {
         if (collision.collider.CompareTag("Bullet"))
         {
-            if (!_gameManager.isPhase2) {_audioSource.PlayOneShot(_killStandardEnemy, 0.5f);}
-            else {_audioSource.PlayOneShot(_killStandardEnemy, 1.5f); }
+            if (!_gameManager.isPhase2) {_audioSource.PlayOneShot(_killStandardEnemy, 0.3f);}
+            else {_audioSource.PlayOneShot(_killStandardEnemy, 1f); }
             _isDestroy = true;
             _collider.enabled = false;
             //_rb.freezeRotation = true;

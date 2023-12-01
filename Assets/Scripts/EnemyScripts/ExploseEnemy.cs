@@ -66,7 +66,7 @@ public class ExploseEnemy : MonoBehaviour
 
         if (_gameManager.isPhase2 )
         {
-            m_ExploseEnemySpeed = 8.5f;
+            m_ExploseEnemySpeed = 7.5f;
         }
       
     }
@@ -79,7 +79,7 @@ public class ExploseEnemy : MonoBehaviour
         }
         else
         {
-            _audioSource.PlayOneShot(_killSpeedEnemy, 0.08f);
+            _audioSource.PlayOneShot(_killSpeedEnemy, 0.095f);
 
         }
         Collider[] colliders = Physics.OverlapSphere(transform.position, explosionRadius);

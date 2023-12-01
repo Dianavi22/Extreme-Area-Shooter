@@ -295,7 +295,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _targetPlayer: {fileID: 0}
   _rb: {fileID: 0}
-  _bigEnemySpeed: 2.3
+  _bigEnemySpeed: 2.15
   _timer: {fileID: 0}
   _bigEnemy: {fileID: 0}
   _gameManager: {fileID: 0}

@@ -10,7 +10,7 @@ public class LaunchGame : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-            _audioSource.PlayOneShot(_buttonClip, 0.5f);
+            _audioSource.PlayOneShot(_buttonClip, 0.2f);
 
     }
 

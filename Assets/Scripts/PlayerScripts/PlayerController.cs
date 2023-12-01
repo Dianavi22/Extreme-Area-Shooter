@@ -94,8 +94,8 @@ public class PlayerController : MonoBehaviour
 
         if (collision.collider.CompareTag("Item"))
         {
-            if (!_gameManager.isPhase2) { _audioSource.PlayOneShot(_takeItemSound, 0.5f); }
-            else { _audioSource.PlayOneShot(_takeItemSound, 2.1f); }
+            if (!_gameManager.isPhase2) { _audioSource.PlayOneShot(_takeItemSound, 0.07f); }
+            else { _audioSource.PlayOneShot(_takeItemSound, 0.65f); }
             _takeItemParticules.Play();
             _isWalled = false;
 

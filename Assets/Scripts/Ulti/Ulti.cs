@@ -141,7 +141,7 @@ public class Ulti : MonoBehaviour
     {
         ultPartSide.Play();
         StartCoroutine(BlinkGreen());
-        _audioSource.PlayOneShot(_ultIsReadySound, 0.7f);
+        _audioSource.PlayOneShot(_ultIsReadySound, 0.17f);
     }
     public void ChangePlayerGfxForUlti()
     {
@@ -171,7 +171,7 @@ public class Ulti : MonoBehaviour
         ultPartSysteme3.Play();
         ultPartSysteme4.Play();
         ultPartSysteme5.Play();
-        _audioSource.PlayOneShot(_laser, 1f);
+        _audioSource.PlayOneShot(_laser, 0.63f);
 
         _ultBarPartSysteme.Stop();
 
@@ -192,15 +192,15 @@ public class Ulti : MonoBehaviour
             if (isFirstTime)
             {
                 isFirstTime = false;
-                _enemySpawner.m_Rate += 0.5f;
-                _enemySpawner.m_RateBigEnemy += 0.5f;
-                _enemySpawner.m_RateExploseEnemy += 0.5f;
+                _enemySpawner.m_Rate += 0.6f;
+                _enemySpawner.m_RateBigEnemy += 0.6f;
+                _enemySpawner.m_RateExploseEnemy += 0.6f;
             _enemySpawner.ResetSpawnEnemy();
 
         }
-        _enemySpawner.m_Rate *= 1.4f;
-            _enemySpawner.m_RateBigEnemy *= 1.4f;
-            _enemySpawner.m_RateExploseEnemy *= 1.4f;
+        _enemySpawner.m_Rate *= 1.6f;
+            _enemySpawner.m_RateBigEnemy *= 1.6f;
+            _enemySpawner.m_RateExploseEnemy *= 1.6f;
                 _enemySpawner.ResetSpawnEnemy();
 
         _gameManager.maxUltCharge += 30;
@@ -243,29 +243,29 @@ public class Ulti : MonoBehaviour
         if (_gameManager.wavesCount == 1)
         {
             _breakingSpace1.Play();
-            _audioSource.PlayOneShot(_spaceBreakingSound, 2.5f);
+            _audioSource.PlayOneShot(_spaceBreakingSound, 1.5f);
         }
         else if (_gameManager.wavesCount == 2)
         {
             _breakingSpace2.Play();
-            _audioSource.PlayOneShot(_spaceBreakingSound, 2.5f);
+            _audioSource.PlayOneShot(_spaceBreakingSound, 1.5f);
 
         }
         else if (_gameManager.wavesCount == 3)
         {
             _breakingSpace3.Play();
-            _audioSource.PlayOneShot(_spaceBreakingSound, 2.5f);
+            _audioSource.PlayOneShot(_spaceBreakingSound, 1.5f);
 
         }
         else if (_gameManager.wavesCount == 4)
         {
             _breakingSpace4.Play();
-            _audioSource.PlayOneShot(_spaceBreakingSound, 2.5f);
+            _audioSource.PlayOneShot(_spaceBreakingSound, 1.5f);
 
         }
         else
         {
-            _audioSource.PlayOneShot(_spaceBreakingSound, 2.5f);
+            _audioSource.PlayOneShot(_spaceBreakingSound, 1.5f);
         }
     }
 

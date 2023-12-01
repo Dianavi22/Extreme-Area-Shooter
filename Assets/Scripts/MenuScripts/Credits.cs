@@ -19,7 +19,7 @@ public class Credits : MonoBehaviour
     }
     void Start()
     {
-        _audioSource.PlayOneShot(_buttonClip, 0.5f);
+        _audioSource.PlayOneShot(_buttonClip, 0.2f);
 
         Invoke("SetActiveCubes", 0.65f);
     }

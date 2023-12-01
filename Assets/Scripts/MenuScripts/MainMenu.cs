@@ -34,7 +34,7 @@ public class MainMenu : MonoBehaviour
         }
         else
         {
-            _audioSource.PlayOneShot(_buttonClip, 0.5f);
+            _audioSource.PlayOneShot(_buttonClip, 0.2f);
 
         }
         Transform _startImage1 = _image1;
