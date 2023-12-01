@@ -81,13 +81,13 @@ public class PlayerHealth : MonoBehaviour
             m_currentHealth--;
             if (m_currentHealth <= 0)
             {
-                if (!_gameManager.isPhase2) {_audioSourceGameOver.PlayOneShot(_gameOver, 3f);}
-                else { _audioSourceGameOver.PlayOneShot(_gameOver, 4f);}
+                if (!_gameManager.isPhase2) {_audioSourceGameOver.PlayOneShot(_gameOver, 1f);}
+                else { _audioSourceGameOver.PlayOneShot(_gameOver, 1f);}
                 isAlive = false;
             }
 
-            if (!_gameManager.isPhase2 && m_currentHealth > 1) { _audioSource.PlayOneShot(_hitSound, 1f);} else { _audioSource.PlayOneShot(_hitSound, 2f);  }
-            if (!_gameManager.isPhase2 && m_currentHealth == 1) { _audioSource.PlayOneShot(_lastHitSound, 1f);  } else if (_gameManager.isPhase2 && m_currentHealth == 1) { _audioSource.PlayOneShot(_lastHitSound, 2f); }
+            if (!_gameManager.isPhase2 && m_currentHealth > 1) { _audioSource.PlayOneShot(_hitSound, 0.2f);} else { _audioSource.PlayOneShot(_hitSound, 0.6f);  }
+            if (!_gameManager.isPhase2 && m_currentHealth == 1) { _audioSource.PlayOneShot(_lastHitSound, 0.2f);  } else if (_gameManager.isPhase2 && m_currentHealth == 1) { _audioSource.PlayOneShot(_lastHitSound, 0.6f); }
             healthBar.TakeDamageUI();
            
             _gameManager.playerLevelUpgrade = _gameManager.playerLevelUpgrade - 50;
@@ -108,14 +108,16 @@ public class PlayerHealth : MonoBehaviour
             m_currentHealth = m_currentHealth - 2;
             
             healthBar.TakeDamageUI();
-            if (!_gameManager.isPhase2 && m_currentHealth > 1) { _audioSource.PlayOneShot(_hitSound, 1f); } else { _audioSource.PlayOneShot(_hitSound, 2f); }
-            if (!_gameManager.isPhase2 && m_currentHealth == 1) { _audioSource.PlayOneShot(_lastHitSound, 1f); } else if (_gameManager.isPhase2 && m_currentHealth == 1) { _audioSource.PlayOneShot(_lastHitSound, 2f); }
+            if (!_gameManager.isPhase2 && m_currentHealth > 1) { _audioSource.PlayOneShot(_hitSound, 0.2f); } else { _audioSource.PlayOneShot(_hitSound, 0.6f); }
+            if (!_gameManager.isPhase2 && m_currentHealth == 1) { _audioSource.PlayOneShot(_lastHitSound, 0.2f); } else if (_gameManager.isPhase2 && m_currentHealth == 1) { _audioSource.PlayOneShot(_lastHitSound, 0.6f); }
 
             if (m_currentHealth <= 0)
             {
+                if (!_gameManager.isPhase2) { _audioSourceGameOver.PlayOneShot(_gameOver, 1f); }
+                else { _audioSourceGameOver.PlayOneShot(_gameOver, 1f); }
                 isAlive = false;
             }
-           
+
             _gameManager.playerLevelUpgrade = _gameManager.playerLevelUpgrade - 50;
             _isInvincible = true;
             StartCoroutine(Invincibility());

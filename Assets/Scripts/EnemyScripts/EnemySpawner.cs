@@ -79,10 +79,10 @@ public class EnemySpawner : MonoBehaviour
             SpawnBigEnemy();
         }
 
-        if (_gameManager.isPhase2)
-        {
-            PhaseTwoSpawn();
-        }
+        //if (_gameManager.isPhase2)
+        //{
+        //    PhaseTwoSpawn();
+        //}
     }
 
     public void StandardEnemySpawn() { spawners[Random.Range(0, spawners.Count)].SpawnEnemy(m_StandardEnemyPrefab); }

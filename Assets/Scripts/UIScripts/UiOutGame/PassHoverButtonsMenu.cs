@@ -31,7 +31,7 @@ public class PassHoverButtonsMenu : MonoBehaviour
         _part3.Play();
         _part4.Play();
         Invoke("HorizontalPartEnter", 0.3f);
-        _audioSource.PlayOneShot(_buttonSound, 0.5f);
+        _audioSource.PlayOneShot(_buttonSound, 0.3f);
 
     }
 

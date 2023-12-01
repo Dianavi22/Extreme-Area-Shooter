@@ -141,7 +141,7 @@ public class Ulti : MonoBehaviour
     {
         ultPartSide.Play();
         StartCoroutine(BlinkGreen());
-        _audioSource.PlayOneShot(_ultIsReadySound, 1.5f);
+        _audioSource.PlayOneShot(_ultIsReadySound, 0.7f);
     }
     public void ChangePlayerGfxForUlti()
     {
@@ -171,7 +171,7 @@ public class Ulti : MonoBehaviour
         ultPartSysteme3.Play();
         ultPartSysteme4.Play();
         ultPartSysteme5.Play();
-        _audioSource.PlayOneShot(_laser, 2f);
+        _audioSource.PlayOneShot(_laser, 1f);
 
         _ultBarPartSysteme.Stop();
 

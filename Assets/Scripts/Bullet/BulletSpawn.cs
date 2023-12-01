@@ -76,10 +76,10 @@ public class BulletSpawn : MonoBehaviour
     {
         if (_isPlayingSound && _timer.seconds < 45.8)
         {
-            _audioSource.PlayOneShot(_blasterSound, 0.04f);
+            _audioSource.PlayOneShot(_blasterSound, 0.02f);
         }else if (_isPlayingSound && _timer.seconds >= 45.8)
         {
-            _audioSource.PlayOneShot(_blasterSound, 0.2f);
+            _audioSource.PlayOneShot(_blasterSound, 0.08f);
 
         }
         GameObject bullet = Instantiate(m_bulletPrefab, m_bulletSpawnPoint.position, m_bulletSpawnPoint.rotation);
@@ -91,11 +91,11 @@ public class BulletSpawn : MonoBehaviour
     {
         if (_isPlayingSound && _timer.seconds < 45.8)
         {
-            _audioSource.PlayOneShot(_blasterSound, 0.08f);
+            _audioSource.PlayOneShot(_blasterSound, 0.04f);
         }
         else if (_isPlayingSound && _timer.seconds >= 45.8)
         {
-            _audioSource.PlayOneShot(_blasterSound, 0.25f);
+            _audioSource.PlayOneShot(_blasterSound, 0.1f);
 
         }
         GameObject bullet = Instantiate(megaBalls, m_bulletSpawnPoint.position, m_bulletSpawnPoint.rotation);

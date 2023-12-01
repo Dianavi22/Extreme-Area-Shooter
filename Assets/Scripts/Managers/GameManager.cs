@@ -16,7 +16,7 @@ public class GameManager : MonoBehaviour
 
     public static GameManager gameManager;
     [SerializeField, HideInInspector] CameraController _cameraController;
-    private PlayerController _playerController;
+    [SerializeField] private PlayerController _playerController;
     [SerializeField, HideInInspector] GameObject _itemSpawners;  
 
     [Header("Scoring")]
@@ -74,7 +74,7 @@ public class GameManager : MonoBehaviour
     public bool isFirstUlti = true;
 
     public bool isPhase2 = false;
-
+    [SerializeField] GameObject _spaceBreakerPS;
     public bool isGamePlaying = true;
 
     [Header("SecretEnd")]
@@ -91,9 +91,13 @@ public class GameManager : MonoBehaviour
 
     private void Awake()
     {
-
-        _dontDestroyOnLoad = FindAnyObjectByType<AudioMenuManager>();
-        Destroy(_dontDestroyOnLoad.gameObject);
+        try
+        {
+            _dontDestroyOnLoad = FindAnyObjectByType<AudioMenuManager>();
+            Destroy(_dontDestroyOnLoad.gameObject);
+        }
+        catch { return; }
+       
 
         //  _playerHealth = GetComponent<PlayerHealth>();
         _playerController = _player.GetComponent<PlayerController>();
@@ -247,6 +251,7 @@ public class GameManager : MonoBehaviour
             _gameOverPartSysteme.Play();
             _isPartGOPlayed = true;
         }
+        _spaceBreakerPS.SetActive(false);
         _playerController.gameObject.SetActive(false);
         _enemySpawner.SetActive(false);
         _itemSpawners.SetActive(false);

@@ -32299,7 +32299,7 @@ MonoBehaviour:
   songs:
   - {fileID: 8300000, guid: 96b2730c35a15d045a31d8432a47d5cc, type: 3}
   - {fileID: 8300000, guid: 06d12e0b7e4d34344b5bff42099f9558, type: 3}
-  volume: 0.15
+  volume: 0.04
 --- !u!1 &1026343999
 GameObject:
   m_ObjectHideFlags: 0

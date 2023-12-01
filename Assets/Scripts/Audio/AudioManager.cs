@@ -15,13 +15,15 @@ public class AudioManager : MonoBehaviour
     }
     private void Update()
     {
-        _audioSource.volume = volume;
+        _audioSource.volume = 0.5f;
         if (!_gameManager.isGamePlaying && !PauseMenu.gameIsPaused)
         {
             _audioSource.volume = 0.35f;
         }
         if (!_audioSource.isPlaying && !PauseMenu.gameIsPaused)
         {
+            _audioSource.volume = 0.3f;
+
             _audioSource.clip = songs[1];
             _audioSource.loop = true;
             _audioSource.Play();
