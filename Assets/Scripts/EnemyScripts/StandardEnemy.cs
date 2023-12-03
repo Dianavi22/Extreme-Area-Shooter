@@ -87,7 +87,7 @@ public class StandardEnemy : MonoBehaviour
         if (collision.collider.CompareTag("Bullet"))
         {
             if (!_gameManager.isPhase2) {_audioSource.PlayOneShot(_killStandardEnemy, 0.3f);}
-            else {_audioSource.PlayOneShot(_killStandardEnemy, 1f); }
+            else {_audioSource.PlayOneShot(_killStandardEnemy, 1.4f); }
             _isDestroy = true;
             _collider.enabled = false;
             //_rb.freezeRotation = true;

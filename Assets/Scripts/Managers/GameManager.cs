@@ -89,6 +89,9 @@ public class GameManager : MonoBehaviour
 
     private AudioMenuManager _dontDestroyOnLoad;
 
+    [SerializeField] AudioSource _audioSource;
+    [SerializeField] AudioClip _explosEnd;
+ 
     private void Awake()
     {
         try
@@ -271,6 +274,8 @@ public class GameManager : MonoBehaviour
 
     IEnumerator PlayPartSecret()
     {
+        _audioSource.PlayOneShot(_explosEnd, 0.05f);
+
         yield return new WaitForSeconds(3f);
 
         yield return new WaitForSeconds(7.5f);
@@ -284,6 +289,7 @@ public class GameManager : MonoBehaviour
 
 
         yield return new WaitForSeconds(2f);
+        _audioSource.Stop();
         EndAfterSecretEnd();
 
 

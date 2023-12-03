@@ -13082,6 +13082,8 @@ MonoBehaviour:
   _playerCanons: {fileID: 1133693732}
   _debrisSecretEndGO: {fileID: 2598601119259996386}
   _secretEndParticules: {fileID: 387939129}
+  _audioSource: {fileID: 405237234}
+  _explosEnd: {fileID: 8300000, guid: 3fd226634a74e2b4388223bb58fb54ef, type: 3}
 --- !u!4 &405237231
 Transform:
   m_ObjectHideFlags: 0

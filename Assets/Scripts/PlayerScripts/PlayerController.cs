@@ -66,7 +66,14 @@ public class PlayerController : MonoBehaviour
                 _speed = _dashSpeed;
                 dashCounter = dashLenght;
                 _dashParticleSystem.Play();
+                if (_gameManager.isPhase2)
+                {
+                    _audioSource.PlayOneShot(_dash, 0.12f);
+
+                }
+                else { 
                 _audioSource.PlayOneShot(_dash, 0.03f);
+                }
 
             }
         }

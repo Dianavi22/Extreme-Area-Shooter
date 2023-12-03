@@ -54,7 +54,7 @@ public class Credits : MonoBehaviour
         yield return new WaitForSeconds(0.3f);
         _audioSource.PlayOneShot(_keyboard2, 0.2f);
 
-        StartCoroutine(TypeSentence("MUSIC BY KEVIN MACLEOD", _musicText));
+        StartCoroutine(TypeSentence("MUSIC GAME BY ", _musicText));
         yield return new WaitForSeconds(0.3f);
         _audioSource.PlayOneShot(_keyboard1, 0.2f);
 
