@@ -70,7 +70,7 @@ public class Credits : MonoBehaviour
         yield return new WaitForSeconds(0.3f);
         _audioSource.PlayOneShot(_keyboard2, 0.2f);
 
-        StartCoroutine(TypeSentence("CARPENTER BRUT (FURIE)", _musicMenuText2));
+        StartCoroutine(TypeSentence("CARPENTER BRUT (FURI)", _musicMenuText2));
         yield return new WaitForSeconds(0.3f);
         _audioSource.PlayOneShot(_keyboard1, 0.2f);
 
