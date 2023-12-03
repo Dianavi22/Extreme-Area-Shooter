@@ -30,6 +30,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private ParticleSystem _takeItemParticules;
     private AudioSource _audioSource;
     [SerializeField] AudioClip _takeItemSound;
+    [SerializeField] AudioClip _dash;
+
 
     private void Start()
     {
@@ -64,6 +66,8 @@ public class PlayerController : MonoBehaviour
                 _speed = _dashSpeed;
                 dashCounter = dashLenght;
                 _dashParticleSystem.Play();
+                _audioSource.PlayOneShot(_dash, 0.03f);
+
             }
         }
         if (dashCounter > 0)

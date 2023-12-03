@@ -42,9 +42,9 @@ public class GameManager : MonoBehaviour
 
     [Header("Ulti")]
     [SerializeField, HideInInspector] private Ulti _ulti;
-    [HideInInspector] public float ultCharge = 0;
-    [HideInInspector] public float maxUltCharge = 3;
-    [HideInInspector] public float OldUltCharge = 0;
+    [SerializeField] public float ultCharge = 0;
+    [SerializeField]  public float maxUltCharge = 3;
+    [SerializeField]  public float OldUltCharge = 0;
     [HideInInspector] public bool isUltCharged = false;
     [HideInInspector] public int wavesCount = 0;
     

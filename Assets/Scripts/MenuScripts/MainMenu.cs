@@ -88,7 +88,6 @@ public class MainMenu : MonoBehaviour
 
 
         _isSoundPlaying = false;
-        print(_isSoundPlaying);
 
         SceneManager.LoadScene("CreditScene");
 

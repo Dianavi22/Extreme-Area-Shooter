@@ -49490,6 +49490,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5753754095892556474, guid: 549d85752e48acb45abb2f350ee2c5a2, type: 3}
+      propertyPath: _dash
+      value: 
+      objectReference: {fileID: 8300000, guid: ef7b2aebe0c9f0b42af3ff5e1c59c750, type: 3}
+    - target: {fileID: 5753754095892556474, guid: 549d85752e48acb45abb2f350ee2c5a2, type: 3}
       propertyPath: _gameManager
       value: 
       objectReference: {fileID: 405237230}
